@@ -20,6 +20,7 @@ import {
   MatInputModule} from '@angular/material';
 
   import { UsuarioService } from './user-crud/user-crud.service';
+import { FirebaseComponent } from './firebase/firebase.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {
     InicioComponent,
     UserCrudComponent,
     AdminUsersComponent,
-    LoginComponent
+    LoginComponent,
+    FirebaseComponent
   ],
   imports: [
     AppRoutingModule,

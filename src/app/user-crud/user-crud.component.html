@@ -1,3 +1,28 @@
-<p>
-  user-crud works!
-</p>
+<form class="example-form">
+    <md-form-field class="example-full-width">
+      <input type="text" name="nombre" [(ngModel)]="nuevoUsuario.nombre" id="nombre" mdInput placeholder="Nombre">
+    </md-form-field>
+    <md-form-field class="example-full-width">
+      <input type="text" name="apellido" [(ngModel)]="nuevoUsuario.apellido" id="apellido" mdInput placeholder="Apellido" >
+    </md-form-field>
+    <md-form-field class="example-full-width">
+      <input type="text" name="direccion" [(ngModel)]="nuevoUsuario.direccion" id="direccion" mdInput placeholder="Direccion" >
+    </md-form-field>
+    <md-form-field class="example-full-width">
+      <input type="number" name="telefonoCasa" [(ngModel)]="nuevoUsuario.telefonoCasa" id="telefonoCasa" mdInput placeholder="Telefono">
+    </md-form-field>
+    <md-form-field class="example-full-width">
+        <input type="number" name="telefonoCel" [(ngModel)]="nuevoUsuario.telefonoCel" id="telefonoCel" mdInput placeholder="Celular">
+    </md-form-field>
+    <md-form-field class="example-full-width">
+        <input type="password" name="passwordOrigin" [(ngModel)]="nuevoUsuario.passwordOrigin" id="passwordOrigin" mdInput placeholder="Contraseña">
+    </md-form-field>
+    <md-form-field class="example-full-width">
+        <input type="password" name="passwordCopy" [(ngModel)]="nuevoUsuario.passwordCopy" id="passwordCopy" mdInput placeholder="Repetir Contraseña">
+    </md-form-field>
+    <p>
+            <button type="button"
+                        
+                         (click)="guardarUsuario(nuevoUsuario)">Registrar</button></p>
+</form>
+  

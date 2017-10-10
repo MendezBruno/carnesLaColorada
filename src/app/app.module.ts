@@ -1,19 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule} from '@angular/router';
+import { FormsModule }    from '@angular/forms';
+
+import { AppRoutingModule }  from './app-routing';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { UserCrudComponent } from './user-crud/user-crud.component';
 import { AdminUsersComponent} from './admin-users/admin-users.component';
+import { LoginComponent } from './login/login.component';
 
-const appRoutes: Routes = [
-  { path: '', redirectTo: '/inicio', pathMatch: 'full'},
-  { path: 'inicio', component: InicioComponent},
-  { path: 'user/:id', component: UserCrudComponent},
-  { path: 'adminusers', component: AdminUsersComponent}
-];
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MatMenuModule,
+  MatIconModule,
+  MatToolbarModule,
+  MatFormFieldModule,
+  MatInputModule} from '@angular/material';
+
+
+
 
 @NgModule({
   declarations: [
@@ -21,14 +28,19 @@ const appRoutes: Routes = [
     NavBarComponent,
     InicioComponent,
     UserCrudComponent,
-    AdminUsersComponent
+    AdminUsersComponent,
+    LoginComponent
   ],
   imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } //Para debug
-    ),
-    BrowserModule
+    AppRoutingModule,
+    FormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

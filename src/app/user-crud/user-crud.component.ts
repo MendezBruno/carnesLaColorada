@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { Usuario } from './usuario';
+import { UsuarioService } from './user-crud.service';
 
 @Component({
   selector: 'app-user-crud',
@@ -10,17 +11,16 @@ import { Usuario } from './usuario';
 })
 export class UserCrudComponent implements OnInit {
 
-  model: any = {};
-  nuevoUsuario: any = {};
+    nuevoUsuario :any = {};
   
-    constructor() { }
+    constructor(private _usuarioService: UsuarioService) { }
   
     ngOnInit() {
     }
   
     guardarUsuario(newUsuario: Usuario){
-      this.nuevoUsuario.nombre = newUsuario.nombre;
       console.log(newUsuario);
+      this._usuarioService.addUsuario(newUsuario);
       
     }
 

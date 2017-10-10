@@ -19,7 +19,7 @@ import {
   MatFormFieldModule,
   MatInputModule} from '@angular/material';
 
-
+  import { UsuarioService } from './user-crud/user-crud.service';
 
 
 @NgModule({
@@ -42,7 +42,7 @@ import {
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

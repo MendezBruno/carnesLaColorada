@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Usuario } from './usuario';
-import { USER } from './usuario-data';
+import { Usuario } from '../modelo/usuario';
+import { USER } from '../user-crud/usuario-data';
 
 @Injectable()
 export class UsuarioService {

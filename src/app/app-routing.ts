@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     { path: 'inicio', component: InicioComponent},
     { path: 'user', component: UserCrudComponent},
     { path: 'adminusers', component: AdminUsersComponent},
-    { path: 'login', component: FirebaseComponent}
+    { path: 'firebase', component: FirebaseComponent}
 ];
 
 @NgModule({

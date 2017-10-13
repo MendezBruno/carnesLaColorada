@@ -1,7 +1,9 @@
 //Angular Base
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from "@angular/flex-layout";
 //Material 
 import { MaterialModule } from "./material/material.module"
 
@@ -53,10 +55,13 @@ export const firebaseConfig = {
     AppRoutingModule,
     FormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
     MaterialModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    
   ],
   providers: [
     UsuarioService,

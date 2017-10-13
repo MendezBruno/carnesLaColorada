@@ -5,6 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { AutenticacionFirebaseService } from '../servicios/autenticacionFirebase.service';
+import { MatButtonModule } from '@angular/material';
 
 @Component({
   selector: 'app-firebase',

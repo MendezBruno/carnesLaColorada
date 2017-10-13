@@ -1,6 +1,6 @@
 //Angular Base
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -30,6 +30,7 @@ import { AutenticacionFirebaseService } from './servicios/autenticacionFirebase.
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule  } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { ProductoComponent } from './producto/producto.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCEH5CWZ0IlVb1vYS92vP3PmHN9uLis1Ao",
@@ -49,7 +50,8 @@ export const firebaseConfig = {
     UserCrudComponent,
     AdminUsersComponent,
     LoginComponent,
-    FirebaseComponent
+    FirebaseComponent,
+    ProductoComponent
   ],
   imports: [
     AppRoutingModule,

@@ -31,4 +31,12 @@ export class FirebaseComponent implements OnInit {
         } )
   }
 
+  loginFacebook(){
+    this.autenticacionFirebase.loginFaceBook()
+/*.then((data)=>{
+          console.log(data);
+          alert('estoy logueado');
+        })*/
+  }
+
 }

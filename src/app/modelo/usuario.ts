@@ -6,4 +6,5 @@ export interface Usuario {
     telefonoCasa: number;
     telefonoCel: number;
     password: string;
-  }
+    fotoPerfil: string;
+}

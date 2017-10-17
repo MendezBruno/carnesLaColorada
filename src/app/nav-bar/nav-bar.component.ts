@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
-import { } from '@angular/material';
+import { AutenticacionFirebaseService } from '../servicios/autenticacionFirebase.service';
+
 
 
 
@@ -11,9 +12,22 @@ import { } from '@angular/material';
 
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+
+  private af: AutenticacionFirebaseService;
+
+  constructor(af: AutenticacionFirebaseService) {
+    this.af = af;
+  }
 
   ngOnInit() {
+  }
+
+  isLoggedIn() {
+   return this.af.isLoggedIn();
+  }
+
+  logout() {
+    this.af.logout();
   }
 
 }

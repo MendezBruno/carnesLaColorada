@@ -1,33 +1,50 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app'; 
+import * as firebase from 'firebase/app';
+import { Usuario } from '../modelo/usuario';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AutenticacionFirebaseService {
- 
-  constructor(public afAuth: AngularFireAuth) {
+
+  private userF: Observable<firebase.User>;
+  private userFDetails: firebase.User = null;
+
+  constructor(public afAuth: AngularFireAuth, private router: Router) {
+    this.userF = afAuth.authState;
+    this.userF.subscribe(
+      (userF) => {
+        if (userF) {
+          this.userFDetails = userF;
+          console.log('entre al suscribe');
+          console.log(this.userFDetails);
+        }else {
+          this.userFDetails = null;
+        }
+      }
+    );
   }
   login() {
    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
-  
-  loginFaceBook(){
-    var provider = new firebase.auth.FacebookAuthProvider();
-  return  firebase.auth().signInWithPopup(provider).then(function(result) {
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      var token = result.credential.accessToken;
-      // The signed-in user info.
-    //return result.user;
-      // ...
-    }).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
+
+  loginFaceBook() {
+    return this.afAuth.auth.signInWithPopup(
+      new firebase.auth.FacebookAuthProvider()
+    );
   }
+
+  logout() {
+    this.afAuth.auth.signOut().then((res) => this.router.navigate(['/firebase']));
+  }
+
+  isLoggedIn() {
+    if (this.userFDetails == null ) {
+        return false;
+      } else {
+        return true;
+      }
+  }
+
 }

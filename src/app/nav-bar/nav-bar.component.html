@@ -8,15 +8,17 @@
         <mat-icon>view_headline</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="firebase" routerLinkActive="active">
+      <div>
+        <button mat-menu-item *ngIf="!isLoggedIn()" routerLink="firebase" routerLinkActive="active">
           <mat-icon>account_circle</mat-icon>
           <span >Entrar</span>
         </button>
+      </div>
         <button mat-menu-item disabled>
           <mat-icon>settings_applications</mat-icon>
           <span>Configuracion</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item *ngIf="isLoggedIn()" (click)="logout()"> <!-- TODO agregar un componente de salidad saludando -->
           <mat-icon>exit_to_app</mat-icon>
           <span>Salir</span>
         </button>

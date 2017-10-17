@@ -7,7 +7,8 @@ export const USER: Usuario[] = [{
     direccion: "ocantos",
     telefonoCasa: 654654,
     telefonoCel: 5418111,
-    password: "uuuh"
-    
+    password: "uuuh",
+    fotoPerfil: "lala"
+
 
   }]

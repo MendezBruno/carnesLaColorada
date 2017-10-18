@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
-import {MatButtonModule, MatMenuModule} from '@angular/material';
+import { AutenticacionFirebaseService } from '../servicios/autenticacionFirebase.service';
+
 
 
 
@@ -11,10 +12,35 @@ import {MatButtonModule, MatMenuModule} from '@angular/material';
 
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  username : string;
+  userpicture : string;
+
+  private af: AutenticacionFirebaseService;
+
+  constructor(af: AutenticacionFirebaseService) {
+    this.af = af;
+  }
 
   ngOnInit() {
   }
+
+  isLoggedIn() {
+    if(this.af.isLoggedIn()){
+      this.userpicture = this.af.getPicture();
+      return true;
+    }
+   return false;
+  }
+
+  logout() {
+    this.af.logout();
+  }
+
+  getUserName( ){
+    return this.af.getName();
+  }
+
+
 
 }
 

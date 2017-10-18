@@ -1,0 +1,1 @@
+https://carniceria-app.firebaseapp.com/__/auth/handler

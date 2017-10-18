@@ -7,4 +7,5 @@ export interface Usuario {
     telefonoCel: number;
     password: string;
     fotoPerfil: string;
+    habilitado: boolean;
 }

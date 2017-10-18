@@ -8,6 +8,7 @@ import { AutenticacionFirebaseService } from '../servicios/autenticacionFirebase
 import { MatButtonModule } from '@angular/material';
 
 import { Usuario } from '../modelo/usuario';
+import { UsuarioCrudFirebaseService } from '../servicios/usuario-crud-firebase.service';
 
 @Component({
   selector: 'app-firebase',
@@ -17,7 +18,7 @@ import { Usuario } from '../modelo/usuario';
 export class FirebaseComponent implements OnInit {
   private userFDetails: firebase.User = null;
 
-  constructor(private autenticacionFirebase: AutenticacionFirebaseService, private af: AngularFireAuth) {
+  constructor(private autenticacionFirebase: AutenticacionFirebaseService, private af: AngularFireAuth, private fCrud: UsuarioCrudFirebaseService) {
 
   }
 
@@ -28,7 +29,7 @@ export class FirebaseComponent implements OnInit {
     this.autenticacionFirebase.login()
         .then((data) => {
           console.log(data);
-          alert('estoy logueado');
+          console.log('estoy logueado');
         })
         .catch((error) => {
           console.log(error);
@@ -51,5 +52,6 @@ export class FirebaseComponent implements OnInit {
   logOut() {
     this.autenticacionFirebase.logout();
   }
+
 
 }

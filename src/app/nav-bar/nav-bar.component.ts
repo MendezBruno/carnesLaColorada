@@ -12,6 +12,8 @@ import { AutenticacionFirebaseService } from '../servicios/autenticacionFirebase
 
 export class NavBarComponent implements OnInit {
 
+  username : string;
+  userpicture : string;
 
   private af: AutenticacionFirebaseService;
 
@@ -23,12 +25,22 @@ export class NavBarComponent implements OnInit {
   }
 
   isLoggedIn() {
-   return this.af.isLoggedIn();
+    if(this.af.isLoggedIn()){
+      this.userpicture = this.af.getPicture();
+      return true;
+    }
+   return false;
   }
 
   logout() {
     this.af.logout();
   }
+
+  getUserName( ){
+    return this.af.getName();
+  }
+
+
 
 }
 

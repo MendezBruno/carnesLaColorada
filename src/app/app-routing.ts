@@ -8,6 +8,7 @@ import { UserCrudComponent } from './user-crud/user-crud.component';
 import { AdminUsersComponent} from './admin-users/admin-users.component';
 import { LoginComponent } from './login/login.component';
 import { FirebaseComponent } from './firebase/firebase.component';
+import { ProductoComponent } from './producto/producto.component';
 
 
 const appRoutes: Routes = [
@@ -15,7 +16,8 @@ const appRoutes: Routes = [
     { path: 'inicio', component: InicioComponent},
     { path: 'user', component: UserCrudComponent},
     { path: 'adminusers', component: AdminUsersComponent},
-    { path: 'firebase', component: FirebaseComponent}
+    { path: 'firebase', component: FirebaseComponent},
+    { path: 'admin/producto', component: ProductoComponent}
 ];
 
 @NgModule({

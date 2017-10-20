@@ -1,18 +1,27 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase} from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
+import * as firebase from 'firebase/app';
+import { Producto } from '../modelo/producto';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
 export class ProductoCrudFirebaseService {
 
-  private dbPath: string = '/productos';
-  public itemRef : any;
-  
-  constructor(db: AngularFireDatabase) {
-    this.itemRef = db.object(this.dbPath);
-   }
-  
+  private dbPath = 'productos';
+  public itemRef: any;
+  productoRef: any;
+  public producto: Producto;
+  public productos: Producto[];
 
+  constructor(private db: AngularFireDatabase) {  }
 
+  guardarProd(producto: Producto) {
+  this.itemRef = this.db.list(this.dbPath);
+  this.itemRef.push(producto);
+  }
 
+  obtenerListaDeProductos( ): Observable<any[]> {
+    return this.db.list(this.dbPath).valueChanges();
+  }
 }

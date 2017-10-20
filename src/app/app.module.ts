@@ -32,6 +32,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule  } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ProductoComponent } from './producto/producto.component';
+import { UsuarioCrudFirebaseService } from './servicios/usuario-crud-firebase.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCEH5CWZ0IlVb1vYS92vP3PmHN9uLis1Ao',
@@ -68,7 +69,8 @@ export const firebaseConfig = {
   ],
   providers: [
     UsuarioService,
-    AutenticacionFirebaseService
+    AutenticacionFirebaseService,
+    UsuarioCrudFirebaseService
   ],
   bootstrap: [AppComponent]
 })

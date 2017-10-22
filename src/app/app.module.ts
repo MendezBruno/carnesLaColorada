@@ -20,6 +20,7 @@ import { UserCrudComponent } from './user-crud/user-crud.component';
 import { AdminUsersComponent} from './admin-users/admin-users.component';
 import { LoginComponent } from './login/login.component';
 import { FirebaseComponent } from './firebase/firebase.component';
+import { TiendaComponent } from './tienda/tienda.component';
 
 
 
@@ -58,7 +59,8 @@ export const firebaseConfig = {
     AdminUsersComponent,
     LoginComponent,
     FirebaseComponent,
-    ProductoComponent
+    ProductoComponent,
+    TiendaComponent
   ],
   imports: [
     BrowserModule,

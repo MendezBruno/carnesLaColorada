@@ -24,4 +24,6 @@ export class ProductoCrudFirebaseService {
   obtenerListaDeProductos( ): Observable<any[]> {
     return this.db.list(this.dbPath).valueChanges();
   }
+
+  
 }

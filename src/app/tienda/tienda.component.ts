@@ -10,6 +10,7 @@ import { PRODUCTOS } from './tienda-data';
 export class TiendaComponent implements OnInit {
 
     productos: Producto[];
+    links: string[] = ['uno', 'dos', 'tres'];
 
   constructor() {
     this.productos = PRODUCTOS;

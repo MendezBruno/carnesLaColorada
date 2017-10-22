@@ -4,10 +4,11 @@
     <button mat-icon-button routerLink="" routerLinkActive="active">
       <mat-icon>local_grocery_store</mat-icon>
     </button>
-    <mat-icon *ngIf="isLoggedIn()">
-      <img  [src]="userpicture">
+    
+    <mat-icon fxFlex="5" fxHide fxShow.gt-md class="icon-container" *ngIf="isLoggedIn()">
+      <img class="profilePic" [src]="userpicture">
     </mat-icon>
- 
+    
     <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>view_headline</mat-icon>
     </button>

@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material';
 
 import { Usuario } from '../modelo/usuario';
 import { UsuarioCrudFirebaseService } from '../servicios/usuario-crud-firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-firebase',
@@ -18,7 +19,10 @@ import { UsuarioCrudFirebaseService } from '../servicios/usuario-crud-firebase.s
 export class FirebaseComponent implements OnInit {
   private userFDetails: firebase.User = null;
 
-  constructor(private autenticacionFirebase: AutenticacionFirebaseService, private af: AngularFireAuth, private fCrud: UsuarioCrudFirebaseService) {
+  constructor(private autenticacionFirebase: AutenticacionFirebaseService,
+              private af: AngularFireAuth, 
+              private fCrud: UsuarioCrudFirebaseService, 
+              private router: Router) {
 
   }
 
@@ -29,29 +33,35 @@ export class FirebaseComponent implements OnInit {
     this.autenticacionFirebase.login()
         .then((data) => {
           console.log(data);
-          console.log('estoy logueado');
+          this.goTo('/tienda');
         })
         .catch((error) => {
           console.log(error);
           alert('hubo un error al loguearse');
+          this.goTo('/inicio');
         });
   }
 
   loginFacebook() {
     this.autenticacionFirebase.loginFaceBook().then((data) => {
       console.log(data);
-      alert('estoy logueado');
+      this.goTo('/tienda');
     })
     .catch((error) => {
       console.log(error);
       alert('hubo un error al loguearse');
+      this.goTo('/inicio');
     });
 
   }
 
   logOut() {
     this.autenticacionFirebase.logout();
+    this.goTo('/firebase');
   }
 
+  goTo(path: string){
+  this.router.navigate([path]);
+  }
 
 }

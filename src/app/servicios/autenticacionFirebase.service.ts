@@ -12,9 +12,9 @@ export class AutenticacionFirebaseService {
   private userFDetails: firebase.User = null;
 
   constructor(public afAuth: AngularFireAuth, private router: Router) {
-    
+
  this.userF = afAuth.authState;
-  
+
    this.userF.subscribe(
       (userF) => {
         if (userF) {

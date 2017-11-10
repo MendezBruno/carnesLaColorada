@@ -3,3 +3,15 @@
     flex: 1 1 auto;
     
     }
+
+.icon-container{
+    border-right: 1px solid #e0e0e0;
+    }
+
+.profilePic
+{
+display: block;
+margin-left: 10;
+margin-right: 10;
+margin-top: 10%;
+}

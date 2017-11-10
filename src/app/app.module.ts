@@ -20,19 +20,25 @@ import { UserCrudComponent } from './user-crud/user-crud.component';
 import { AdminUsersComponent} from './admin-users/admin-users.component';
 import { LoginComponent } from './login/login.component';
 import { FirebaseComponent } from './firebase/firebase.component';
+import { TiendaComponent } from './tienda/tienda.component';
 
 
 
 // servicios
 import { UsuarioService } from './servicios/user-crud.service';
-import { AutenticacionFirebaseService } from './servicios/autenticacionFirebase.service'
+import { AutenticacionFirebaseService } from './servicios/autenticacionFirebase.service';
 
 // Firebase  New imports to update based on AngularFire2 version 4
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule  } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import * as firebase from 'firebase/app';
+
+
 import { ProductoComponent } from './producto/producto.component';
 import { UsuarioCrudFirebaseService } from './servicios/usuario-crud-firebase.service';
+import { ProductoCrudFirebaseService } from './servicios/producto-crud-firebase.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCEH5CWZ0IlVb1vYS92vP3PmHN9uLis1Ao',
@@ -53,7 +59,8 @@ export const firebaseConfig = {
     AdminUsersComponent,
     LoginComponent,
     FirebaseComponent,
-    ProductoComponent
+    ProductoComponent,
+    TiendaComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +77,8 @@ export const firebaseConfig = {
   providers: [
     UsuarioService,
     AutenticacionFirebaseService,
-    UsuarioCrudFirebaseService
+    UsuarioCrudFirebaseService,
+    ProductoCrudFirebaseService
   ],
   bootstrap: [AppComponent]
 })

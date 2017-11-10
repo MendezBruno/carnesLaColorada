@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductoCrudFirebaseService } from '../servicios/producto-crud-firebase.service';
+import { Producto } from '../modelo/producto';
+import { UNPRODUCTO } from './producto-data';
 
 @Component({
   selector: 'app-producto',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductoComponent implements OnInit {
 
-  constructor() { }
+  producto:Producto;
+
+  constructor(public _dbProducto: ProductoCrudFirebaseService ) { 
+    this.producto = UNPRODUCTO
+   }
 
   ngOnInit() {
   }
 
+  guardar(producto: Producto) {
+   this._dbProducto.guardarProd(producto);
+  }
 }

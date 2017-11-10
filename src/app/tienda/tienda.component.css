@@ -1,0 +1,15 @@
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
+    background-color: rgb(247, 55, 55);
+}
+
+.flex-item {
+    background-color: cornflowerblue;
+    margin: 10px;
+}

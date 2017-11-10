@@ -1,5 +1,5 @@
-<div class="flex-container" *ngFor="let producto of productos">
-  <div class="flex-item"><app-producto></app-producto></div>
+<div fxLayoutAlign="start center"  fxLayoutGap=10% *ngFor="let producto of productos">
+ <div fxFlex="30" fxLayoutWrap="row">  <app-producto></app-producto></div>
 </div>
 
 <!-- <mat-list dense>

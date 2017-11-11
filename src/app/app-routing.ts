@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { FirebaseComponent } from './firebase/firebase.component';
 import { ProductoComponent } from './producto/producto.component';
 import { TiendaComponent } from './tienda/tienda.component';
+import { ConsolaAdminComponent } from './consola-admin/consola-admin.component';
 
 
 const appRoutes: Routes = [
@@ -20,6 +21,8 @@ const appRoutes: Routes = [
     { path: 'firebase', component: FirebaseComponent},
     { path: 'admin/producto', component: ProductoComponent},
     { path: 'tienda', component: TiendaComponent},
+    { path: 'admin/login', component: LoginComponent},
+    { path: 'admin/consola', component: ConsolaAdminComponent}
 ];
 
 @NgModule({

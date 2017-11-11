@@ -11,7 +11,11 @@ import {
   MatCardModule,
   MatButtonModule,
   MatToolbarModule,
-  MatListModule
+  MatListModule,
+  MatCheckboxModule,
+  MatGridListModule,
+  MatSnackBarModule
+
 
   } from '@angular/material';
 
@@ -26,7 +30,10 @@ import {
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule,
+    MatGridListModule,
+    MatSnackBarModule
 
 
   ],
@@ -41,7 +48,11 @@ import {
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule,
+    MatGridListModule,
+    MatSnackBarModule
+
   ]
 })
 export class MaterialModule { }

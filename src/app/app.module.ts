@@ -40,6 +40,7 @@ import { ProductoComponent } from './producto/producto.component';
 import { UsuarioCrudFirebaseService } from './servicios/usuario-crud-firebase.service';
 import { ProductoCrudFirebaseService } from './servicios/producto-crud-firebase.service';
 import { ConsolaAdminComponent } from './consola-admin/consola-admin.component';
+import { PublicacionAdminComponent } from './publicacion-admin/publicacion-admin.component';
 
 
 export const firebaseConfig = {
@@ -64,6 +65,7 @@ export const firebaseConfig = {
     ProductoComponent,
     TiendaComponent,
     ConsolaAdminComponent,
+    PublicacionAdminComponent,
     
   ],
   imports: [

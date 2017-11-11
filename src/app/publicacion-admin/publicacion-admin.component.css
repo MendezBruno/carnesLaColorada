@@ -1,0 +1,12 @@
+.flotante {
+    display:scroll;
+        position:fixed;
+        bottom:420px;
+        right:100px;
+}
+
+.myicon{
+    height: auto;
+    width: auto;
+    color: red;
+}

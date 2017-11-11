@@ -1,0 +1,18 @@
+<button mat-fab class="flotante">
+  <mat-icon class="myicon">add_circle</mat-icon>
+</button>
+<div fxLayoutAlign="start center"  >
+      <mat-list>
+          <div fxFlex="30" fxLayoutWrap="row">
+            <mat-list-item *ngFor="let publicacion of publicaciones">
+              <h1>{{publicacion.titulo}}</h1>
+              <img matListAvatar src= {{publicacion[1].producto.fotos[1]}} >
+              <p matLine>
+                <span> {{publicacion.descripcion}} </span>
+                <span> -- {{publicacion.fecha | date:'dd-MM-yyyy'}} </span>
+                <span>{{publicacion.precio}}</span>
+              </p>
+            </mat-list-item>
+          </div>
+      </mat-list>
+</div>

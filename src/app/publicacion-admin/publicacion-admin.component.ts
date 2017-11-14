@@ -12,4 +12,8 @@ export class PublicacionAdminComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  agregarPublicacion(){
+    
+  }
 }

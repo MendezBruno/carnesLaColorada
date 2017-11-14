@@ -10,10 +10,10 @@ import { UNPRODUCTO } from './producto-data';
 })
 export class ProductoComponent implements OnInit {
 
-  producto:Producto;
+  producto: Producto;
 
-  constructor(public _dbProducto: ProductoCrudFirebaseService ) { 
-    this.producto = UNPRODUCTO
+  constructor(public _dbProducto: ProductoCrudFirebaseService ) {
+    this.producto = UNPRODUCTO;
    }
 
   ngOnInit() {

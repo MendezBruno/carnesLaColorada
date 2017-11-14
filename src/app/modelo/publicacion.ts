@@ -1,7 +1,7 @@
-import { Producto } from "./producto";
+import { Producto } from './producto';
 
 export class Publicacion {
-    
+
     id: Number;
     fecha: Date;
     productos: Producto[];

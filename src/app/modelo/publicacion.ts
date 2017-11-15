@@ -4,26 +4,29 @@ export class Publicacion {
 
     id: Number;
     fecha: Date;
-    productos: Producto[];
+    //productos: Producto[];
+    cantidad: number;
+    fotos: any;
     activada: boolean;
     description: string;
     titulo: string;
-    precio: string;
+    precio: number;
 
-    constructor ( productos: Producto[], descripcion?: string, titulo?: string){
+    constructor ( cantidad: number, fotos: any, precio: number , descripcion?: string, titulo?: string){
         this.fecha = new Date();
-        this.productos = productos;
-        this.precio = this.getPrecio();
+        this.cantidad = cantidad;
+        this.fotos = fotos;
+        this.precio = precio;
         this.activada = false;
         this.description = descripcion;
         this.titulo = titulo;
     }
 
-    getPrecio(): string{
-        let precio: Number;
-        for (let producto of this.productos) {
-            precio =+ producto.precio;
-        }
-        return precio.toString()
-    }
+    // getPrecio(): string{
+    //     let precio: Number;
+    //     for (let producto of this.productos) {
+    //         precio =+ producto.precio;
+    //     }
+    //     return precio.toString()
+    // }
 }

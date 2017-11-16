@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-publicacion-admin',
@@ -7,13 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicacionAdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
 
   agregarPublicacion(){
-    
+    this.goTo('/admin/nuevaPublicacion');
   }
+
+  goTo(path: string){
+    this.router.navigate([path]);
+    }
 }

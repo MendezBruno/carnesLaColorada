@@ -35,7 +35,7 @@ import {
     MatCheckboxModule,
     MatGridListModule,
     MatSnackBarModule,
-    MatDialog,
+    
 
 
   ],
@@ -54,7 +54,7 @@ import {
     MatCheckboxModule,
     MatGridListModule,
     MatSnackBarModule,
-    MatDialog,
+    
 
   ]
 })

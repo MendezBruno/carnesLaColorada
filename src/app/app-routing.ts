@@ -12,6 +12,7 @@ import { ProductoComponent } from './producto/producto.component';
 import { TiendaComponent } from './tienda/tienda.component';
 import { ConsolaAdminComponent } from './consola-admin/consola-admin.component';
 import { PublicacionAdminComponent } from './publicacion-admin/publicacion-admin.component';
+import { CrudPublicacionComponent } from './crud-publicacion/crud-publicacion.component';
 
 
 const appRoutes: Routes = [
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     { path: 'tienda', component: TiendaComponent},
     { path: 'admin/login', component: LoginComponent},
     { path: 'admin/consola', component: ConsolaAdminComponent},
-    { path: 'admin/publicacion', component: PublicacionAdminComponent}
+    { path: 'admin/publicacion', component: PublicacionAdminComponent},
+    { path: 'admin/nuevaPublicacion', component: CrudPublicacionComponent}
 ];
 
 @NgModule({

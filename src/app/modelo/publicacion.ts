@@ -5,6 +5,7 @@ export class Publicacion {
     id: Number;
     fecha: Date;
     //productos: Producto[];
+    tipoCantidad: string;
     cantidad: number;
     fotos: any;
     activada: boolean;
@@ -12,8 +13,9 @@ export class Publicacion {
     titulo: string;
     precio: number;
 
-    constructor ( cantidad: number, fotos: any, precio: number , descripcion?: string, titulo?: string){
+    constructor (tipoCantidad: string, cantidad: number, fotos: any, precio: number , descripcion?: string, titulo?: string){
         this.fecha = new Date();
+        this.tipoCantidad = tipoCantidad;
         this.cantidad = cantidad;
         this.fotos = fotos;
         this.precio = precio;

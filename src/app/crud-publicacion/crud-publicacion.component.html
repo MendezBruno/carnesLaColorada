@@ -1,36 +1,36 @@
-<div>
-  <h2 fxFlex fxLayoutAlign= "center" mat-dialog-title> Agregar una Publicación</h2>
-  <div>
-    <form #publicacionForm="ngForm" fxFlex fxLayout="column" (keydown)="keyDownFunction($event)">
+<div fxLayoutAlign= "center center">
+  <div fxFlex="30" fxLayout="row" fxLayoutWrap fxLayoutAlign= "center center">
+    <h2 fxFlex="100" fxLayoutAlign= "center" mat-dialog-title> Agregar una Publicación</h2>
+    <div fxFlex="100"  fxLayout="column"  fxLayoutAlign="center start" > 
+      <form class="classform" fxLayout="column" #publicacionForm="ngForm" (keydown)="keyDownFunction($event)">
 
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="Titulo de la publicacion" required [(ngModel)]="model.publicacion.titulo" name="titulo">
-        </mat-form-field>
-      </div>
+        
+          <mat-form-field >
+            <input matInput placeholder="Titulo de la publicacion" required [(ngModel)]="model.publicacion.titulo" name="titulo">
+          </mat-form-field >
+        
 
-      <div>
-        <mat-form-field>
-          <textarea matInput placeholder="Escriba una descripcion" required [(ngModel)]="model.publicacion.descripcion" name="descripcion"></textarea>
-        </mat-form-field>
-      </div>
+        
+          <mat-form-field > 
+            <textarea matInput placeholder="Escriba una descripcion" required [(ngModel)]="model.publicacion.descripcion" name="descripcion"></textarea>
+          </mat-form-field>
+        
 
-      <div>
-        <mat-form-field>
-          <mat-select id="cantidad" placeholder="Cantidad" [(ngModel)]="model.publicacion.tipoCantidad" name="tipoCantidad"  >
-            <mat-option value="option">Unidades</mat-option>
-            <mat-option value="option">Kg</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+        
+          <mat-form-field >
+            <mat-select id="cantidad" placeholder="Cantidad" [(ngModel)]="model.publicacion.tipoCantidad" name="tipoCantidad"  >
+              <mat-option value="option">Unidades</mat-option>
+              <mat-option value="option">Kg</mat-option>
+            </mat-select>
+          </mat-form-field>
+        
 
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="ingrese cantidad" required [(ngModel)]="model.publicacion.cantidad" name="cantidad">
-        </mat-form-field>
-      </div>
-
-    </form>
+        
+          <mat-form-field > 
+            <input matInput placeholder="ingrese cantidad" required [(ngModel)]="model.publicacion.cantidad" name="cantidad">
+          </mat-form-field>
+        
+      </form>
+    </div>
   </div>
-
 </div>

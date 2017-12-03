@@ -6,28 +6,28 @@
 
         
           <mat-form-field >
-            <input matInput placeholder="Titulo de la publicacion" required [(ngModel)]="model.publicacion.titulo" name="titulo">
+            <input matInput placeholder="Titulo de la publicacion" required [(ngModel)]="model.titulo" name="titulo">
           </mat-form-field >
         
 
         
           <mat-form-field > 
-            <textarea matInput placeholder="Escriba una descripcion" required [(ngModel)]="model.publicacion.descripcion" name="descripcion"></textarea>
+            <textarea matInput placeholder="Escriba una descripcion" required [(ngModel)]="model.descripcion" name="descripcion"></textarea>
           </mat-form-field>
         
 
         
           <mat-form-field >
-            <mat-select id="cantidad" placeholder="Cantidad" [(ngModel)]="model.publicacion.tipoCantidad" name="tipoCantidad"  >
-              <mat-option value="option">Unidades</mat-option>
-              <mat-option value="option">Kg</mat-option>
+            <mat-select id="cantidad" placeholder="Cantidad" [(ngModel)]="model.tipoCantidad" name="tipoCantidad"  >
+              <mat-option value="unidades">Unidades</mat-option>
+              <mat-option value="kg">Kg</mat-option>
             </mat-select>
           </mat-form-field>
         
 
         
           <mat-form-field > 
-            <input matInput placeholder="ingrese cantidad" required [(ngModel)]="model.publicacion.cantidad" name="cantidad">
+            <input matInput placeholder="ingrese cantidad" required [(ngModel)]="model.cantidad" name="cantidad">
           </mat-form-field>
         
       </form>

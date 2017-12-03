@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class CrudPublicacionComponent implements OnInit {
 
+model: any = {};
+
   constructor( ) { }
 
   ngOnInit() {

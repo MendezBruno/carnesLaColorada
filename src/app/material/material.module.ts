@@ -7,6 +7,7 @@ import {
   MatMenuModule,
   MatIconModule,
   MatFormFieldModule,
+  MatSelectModule,
   MatInputModule,
   MatCardModule,
   MatButtonModule,
@@ -27,6 +28,7 @@ import {
     MatMenuModule,
     MatIconModule,
     MatFormFieldModule,
+    MatSelectModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
@@ -35,7 +37,7 @@ import {
     MatCheckboxModule,
     MatGridListModule,
     MatSnackBarModule,
-    
+
 
 
   ],
@@ -46,6 +48,7 @@ import {
     MatIconModule,
     MatToolbarModule,
     MatFormFieldModule,
+    MatSelectModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
@@ -54,7 +57,7 @@ import {
     MatCheckboxModule,
     MatGridListModule,
     MatSnackBarModule,
-    
+
 
   ]
 })

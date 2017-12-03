@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {MatFormFieldControl} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-crud-publicacion',
@@ -13,6 +14,14 @@ model: any = {};
   constructor( ) { }
 
   ngOnInit() {
+  }
+
+  onFormSubmit(model){
+    console.log(model);
+  }
+
+  keyDownFunction(event){
+    console.log(event);
   }
 
 }

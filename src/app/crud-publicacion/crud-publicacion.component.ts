@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {MatFormFieldControl} from '@angular/material/form-field';
+import { ImagesStoreService } from '../servicios/images-store.service';
 
 @Component({
   selector: 'app-crud-publicacion',
   templateUrl: './crud-publicacion.component.html',
-  styleUrls: ['./crud-publicacion.component.css']
+  styleUrls: ['./crud-publicacion.component.css'],
+  providers:[ImagesStoreService],
 })
 export class CrudPublicacionComponent implements OnInit {
 
 model: any = {};
 
-  constructor( ) { }
+  constructor(dbImeges: ImagesStoreService) { }
 
   ngOnInit() {
   }

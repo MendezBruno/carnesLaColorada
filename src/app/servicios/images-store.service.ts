@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
-import * as firebase from 'firebase/app';
+import { FirebaseApp } from 'angularfire2';
+import * as firebase from 'firebase';
 import { Observable } from 'rxjs/Observable';
+//import { storage } from 'firebase/app';
 
 @Injectable()
 export class ImagesStoreService {
 
 images: Observable<any[]>;
   // Get a reference to the storage service, which is used to create references in your storage bucket
-storage = firebase.storage();
+//storage = firebase.storage();
 
 // Create a storage reference from our storage service
-storageRef = this.storage.ref();
+//storageRef = this.storage.ref();
 
-  constructor(db: AngularFireDatabase) {
+  constructor(private fb: FirebaseApp) {
 
-    var imagenes = this.storageRef.child('imagenes');
+    const storageRef = firebase.storage().ref();
+    var imagenes = storageRef.child('imagenes');
     console.log("construi el servicio de imagenes: ")
     console.log(imagenes);
 
@@ -51,7 +53,7 @@ starsRef.getDownloadURL().then(function(url) {
       // User canceled the upload
       break;
 
-    
+
 
     case 'storage/unknown':
       // Unknown error occurred, inspect the server response

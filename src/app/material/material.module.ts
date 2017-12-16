@@ -16,7 +16,8 @@ import {
   MatCheckboxModule,
   MatGridListModule,
   MatSnackBarModule,
-  MatDialog
+  MatDialog,
+  MatSidenavModule,
 
 
   } from '@angular/material';
@@ -37,6 +38,7 @@ import {
     MatCheckboxModule,
     MatGridListModule,
     MatSnackBarModule,
+    MatSidenavModule,
 
 
 
@@ -57,6 +59,7 @@ import {
     MatCheckboxModule,
     MatGridListModule,
     MatSnackBarModule,
+    MatSidenavModule,
 
 
   ]

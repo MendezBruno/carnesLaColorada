@@ -9,3 +9,39 @@
 .classform{
     width: 100%;
 }
+
+.fotosproductos{
+    display:scroll;
+    height:auto;
+    width: 100%; 
+}
+
+.botonfoto{
+    height:100px;
+    width: 100px; 
+}
+
+.fotoseleccion{
+    height:110px; 
+}
+
+.fotoselecciondiv{
+  
+    margin:10px auto;
+    
+}
+
+.flotante {
+    position: absolute;
+    top:1px;
+    right:1px;
+    height: 20px;
+    width: 20px;
+    z-index: 100;
+}
+
+.md-64{
+    height:50%;
+    width: 100%; 
+    font-size: 64px;
+}

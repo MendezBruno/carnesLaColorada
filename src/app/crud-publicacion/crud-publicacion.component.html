@@ -1,37 +1,63 @@
-<div fxLayoutAlign= "center center">
-  <div fxFlex="30" fxLayout="row" fxLayoutWrap fxLayoutAlign= "center center">
-    <h2 fxFlex="100" fxLayoutAlign= "center" mat-dialog-title> Agregar una Publicación</h2>
-    <div fxFlex="100"  fxLayout="column"  fxLayoutAlign="center start" >
-      <form class="classform" fxLayout="column" #publicacionForm="ngForm"  (ngSubmit)="onFormSubmit(model)" (keydown)="keyDownFunction($event)">
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode= "side" autosize>
+     
+          <div class="fotoseleccion" *ngFor="let image of imagesStorages">
+            <div class="fotoselecciondiv"><img src="{{image.url}}" width="100" height="auto" (click)="onClick(image)"/></div>
+          </div>
+          
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div fxLayoutAlign= "center center">
+      <div fxFlex="30" fxLayout="row" fxLayoutWrap fxLayoutAlign= "center center">
+        <h2 fxFlex="100" fxLayoutAlign= "center" mat-dialog-title> Agregar una Publicación</h2>
+        <div fxFlex="100"  fxLayout="column"  fxLayoutAlign="center start" >
+          <form class="classform" fxLayout="column" #publicacionForm="ngForm"  (ngSubmit)="onFormSubmit(model)" (keydown)="keyDownFunction($event)">
 
 
-          <mat-form-field >
-            <input matInput placeholder="Titulo de la publicacion" required [(ngModel)]="model.titulo" name="titulo">
-          </mat-form-field >
-
-
-
-          <mat-form-field >
-            <textarea matInput placeholder="Escriba una descripcion" required [(ngModel)]="model.descripcion" name="descripcion"></textarea>
-          </mat-form-field>
-
-
-
-          <mat-form-field >
-            <mat-select placeholder="Cantidad"  [(ngModel)]="model.tipoCantidad" name="tipoCantidad" >
-              <mat-option value="unidades">Unidades</mat-option>
-              <mat-option value="kg">Kg</mat-option>
-            </mat-select>
-          </mat-form-field>
+              <mat-form-field >
+                <input matInput placeholder="Titulo de la publicacion" required [(ngModel)]="model.titulo" name="titulo">
+              </mat-form-field >
 
 
 
-          <mat-form-field >
-            <input matInput placeholder="ingrese cantidad" required [(ngModel)]="model.cantidad" name="cantidad">
-          </mat-form-field>
-        <button type="submit" >Submit</button>
+              <mat-form-field >
+                <textarea matInput placeholder="Escriba una descripcion" required [(ngModel)]="model.descripcion" name="descripcion"></textarea>
+              </mat-form-field>
 
-      </form>
+
+
+              <mat-form-field >
+                <mat-select placeholder="Cantidad"  [(ngModel)]="model.tipoCantidad" name="tipoCantidad" >
+                  <mat-option value="unidades">Unidades</mat-option>
+                  <mat-option value="kg">Kg</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+
+
+              <mat-form-field >
+                <input matInput placeholder="ingrese cantidad" required [(ngModel)]="model.cantidad" name="cantidad">
+              </mat-form-field>
+
+              <div   fxLayout="row" fxLayoutWrap fxLayoutAlign= "space-around center" class="fotosproductos">
+                  <button mat-raised-button class="botonfoto" (click)="sidenav.toggle()" > <mat-icon class="md-64" >photo</mat-icon> </button>
+                  <div *ngFor="let image of imagesSelected">
+                      <div style="position: relative;"> 
+                        <img src="{{image.url}}" width="100" height="100"/>
+                            <button mat-icon-button  class="flotante"> 
+                                <mat-icon class="flotante">clear</mat-icon>
+                            </button>
+                      </div>
+                  </div>
+              </div>
+
+              <button type="submit" >Submit</button>
+
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+  

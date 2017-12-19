@@ -41,7 +41,7 @@ import { UsuarioCrudFirebaseService } from './servicios/usuario-crud-firebase.se
 import { ProductoCrudFirebaseService } from './servicios/producto-crud-firebase.service';
 import { ConsolaAdminComponent } from './consola-admin/consola-admin.component';
 import { PublicacionAdminComponent } from './publicacion-admin/publicacion-admin.component';
-import { CrudPublicacionComponent } from './crud-publicacion/crud-publicacion.component';
+import { CrudPublicacionComponent, DialogConfirmPublicacionComponent } from './crud-publicacion/crud-publicacion.component';
 
 
 
@@ -69,6 +69,7 @@ export const firebaseConfig = {
     ConsolaAdminComponent,
     PublicacionAdminComponent,
     CrudPublicacionComponent,
+    DialogConfirmPublicacionComponent,
 
 
   ],
@@ -90,6 +91,7 @@ export const firebaseConfig = {
     UsuarioCrudFirebaseService,
     ProductoCrudFirebaseService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogConfirmPublicacionComponent]
 })
 export class AppModule { }

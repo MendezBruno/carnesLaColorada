@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ImagesStoreService } from '../servicios/images-store.service';
 import { ImagenesStorage } from '../modelo/imagenesStorages';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-crud-publicacion',
@@ -19,7 +20,7 @@ imagesSelected: ImagenesStorage[] = [];
 dbImages: ImagesStoreService;
 
 
-  constructor(dbImeges: ImagesStoreService) {
+  constructor(dbImeges: ImagesStoreService, public confirmDialog: MatDialog) {
     this.dbImages = dbImeges;
 
    }
@@ -29,7 +30,16 @@ dbImages: ImagesStoreService;
   }
 
   onFormSubmit(model){
-    console.log(model);
+  //  console.log(model);
+  //  this.model = model;
+  this.openDialogConfirm(model);
+  }
+
+  openDialogConfirm(model): void{
+    const dialogRef = this.confirmDialog.open(DialogConfirmPublicacionComponent);
+    dialogRef.afterClosed().subscribe(
+      result => { console.log(result); console.log(this.model); }
+    );
   }
 
   keyDownFunction(event){
@@ -54,4 +64,23 @@ dbImages: ImagesStoreService;
     this.imagesSelected.push(imagen)
   }
 
+  removeImage(image){
+    console.log(image);
+    this.imagesSelected.splice(this.imagesSelected.indexOf(image),1);
+  }
+
 }
+
+
+
+@Component({
+  selector: 'app-dialog-confirm-component',
+  templateUrl: './confirm-dialog-publicion.component.html',
+})
+
+export class DialogConfirmPublicacionComponent implements OnInit {
+  constructor(public dialog: MatDialogRef<DialogConfirmPublicacionComponent>) { }
+
+  ngOnInit() { }
+}
+

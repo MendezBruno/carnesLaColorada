@@ -2,29 +2,41 @@
   <mat-sidenav #sidenav mode= "side" autosize>
      
           <div class="fotoseleccion" *ngFor="let image of imagesStorages">
-            <div class="fotoselecciondiv"><img src="{{image.url}}" width="100" height="auto" (click)="onClick(image)"/></div>
+            <div class="fotoselecciondiv"><img src="{{image.url}}" width="100" height="auto" (click)="onClick(image); sidenav.close()"/></div>
           </div>
           
   </mat-sidenav>
 
   <mat-sidenav-content>
+    <!-- CONTENIDO PRINCIPAL DE SIDENAV, EL FORMULARIO DE LA PUBLICACION -->
     <div fxLayoutAlign= "center center">
       <div fxFlex="30" fxLayout="row" fxLayoutWrap fxLayoutAlign= "center center">
         <h2 fxFlex="100" fxLayoutAlign= "center" mat-dialog-title> Agregar una Publicación</h2>
         <div fxFlex="100"  fxLayout="column"  fxLayoutAlign="center start" >
-          <form class="classform" fxLayout="column" #publicacionForm="ngForm"  (ngSubmit)="onFormSubmit(model)" (keydown)="keyDownFunction($event)">
+          <form class="classform" fxLayout="column" #publicacionForm="ngForm" (ngSubmit)="onFormSubmit(model)" (keydown)="keyDownFunction($event)">
 
 
-              <mat-form-field >
-                <input matInput placeholder="Titulo de la publicacion" required [(ngModel)]="model.titulo" name="titulo">
+              <mat-form-field>
+                <input matInput #inputTitle maxlength="20" placeholder="Titulo de la publicacion" required [(ngModel)]="model.titulo" name="titulo">
+                <mat-hint aling="end">{{inputTitle.value?.length || 0 }}/20</mat-hint>
               </mat-form-field >
 
 
 
               <mat-form-field >
-                <textarea matInput placeholder="Escriba una descripcion" required [(ngModel)]="model.descripcion" name="descripcion"></textarea>
+                <textarea matInput #inputDescripcion maxlength="40" placeholder="Escriba una descripcion" required [(ngModel)]="model.descripcion" name="descripcion"></textarea>
+                <mat-hint aling="end">{{inputDescripcion.value?.length || 0 }}/40</mat-hint>
               </mat-form-field>
 
+
+              <mat-form-field >
+                <mat-select placeholder="Clase de Producto"  [(ngModel)]="model.tipoProducto" name="tipoProducto" >
+                  <mat-option value="carne">Carne</mat-option>
+                  <mat-option value="pollo">Pollo</mat-option>
+                  <mat-option value="cerdo">Cerdo</mat-option>
+                  <mat-option value="otro">Otro</mat-option>
+                </mat-select>
+              </mat-form-field>
 
 
               <mat-form-field >
@@ -45,19 +57,21 @@
                   <div *ngFor="let image of imagesSelected">
                       <div style="position: relative;"> 
                         <img src="{{image.url}}" width="100" height="100"/>
-                            <button mat-icon-button  class="flotante"> 
-                                <mat-icon class="flotante">clear</mat-icon>
+                            <button mat-icon-button  class="flotante" (click)="removeImage(image)"> 
+                                <mat-icon class="flotante"  >clear</mat-icon>
                             </button>
                       </div>
                   </div>
               </div>
-
-              <button type="submit" >Submit</button>
+              <span class="separador"></span>
+              <button mat-raised-button type="submit" [disabled]="!publicacionForm.valid">Crear Publicación</button>
 
           </form>
         </div>
       </div>
     </div>
+
+  <!-- FIN DEL CONTENIDO PRINCIPAL DEL SIDENAV -->
   </mat-sidenav-content>
 </mat-sidenav-container>
   

@@ -42,6 +42,7 @@ import { ProductoCrudFirebaseService } from './servicios/producto-crud-firebase.
 import { ConsolaAdminComponent } from './consola-admin/consola-admin.component';
 import { PublicacionAdminComponent } from './publicacion-admin/publicacion-admin.component';
 import { CrudPublicacionComponent, DialogConfirmPublicacionComponent } from './crud-publicacion/crud-publicacion.component';
+import { PublicacionCrudFirebaseService } from './servicios/publicacion-crud-firebase';
 
 
 
@@ -89,7 +90,8 @@ export const firebaseConfig = {
     UsuarioService,
     AutenticacionFirebaseService,
     UsuarioCrudFirebaseService,
-    ProductoCrudFirebaseService
+    ProductoCrudFirebaseService,
+    PublicacionCrudFirebaseService
   ],
   bootstrap: [AppComponent],
   entryComponents: [DialogConfirmPublicacionComponent]

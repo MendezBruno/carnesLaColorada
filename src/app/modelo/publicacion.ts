@@ -3,7 +3,7 @@
 export class Publicacion {
 
     id: Number;
-    fecha: Date;
+    fecha: string;
     tipoCantidad: string;
     cantidad: number;
     fotos: any;
@@ -13,7 +13,7 @@ export class Publicacion {
     precio: number;
 
     constructor (tipoCantidad: string, cantidad: number, precio: number , fotos?: any, descripcion?: string, titulo?: string){
-        this.fecha = new Date();
+        this.fecha = Date(); //en el momento que se necesite usar la fecha se puede usar como new Date(this.fecha)
         this.tipoCantidad = tipoCantidad;
         this.cantidad = cantidad;
         this.fotos = fotos;

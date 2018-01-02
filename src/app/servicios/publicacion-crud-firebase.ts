@@ -25,7 +25,7 @@ export class PublicacionCrudFirebaseService {
     guardarPublicacion(publicacion: Publicacion) {
     this.itemsRef.push(publicacion);
     }
-    obtenerListaDeProductos( ): Observable<any[]> {
+    obtenerListaDeProductos( ): Observable<Publicacion[]> {
       return this.db.list(this.dbPath).valueChanges();
     }
     updatePublicacion(key: string, modifiedPublication: Publicacion) {

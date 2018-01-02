@@ -1,0 +1,15 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <!-- <div mat-card-avatar class="example-header-image"></div> -->
+    <mat-card-title>{{publicacion.nombre}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src= {{publicacion.fotos[1]}}>
+  <mat-card-content>
+    <p>
+     {{ publicacion.descripcion }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>COMPRAR</button>
+  </mat-card-actions>
+</mat-card>

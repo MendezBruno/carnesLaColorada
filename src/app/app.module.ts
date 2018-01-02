@@ -43,6 +43,7 @@ import { ConsolaAdminComponent } from './consola-admin/consola-admin.component';
 import { PublicacionAdminComponent } from './publicacion-admin/publicacion-admin.component';
 import { CrudPublicacionComponent, DialogConfirmPublicacionComponent } from './crud-publicacion/crud-publicacion.component';
 import { PublicacionCrudFirebaseService } from './servicios/publicacion-crud-firebase';
+import { PublicacionComponent } from './publicacion/publicacion.component';
 
 
 
@@ -71,6 +72,7 @@ export const firebaseConfig = {
     PublicacionAdminComponent,
     CrudPublicacionComponent,
     DialogConfirmPublicacionComponent,
+    PublicacionComponent,
 
 
   ],

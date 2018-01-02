@@ -3,18 +3,57 @@
   <mat-icon class="myicon">add_circle</mat-icon>
 </button>
 </div>
-<div fxLayoutAlign="start center"  >
-      <mat-list>
-          <div fxFlex="30" fxLayoutWrap="row">
-            <mat-list-item *ngFor="let publicacion of publicaciones">
-              <h1>{{publicacion.titulo}}</h1>
-              <img matListAvatar src= {{publicacion.fotos[1]}} >
-              <p matLine>
-                <span> {{publicacion.descripcion}} </span>
-                <span> -- {{publicacion.fecha | date:'dd-MM-yyyy'}} </span>
-                <span>{{publicacion.precio}}</span>
-              </p>
-            </mat-list-item>
-          </div>
-      </mat-list>
+<!-- 
+<mat-grid-list cols="2" rowHeight="1:2">
+    <mat-grid-tile  *ngFor="let publicacion of publicaciones">
+      <mat-card >
+        <mat-card-header>
+            <mat-card-title>{{publicacion.titulo}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image *ngIf="publicacionTieneFotos(publicacion)" src= {{imagenPath}} height="200" >
+        <mat-card-content>
+          <p fxLayout="column">
+            <span> {{publicacion.descripcion}} </span>
+            <span> -- {{publicacion.fecha | date:'dd-MM-yyyy'}} </span>
+            <span>{{publicacion.precio}}</span>
+            <span>{{publicacion.cantidad}}</span>
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="cambiarImagen(publicacion)">ACTIVAR</button>
+          <button mat-button >GUARDAR</button>
+          <button mat-button >DESCARTAR CAMBIOS</button>
+        </mat-card-actions>
+      </mat-card>
+
+
+
+    </mat-grid-tile>
+    
+    
+  </mat-grid-list> -->
+
+<div fxLayout.xs="column" fxLayout.lg="row" fxLayoutAlign="space-around center" fxLayoutWrap   >
+  <mat-card fxFlex="30"  *ngFor="let publicacion of publicaciones">
+    <mat-card-header>
+      <mat-card-title>{{publicacion.titulo}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image *ngIf="publicacionTieneFotos(publicacion)" src= {{imagenPath}} height="200" >
+    <mat-card-content>
+      <p fxLayout="column">
+        <span>descripcion: {{publicacion.descripcion}} </span>
+        <span>fecha: -- {{publicacion.fecha | date:'dd-MM-yyyy'}} </span>
+        <span>precio: {{publicacion.precio}}</span>
+        <span>cantidad: {{publicacion.cantidad}}   {{publicacion.tipoCantidad}} </span>
+      </p>
+      <div>
+        
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="cambiarImagen(publicacion)">ACTIVAR</button>
+      <button mat-button >GUARDAR</button>
+      <button mat-button >DESCARTAR CAMBIOS</button>
+    </mat-card-actions>
+  </mat-card>
 </div>

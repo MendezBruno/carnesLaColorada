@@ -10,3 +10,18 @@
     width: auto;
     color: red;
 }
+
+.publicacion-card{
+    height: 400px;
+    width: 300px;
+}
+
+.mat-card{
+    height: auto;
+    width: 300px;
+    margin-bottom: 20px
+}
+
+.example{
+    background: lightblue;
+}

@@ -39,6 +39,12 @@
       <mat-card-title>{{publicacion.titulo}}</mat-card-title>
     </mat-card-header>
     <img mat-card-image *ngIf="publicacionTieneFotos(publicacion)" src= {{imagenPath}} height="200" >
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <button mat-icon-button fxFlex="10"><mat-icon >keyboard_arrow_left</mat-icon></button>
+        <!-- <span fxFlex="80"></span> -->
+        <button mat-icon-button fxFlex="10"><mat-icon fxFlex="10">keyboard_arrow_right</mat-icon></button>
+    </div>
+    <div class="line-separator"></div>
     <mat-card-content>
       <p fxLayout="column">
         <span>descripcion: {{publicacion.descripcion}} </span>
@@ -46,14 +52,15 @@
         <span>precio: {{publicacion.precio}}</span>
         <span>cantidad: {{publicacion.cantidad}}   {{publicacion.tipoCantidad}} </span>
       </p>
-      <div>
-        
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <button fxFlex="20" mat-button>{{ publicacion.activada ? 'Desactivar': 'Activar'}}</button>
+        <span fxFlex="10" ></span>
+        <p fxFlex="70">{{ publicacion.activada ? 'ACTIVADA': 'DESACTIVADA'}}</p>
       </div>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button (click)="cambiarImagen(publicacion)">ACTIVAR</button>
       <button mat-button >GUARDAR</button>
-      <button mat-button >DESCARTAR CAMBIOS</button>
     </mat-card-actions>
   </mat-card>
 </div>

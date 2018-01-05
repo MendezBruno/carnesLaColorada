@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { PublicacionCrudFirebaseService } from '../servicios/publicacion-crud-firebase';
 import { Publicacion } from '../modelo/publicacion';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Url } from 'url';
+
 
 @Component({
   selector: 'app-publicacion-admin',
@@ -13,10 +14,11 @@ import { Url } from 'url';
 })
 export class PublicacionAdminComponent implements OnInit {
 
+  
+
   publicaciones: Publicacion[];
   imagenPath: any;
   currentPhoto = 0;
-  
 
   constructor(private router: Router, private pcf: PublicacionCrudFirebaseService, db: AngularFireDatabase) {
     this.pcf = pcf;
@@ -52,5 +54,9 @@ export class PublicacionAdminComponent implements OnInit {
   cambiarImagen(publicacion) {
     this.currentPhoto = this.currentPhoto + 0;
     this.imagenPath = publicacion.fotos[this.currentPhoto].url;
+  }
+
+  changeActiveState(checked: boolean, publicacion: Publicacion) {
+    publicacion.activada = checked;
   }
 }

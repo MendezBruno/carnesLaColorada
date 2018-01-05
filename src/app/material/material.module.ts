@@ -19,6 +19,7 @@ import {
   MatDialog,
   MatSidenavModule,
   MatDialogModule,
+  MatSlideToggleModule,
 
 
   } from '@angular/material';
@@ -41,6 +42,7 @@ import {
     MatSnackBarModule,
     MatSidenavModule,
     MatDialogModule,
+    MatSlideToggleModule,
 
 
   ],
@@ -62,6 +64,7 @@ import {
     MatSnackBarModule,
     MatSidenavModule,
     MatDialogModule,
+    MatSlideToggleModule,
 
   ]
 })

@@ -53,14 +53,16 @@
         <span>cantidad: {{publicacion.cantidad}}   {{publicacion.tipoCantidad}} </span>
       </p>
       <div fxLayout="row" fxLayoutAlign="start center">
-        <button fxFlex="20" mat-button>{{ publicacion.activada ? 'Desactivar': 'Activar'}}</button>
+        <!-- <button fxFlex="20" mat-button>{{ publicacion.activada ? 'Desactivar': 'Activar'}}</button> -->
+        <mat-slide-toggle (change)="changeActiveState($event.checked, publicacion) "> </mat-slide-toggle>
         <span fxFlex="10" ></span>
         <p fxFlex="70">{{ publicacion.activada ? 'ACTIVADA': 'DESACTIVADA'}}</p>
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button (click)="cambiarImagen(publicacion)">ACTIVAR</button>
-      <button mat-button >GUARDAR</button>
+      <button mat-icon-button (click)="cambiarImagen(publicacion)" ><mat-icon >save</mat-icon></button>
+      <button mat-icon-button ><mat-icon >mode_edit</mat-icon></button>
+      <button mat-icon-button ><mat-icon >delete</mat-icon></button>
     </mat-card-actions>
-  </mat-card>
-</div>
+  </mat-card> 
+</div> 

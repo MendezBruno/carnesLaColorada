@@ -17,7 +17,7 @@ export class PublicacionAdminComponent implements OnInit {
   
 
   publicaciones: Publicacion[];
-  imagenPath: any;
+  //imagenPath: any;
   currentPhoto = 0;
 
   constructor(private router: Router, private pcf: PublicacionCrudFirebaseService, db: AngularFireDatabase) {
@@ -53,7 +53,7 @@ export class PublicacionAdminComponent implements OnInit {
 
   cambiarImagen(publicacion) {
     this.currentPhoto = this.currentPhoto + 0;
-    this.imagenPath = publicacion.fotos[this.currentPhoto].url;
+   // this.imagenPath = publicacion.fotos[this.currentPhoto].url;
   }
 
   changeActiveState(checked: boolean, publicacion: Publicacion) {

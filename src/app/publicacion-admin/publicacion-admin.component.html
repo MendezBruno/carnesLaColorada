@@ -38,14 +38,14 @@
     <mat-card-header>
       <mat-card-title>{{publicacion.titulo}}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image *ngIf="publicacionTieneFotos(publicacion)" src= {{imagenPath}} height="200" >
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-        <button mat-icon-button fxFlex="10"><mat-icon >keyboard_arrow_left</mat-icon></button>
-        <!-- <span fxFlex="80"></span> -->
-        <button mat-icon-button fxFlex="10"><mat-icon fxFlex="10">keyboard_arrow_right</mat-icon></button>
-    </div>
-    <div class="line-separator"></div>
+    
     <mat-card-content>
+
+      <div style="width: 100%; height: 200">
+          <app-carusel *ngIf="publicacionTieneFotos(publicacion)" [imagenes]="publicacion.fotos"></app-carusel> 
+          <div class="line-separator"></div>
+      </div>
+
       <p fxLayout="column">
         <span>descripcion: {{publicacion.descripcion}} </span>
         <span>fecha: -- {{publicacion.fecha | date:'dd-MM-yyyy'}} </span>

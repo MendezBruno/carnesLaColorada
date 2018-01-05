@@ -44,6 +44,7 @@ import { PublicacionAdminComponent } from './publicacion-admin/publicacion-admin
 import { CrudPublicacionComponent, DialogConfirmPublicacionComponent } from './crud-publicacion/crud-publicacion.component';
 import { PublicacionCrudFirebaseService } from './servicios/publicacion-crud-firebase';
 import { PublicacionComponent } from './publicacion/publicacion.component';
+import { CaruselComponent } from './carusel/carusel.component';
 
 
 
@@ -73,6 +74,7 @@ export const firebaseConfig = {
     CrudPublicacionComponent,
     DialogConfirmPublicacionComponent,
     PublicacionComponent,
+    CaruselComponent,
 
 
   ],

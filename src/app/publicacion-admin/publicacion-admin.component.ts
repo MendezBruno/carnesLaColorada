@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { PublicacionCrudFirebaseService } from '../servicios/publicacion-crud-firebase';
 import { Publicacion } from '../modelo/publicacion';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Url } from 'url';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 
 
 @Component({
@@ -17,10 +18,9 @@ export class PublicacionAdminComponent implements OnInit {
   
 
   publicaciones: Publicacion[];
-  //imagenPath: any;
   currentPhoto = 0;
 
-  constructor(private router: Router, private pcf: PublicacionCrudFirebaseService, db: AngularFireDatabase) {
+  constructor(private router: Router, private pcf: PublicacionCrudFirebaseService, db: AngularFireDatabase, public dialog: MatDialog) {
     this.pcf = pcf;
     this.pcf.obtenerListaDeProductos().subscribe(
       (data) => {
@@ -59,4 +59,35 @@ export class PublicacionAdminComponent implements OnInit {
   changeActiveState(checked: boolean, publicacion: Publicacion) {
     publicacion.activada = checked;
   }
+
+  
+
+  openDialogEdit(dataToChange): void {
+    const dialogRef = this.dialog.open(EditPublicacionComponent, {
+      width: '250px',
+      data: { publicacionData: dataToChange }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      dataToChange = result;
+    });
+  }
+
+}
+
+
+
+@Component({
+  selector: 'app-dialog-edit-publicacion',
+  templateUrl: 'edit-publicacion.component.html'
+})
+
+export class EditPublicacionComponent implements OnInit {
+  constructor(public dialog: MatDialogRef<EditPublicacionComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  ngOnInit() { }
+
 }

@@ -47,8 +47,8 @@
       </div>
 
       <p fxLayout="column">
-        <span>descripcion: {{publicacion.descripcion}} </span>
         <span>fecha: -- {{publicacion.fecha | date:'dd-MM-yyyy'}} </span>
+        <span (click) = "openDialogEdit(publicacion.descripcion)" >descripcion: {{publicacion.description}} </span>
         <span>precio: {{publicacion.precio}}</span>
         <span>cantidad: {{publicacion.cantidad}}   {{publicacion.tipoCantidad}} </span>
       </p>

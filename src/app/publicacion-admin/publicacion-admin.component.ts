@@ -6,6 +6,9 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Url } from 'url';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { EditPublicacionComponent,
+   EditPrecioPublicacionComponent,
+   EditCantidadPublicacionComponent } from '../common-dialog/common-dialog.component';
 
 
 @Component({
@@ -62,32 +65,46 @@ export class PublicacionAdminComponent implements OnInit {
 
   
 
-  openDialogEdit(dataToChange): void {
+  changeDescription(publicacion: Publicacion): void {
     const dialogRef = this.dialog.open(EditPublicacionComponent, {
       width: '250px',
-      data: { publicacionData: dataToChange }
+      data: { publicacionData: publicacion.description }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      dataToChange = result;
+      publicacion.description = result;
+    });
+  }
+
+  changePrecio(publicacion: Publicacion): void {
+    const dialogRef = this.dialog.open(EditPrecioPublicacionComponent, {
+      width: '250px',
+      data: { publicacionData: publicacion.precio }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      publicacion.precio = result;
+    });
+  }
+
+  changeCantidad(publicacion: Publicacion): void {
+    const dialogRef = this.dialog.open(EditCantidadPublicacionComponent, {
+      width: '250px',
+      data: { publicacionDataCantidad: publicacion.precio, publicacionDataTipoCantidad: publicacion.tipoCantidad }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      publicacion.cantidad = result.cantidad;
+      publicacion.tipoCantidad = result.tipoCantidad;
     });
   }
 
 }
 
 
-
-@Component({
-  selector: 'app-dialog-edit-publicacion',
-  templateUrl: 'edit-publicacion.component.html'
-})
-
-export class EditPublicacionComponent implements OnInit {
-  constructor(public dialog: MatDialogRef<EditPublicacionComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-  ngOnInit() { }
-
-}

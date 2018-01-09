@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Cambiar</h2>
+<h3>elija la nueva cantidad o tipo de cantidad que desea agregar</h3>
+<mat-dialog-content>
+    
+
+  <mat-form-field>
+    <input matInput type="number" [(ngModel)]="data.publicacionDataCantidad">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select   [(ngModel)]="data.publicacionDataTipoCantidad"  >
+      <mat-option value="unidades">Unidades</mat-option>
+      <mat-option value="kg">Kg</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</mat-dialog-content>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Cambiar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

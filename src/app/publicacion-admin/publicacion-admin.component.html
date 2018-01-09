@@ -48,9 +48,9 @@
 
       <p fxLayout="column">
         <span>fecha: -- {{publicacion.fecha | date:'dd-MM-yyyy'}} </span>
-        <span (click) = "openDialogEdit(publicacion.descripcion)" >descripcion: {{publicacion.description}} </span>
-        <span>precio: {{publicacion.precio}}</span>
-        <span>cantidad: {{publicacion.cantidad}}   {{publicacion.tipoCantidad}} </span>
+        <span (click) = "changeDescription(publicacion)" >descripcion: {{publicacion.description}} </span>
+        <span (click) = "changePrecio(publicacion)">precio: {{publicacion.precio}}</span>
+        <span (click) = "changeCantidad(publicacion)">cantidad: {{publicacion.cantidad}}   {{publicacion.tipoCantidad}} </span>
       </p>
       <div fxLayout="row" fxLayoutAlign="start center">
         <!-- <button fxFlex="20" mat-button>{{ publicacion.activada ? 'Desactivar': 'Activar'}}</button> -->

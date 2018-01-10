@@ -74,7 +74,7 @@ export class PublicacionAdminComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      publicacion.description = result;
+      if (result) { publicacion.description = result; }
     });
   }
 
@@ -87,21 +87,23 @@ export class PublicacionAdminComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      publicacion.precio = result;
+      if (result) {publicacion.precio = result; }
     });
   }
 
   changeCantidad(publicacion: Publicacion): void {
     const dialogRef = this.dialog.open(EditCantidadPublicacionComponent, {
       width: '250px',
-      data: { publicacionDataCantidad: publicacion.precio, publicacionDataTipoCantidad: publicacion.tipoCantidad }
+      data: { publicacionDataCantidad: publicacion.cantidad, publicacionDataTipoCantidad: publicacion.tipoCantidad }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      publicacion.cantidad = result.cantidad;
-      publicacion.tipoCantidad = result.tipoCantidad;
+      if (result) {
+        if (result.publicacionDataCantidad) { publicacion.cantidad = result.publicacionDataCantidad; }
+        if (result.publicacionDataTipoCantidad)  {publicacion.tipoCantidad = result.publicacionDataTipoCantidad; }
+      }
     });
   }
 

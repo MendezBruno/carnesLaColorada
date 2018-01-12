@@ -8,7 +8,7 @@ const asado: string[] = [
   ];
 
 export const UNAPUBLICACION: Publicacion = {
-    id: 1,
+    id: 'uno',
     fecha: Date(),
     tipoCantidad: 'kg',
     cantidad: 20,

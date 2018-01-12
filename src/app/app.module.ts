@@ -49,6 +49,7 @@ import { PublicacionCrudFirebaseService } from './servicios/publicacion-crud-fir
 import { PublicacionComponent } from './publicacion/publicacion.component';
 import { CaruselComponent } from './carusel/carusel.component';
 import { CommonDialogComponent } from './common-dialog/common-dialog.component';
+import { MouseEditModeDirective } from './directives/mouse-edit-mode.directive';
 
 
 
@@ -83,6 +84,7 @@ export const firebaseConfig = {
     PublicacionComponent,
     CaruselComponent,
     CommonDialogComponent,
+    MouseEditModeDirective,
 
 
   ],

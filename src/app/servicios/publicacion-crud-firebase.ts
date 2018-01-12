@@ -3,6 +3,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { Publicacion } from '../modelo/publicacion';
 
+const SEPARADOR = '/';
+
 @Injectable()
 export class PublicacionCrudFirebaseService {
 
@@ -20,14 +22,32 @@ export class PublicacionCrudFirebaseService {
         console.log(changes);
         return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
       });
+      this.itemsRef.snapshotChanges(['child_added'])
+          .subscribe(actions => {
+            actions.forEach(action => {
+              console.log(action.type);
+              console.log(action.key);
+              console.log(action.payload.val());
+            });
+          });
     }
 
     guardarPublicacion(publicacion: Publicacion) {
-    this.itemsRef.push(publicacion);
+    let refKey = this.itemsRef.push(publicacion).key;
+    console.log('Guarde La Publicacion');
+    console.log(refKey);
+    publicacion.id = refKey;
+    this.db.database.ref(this.dbPath + SEPARADOR + refKey).set(publicacion);
+    
     }
     obtenerListaDeProductos( ): Observable<Publicacion[]> {
       return this.db.list(this.dbPath).valueChanges();
     }
+
+    addInfoToPublicatino(key: string, publicationWithNewInfo: Publicacion) {
+      this.db.database.ref(this.dbPath + SEPARADOR + key).set(publicationWithNewInfo);
+    }
+
     updatePublicacion(key: string, modifiedPublication: Publicacion) {
       this.itemsRef.update(key, modifiedPublication);
     }

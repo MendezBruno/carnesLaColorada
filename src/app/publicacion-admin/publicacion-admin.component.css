@@ -37,4 +37,8 @@
     border-bottom:1px solid #313030;
     
     }
+
+.editMode{
+    cursor: url(../../assets/icons/ic_mode_edit_black_24dp_1x.png) 0 20, auto;
     
+}

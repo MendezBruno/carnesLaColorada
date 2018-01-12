@@ -2,7 +2,7 @@
 
 export class Publicacion {
 
-    id: Number;
+    id: string;
     fecha: string;
     tipoCantidad: string;
     cantidad: number;

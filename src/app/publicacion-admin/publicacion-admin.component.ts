@@ -8,7 +8,9 @@ import { Url } from 'url';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { EditPublicacionComponent,
    EditPrecioPublicacionComponent,
-   EditCantidadPublicacionComponent } from '../common-dialog/common-dialog.component';
+   EditCantidadPublicacionComponent, 
+   DialogConfirmPublicacionComponent} from '../common-dialog/common-dialog.component';
+import { forEach } from '@angular/router/src/utils/collection';
 
 
 @Component({
@@ -18,8 +20,8 @@ import { EditPublicacionComponent,
 })
 export class PublicacionAdminComponent implements OnInit {
 
-  
 
+  editStates: EditState[] = [];
   publicaciones: Publicacion[];
   currentPhoto = 0;
 
@@ -28,11 +30,24 @@ export class PublicacionAdminComponent implements OnInit {
     this.pcf.obtenerListaDeProductos().subscribe(
       (data) => {
         this.publicaciones =  data;
+        this.initilizeEdit(this.publicaciones);
         console.log(this.publicaciones);
       }
     );
-    
+    console.log('llegaron las publicaciones:');
     console.log(this.publicaciones);
+   }
+
+   initilizeEdit(publicaciones) {
+     let publicacion: any;
+      for ( publicacion of publicaciones) {
+        if (publicacion) {
+          let editState = {id: publicacion.id, state: false}
+          this.editStates.push(editState);
+        }
+      }
+      console.log('inicialice estado de publicaciones');
+      console.log(this.editStates);
    }
 
   ngOnInit() {
@@ -52,7 +67,7 @@ export class PublicacionAdminComponent implements OnInit {
 
   getPhoto(publicacion: Publicacion):Url{
    return publicacion.fotos[0].url;
-  }  
+  }
 
   cambiarImagen(publicacion) {
     this.currentPhoto = this.currentPhoto + 0;
@@ -63,7 +78,16 @@ export class PublicacionAdminComponent implements OnInit {
     publicacion.activada = checked;
   }
 
-  
+  isEdit(publicacion): boolean {
+    let editEstate: EditState;
+    if (this.editStates !== undefined) { editEstate = this.editStates.find(editState => editState.id === publicacion.id); }
+    return editEstate.state;
+  }
+
+  changeStateEdit(publicacion) {
+   let auxEditState = this.editStates.find(editState => editState.id === publicacion.id);
+   auxEditState.state = !auxEditState.state;
+  }
 
   changeDescription(publicacion: Publicacion): void {
     const dialogRef = this.dialog.open(EditPublicacionComponent, {
@@ -74,7 +98,10 @@ export class PublicacionAdminComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      if (result) { publicacion.description = result; }
+      if (result) {
+         publicacion.description = result;
+         if (!this.isEdit(publicacion)) { this.changeStateEdit(publicacion);}
+        }
     });
   }
 
@@ -87,7 +114,10 @@ export class PublicacionAdminComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      if (result) {publicacion.precio = result; }
+      if (result) {
+        publicacion.precio = result;
+        if (!this.isEdit(publicacion)) { this.changeStateEdit(publicacion);}
+      }
     });
   }
 
@@ -103,10 +133,26 @@ export class PublicacionAdminComponent implements OnInit {
       if (result) {
         if (result.publicacionDataCantidad) { publicacion.cantidad = result.publicacionDataCantidad; }
         if (result.publicacionDataTipoCantidad)  {publicacion.tipoCantidad = result.publicacionDataTipoCantidad; }
+        if (!this.isEdit(publicacion)) {this.changeStateEdit(publicacion); }
       }
     });
+  }
+
+  saveChangesPublication(publicacion) {
+      const dialogRef = this.dialog.open(DialogConfirmPublicacionComponent);
+      dialogRef.afterClosed().subscribe(
+        result => {
+           if (result) {
+             this.pcf.updatePublicacion(publicacion.id, publicacion);
+             this.changeStateEdit(publicacion);
+             }
+          }
+      );
   }
 
 }
 
 
+interface EditState {
+  id: string;
+  state: boolean; }

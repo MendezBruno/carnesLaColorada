@@ -70,3 +70,13 @@ export class EditCantidadPublicacionComponent implements OnInit {
 }
 
 
+@Component({
+  selector: 'app-dialog-confirm-component',
+  templateUrl: './dialog-templates/confirm-dialog-publicion.component.html',
+})
+
+export class DialogConfirmPublicacionComponent implements OnInit {
+  constructor(public dialog: MatDialogRef<DialogConfirmPublicacionComponent>) { }
+
+  ngOnInit() { }
+}

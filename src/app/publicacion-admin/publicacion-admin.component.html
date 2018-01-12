@@ -48,9 +48,9 @@
 
       <p fxLayout="column">
         <span>fecha: -- {{publicacion.fecha | date:'dd-MM-yyyy'}} </span>
-        <span (click) = "changeDescription(publicacion)" >descripcion: {{publicacion.description}} </span>
-        <span (click) = "changePrecio(publicacion)">precio: {{publicacion.precio}}</span>
-        <span (click) = "changeCantidad(publicacion)">cantidad: {{publicacion.cantidad}}   {{publicacion.tipoCantidad}} </span>
+        <span class="editMode" (click) = "changeDescription(publicacion)" >descripcion: {{publicacion.description}} </span>
+        <span class="editMode" (click) = "changePrecio(publicacion)">precio: {{publicacion.precio}}</span>
+        <span class="editMode" (click) = "changeCantidad(publicacion)">cantidad: {{publicacion.cantidad}}   {{publicacion.tipoCantidad}} </span>
       </p>
       <div fxLayout="row" fxLayoutAlign="start center">
         <!-- <button fxFlex="20" mat-button>{{ publicacion.activada ? 'Desactivar': 'Activar'}}</button> -->
@@ -60,8 +60,9 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-icon-button (click)="cambiarImagen(publicacion)" ><mat-icon >save</mat-icon></button>
-      <button mat-icon-button ><mat-icon >mode_edit</mat-icon></button>
+      <button mat-icon-button [disabled]="!isEdit(publicacion)" ><mat-icon >save</mat-icon></button>
+      <!-- <mat-button-toggle mat-icon-button (change)="changeEditState($event.checked, publicacion)" ><mat-icon >mode_edit</mat-icon></mat-button-toggle> -->
+      
       <button mat-icon-button ><mat-icon >delete</mat-icon></button>
     </mat-card-actions>
   </mat-card> 

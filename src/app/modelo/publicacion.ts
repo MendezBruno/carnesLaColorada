@@ -1,3 +1,5 @@
+import { ImagenesStorage } from './imagenesStorages';
+
 
 
 export class Publicacion {
@@ -6,7 +8,7 @@ export class Publicacion {
     fecha: string;
     tipoCantidad: string;
     cantidad: number;
-    fotos: any;
+    fotos: ImagenesStorage[];
     activada: boolean;
     description: string;
     titulo: string;

@@ -5,6 +5,7 @@ import { ImagenesStorage } from '../modelo/imagenesStorages';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { Publicacion } from '../modelo/publicacion';
 import { PublicacionCrudFirebaseService } from '../servicios/publicacion-crud-firebase';
+import { DialogConfirmPublicacionComponent } from '../common-dialog/common-dialog.component';
 
 
 @Component({
@@ -40,7 +41,9 @@ publicacion: Publicacion;
 
 
   openDialogConfirm(model): void {
-    const dialogRef = this.confirmDialog.open(DialogConfirmPublicacionComponent);
+    const dialogRef = this.confirmDialog.open(DialogConfirmPublicacionComponent, {
+      data: { titulo: 'Nueva Publicacion', pregunta: 'Desea Guardar La Publicacion?' }
+    });
     dialogRef.afterClosed().subscribe(
       result => {  if (result) {this.uploadPublicacion(model); } }
     );
@@ -84,14 +87,4 @@ publicacion: Publicacion;
 
 
 
-@Component({
-  selector: 'app-dialog-confirm-component',
-  templateUrl: './confirm-dialog-publicion.component.html',
-})
-
-export class DialogConfirmPublicacionComponent implements OnInit {
-  constructor(public dialog: MatDialogRef<DialogConfirmPublicacionComponent>) { }
-
-  ngOnInit() { }
-}
 

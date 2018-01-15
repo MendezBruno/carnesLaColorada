@@ -43,8 +43,10 @@ import { ConsolaAdminComponent } from './consola-admin/consola-admin.component';
 import { PublicacionAdminComponent } from './publicacion-admin/publicacion-admin.component';
 import { EditPublicacionComponent,
          EditPrecioPublicacionComponent,
-         EditCantidadPublicacionComponent } from './common-dialog/common-dialog.component';
-import { CrudPublicacionComponent, DialogConfirmPublicacionComponent } from './crud-publicacion/crud-publicacion.component';
+         EditCantidadPublicacionComponent,
+         DialogSelectPhotosComponent,
+         DialogConfirmPublicacionComponent} from './common-dialog/common-dialog.component';
+import { CrudPublicacionComponent } from './crud-publicacion/crud-publicacion.component';
 import { PublicacionCrudFirebaseService } from './servicios/publicacion-crud-firebase';
 import { PublicacionComponent } from './publicacion/publicacion.component';
 import { CaruselComponent } from './carusel/carusel.component';
@@ -81,6 +83,7 @@ export const firebaseConfig = {
     EditPublicacionComponent,
     EditPrecioPublicacionComponent,
     EditCantidadPublicacionComponent,
+    DialogSelectPhotosComponent,
     PublicacionComponent,
     CaruselComponent,
     CommonDialogComponent,
@@ -112,6 +115,7 @@ export const firebaseConfig = {
     DialogConfirmPublicacionComponent,
     EditPublicacionComponent,
     EditPrecioPublicacionComponent,
-    EditCantidadPublicacionComponent]
+    EditCantidadPublicacionComponent,
+    DialogSelectPhotosComponent]
 })
 export class AppModule { }

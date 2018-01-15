@@ -60,9 +60,9 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-icon-button [disabled]="!isEdit(publicacion)" ><mat-icon >save</mat-icon></button>
+      <button mat-icon-button [disabled]="!isEdit(publicacion)" (click)="saveChangesPublication(publicacion)"><mat-icon >save</mat-icon></button>
       <!-- <mat-button-toggle mat-icon-button (change)="changeEditState($event.checked, publicacion)" ><mat-icon >mode_edit</mat-icon></mat-button-toggle> -->
-      
+      <button mat-icon-button (click) = "updatePhotoPublication(publicacion)" ><mat-icon >photo</mat-icon></button>
       <button mat-icon-button ><mat-icon >delete</mat-icon></button>
     </mat-card-actions>
   </mat-card> 

@@ -8,8 +8,9 @@ import { Url } from 'url';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { EditPublicacionComponent,
    EditPrecioPublicacionComponent,
-   EditCantidadPublicacionComponent, 
-   DialogConfirmPublicacionComponent} from '../common-dialog/common-dialog.component';
+   EditCantidadPublicacionComponent,
+   DialogConfirmPublicacionComponent,
+   DialogSelectPhotosComponent} from '../common-dialog/common-dialog.component';
 import { forEach } from '@angular/router/src/utils/collection';
 
 
@@ -139,15 +140,30 @@ export class PublicacionAdminComponent implements OnInit {
   }
 
   saveChangesPublication(publicacion) {
-      const dialogRef = this.dialog.open(DialogConfirmPublicacionComponent);
-      dialogRef.afterClosed().subscribe(
-        result => {
-           if (result) {
-             this.pcf.updatePublicacion(publicacion.id, publicacion);
-             this.changeStateEdit(publicacion);
-             }
-          }
-      );
+    const dialogRef = this.dialog.open(DialogConfirmPublicacionComponent, {
+      data: { titulo: 'Guardar Cambios', pregunta: 'Quiere Guardar los cambios?' }
+    });
+    dialogRef.afterClosed().subscribe(
+      result => {
+          if (result) {
+            this.pcf.updatePublicacion(publicacion.id, publicacion);
+            this.changeStateEdit(publicacion);
+            }
+        }
+    );
+  }
+
+  updatePhotoPublication(publicacion: Publicacion) {
+    const dialogRef = this.dialog.open(DialogSelectPhotosComponent);
+    dialogRef.afterClosed().subscribe(
+      result => {
+        if (result) {
+          if (publicacion.fotos) {publicacion.fotos = publicacion.fotos.concat(result); } else {publicacion.fotos = result; }
+          if (!this.isEdit(publicacion)) {this.changeStateEdit(publicacion); }
+        }
+        console.log(publicacion.fotos);
+      }
+    );
   }
 
 }

@@ -1,9 +1,10 @@
 import { Publicacion } from '../modelo/publicacion';
+import { ImagenesStorage } from '../modelo/imagenesStorages';
 
-const asado: string[] = [
-    '../../assets/imagenes/asado-tira.jpg',
-    '../../assets/imagenes/carne-con-hueso.jpg',
-    '../../assets/imagenes/Costillares.jpg'
+const asado: ImagenesStorage[] = [
+    // '../../assets/imagenes/asado-tira.jpg',
+    // '../../assets/imagenes/carne-con-hueso.jpg',
+    // '../../assets/imagenes/Costillares.jpg'
 
   ];
 

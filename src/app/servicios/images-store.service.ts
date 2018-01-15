@@ -15,7 +15,7 @@ basePath: string = 'imagenes';
 imagesStorages: ImagenesStorage[];
 imagesObservable: Observable<ImagenesStorage[]>;
 imagesRef : AngularFireList<any[]>;
-db : AngularFireDatabase
+db : AngularFireDatabase;
 
 // Get a reference to the storage service, which is used to create references in your storage bucket
 //storage = firebase.storage();
@@ -48,6 +48,49 @@ getListImageStorage () :  Observable<ImagenesStorage[]> {
   return this.imagesRef.valueChanges();
 }
 
+
+addImageStorage(imageStorage: ImagenesStorage){
+
+}
+
+uploadImage(file){
+  let fileName:string = file.name;
+  fileName = fileName.slice(0 , fileName.indexOf('.'));
+  let fileTimeStamp = file.timeStamp;
+  let storageReference = firebase.storage().ref('imagenes/'+ fileName);
+  let uploadTask = storageReference.put(file);
+
+
+  // Register three observers:
+  // 1. 'state_changed' observer, called any time the state changes
+  // 2. Error observer, called on failure
+  // 3. Completion observer, called on successful completion
+  uploadTask.on('state_changed', function(snapshot: any){
+  // Observe state change events such as progress, pause, and resume
+  // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+
+    switch (snapshot.state) {
+      case firebase.storage.TaskState.PAUSED: // or 'paused'
+        console.log('Upload is paused');
+        break;
+      case firebase.storage.TaskState.RUNNING: // or 'running'
+        console.log('Upload is running');
+        break;
+    }
+  }, function(error) {
+    // Handle unsuccessful uploads
+    console.log(error);
+  }, function() {
+    // Handle successful uploads on complete
+    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+    var downloadURL = uploadTask.snapshot.downloadURL;
+    let imagenRef = firebase.database().ref('imagenes/' + fileName);
+    let imagenesStorages = new ImagenesStorage();
+    imagenesStorages.name = fileName;
+    imagenesStorages.url = downloadURL;
+    imagenRef.set(imagenesStorages);
+  });
+}
 /*
 getImages(){
   // Create a reference to the file we want to download

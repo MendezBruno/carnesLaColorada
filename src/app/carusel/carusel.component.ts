@@ -23,13 +23,15 @@ export class CaruselComponent implements OnInit {
 
   cambiarImagenAnterior() {
     if (this.imagenes[this.index - 1] !== undefined) {
-      this.imagenPath = this.imagenes[this.index - 1].url;
+      this.index = this.index - 1;
+      this.imagenPath = this.imagenes[this.index].url;
     }
   }
 
   cambiarImagenSiguiente() {
     if (this.imagenes[this.index + 1] !== undefined) {
-      this.imagenPath = this.imagenes[this.index + 1].url;
+      this.index = this.index + 1;
+      this.imagenPath = this.imagenes[this.index].url;
     }
   }
 

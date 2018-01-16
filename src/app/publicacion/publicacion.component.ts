@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Publicacion } from '../modelo/publicacion';
 
 @Component({
   selector: 'app-publicacion',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicacionComponent implements OnInit {
 
+  model: any = {};
+  @Input() publicacion: Publicacion;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  addToShop() {
+
+  }
+
+  publicacionTieneFotos(): boolean {
+    return this.publicacion.fotos.length > 0;
   }
 
 }

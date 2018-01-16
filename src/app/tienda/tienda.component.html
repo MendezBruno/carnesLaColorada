@@ -1,7 +1,11 @@
 
-
+<div fxLayoutWrap="row" fxLayoutAlign="center center">
+<mat-toolbar fxFlex="50" class="toolbar">
+  <app-search  (queryStringUpdated)="handleQueryStringUpdate($event)"></app-search>
+</mat-toolbar>
+</div>
 <div  fxLayoutWrap="row" fxLayoutAlign="start center"  fxLayoutGap=10%  fxLayoutWrap>  
- <div fxFlex="30" *ngFor="let publicacion of publicaciones"> 
+ <div fxFlex="30" *ngFor="let publicacion of publicaciones | PublicacionFilter: querySearch"> 
    <app-publicacion [publicacion]= "publicacion" ></app-publicacion> 
  </div>
 </div>

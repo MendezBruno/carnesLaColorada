@@ -1,0 +1,8 @@
+<button *ngIf="!isOpened" mat-button (click)="toggleSearchBar()"><mat-icon>search</mat-icon></button>
+<div fxFlex *ngIf="isOpened" [@growPanel]='state' fxLayout="row" fxLayoutAlign="center center">
+    <mat-input-container [@growPanel]='state'>
+        <mat-icon>search</mat-icon>
+        <input matInput type="text" [(ngModel)]="queryString" (ngModelChange)="onChange($event)" id="search" >      
+    </mat-input-container>
+    <button fxFlex mat-button (click)="toggleSearchBar()" [@growPanel]='state'><mat-icon>close</mat-icon></button>
+</div>

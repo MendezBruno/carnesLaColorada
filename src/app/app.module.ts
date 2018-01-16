@@ -35,7 +35,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import * as firebase from 'firebase';
 
-
+// CARNICERIA APP COMPONENTS
 import { ProductoComponent } from './producto/producto.component';
 import { UsuarioCrudFirebaseService } from './servicios/usuario-crud-firebase.service';
 import { ProductoCrudFirebaseService } from './servicios/producto-crud-firebase.service';
@@ -52,6 +52,8 @@ import { PublicacionComponent } from './publicacion/publicacion.component';
 import { CaruselComponent } from './carusel/carusel.component';
 import { CommonDialogComponent } from './common-dialog/common-dialog.component';
 import { MouseEditModeDirective } from './directives/mouse-edit-mode.directive';
+import { SearchComponent } from './search/search.component';
+import { PublicacionFilter } from './search/publicacion-filter';
 
 
 
@@ -88,6 +90,8 @@ export const firebaseConfig = {
     CaruselComponent,
     CommonDialogComponent,
     MouseEditModeDirective,
+    SearchComponent,
+    PublicacionFilter,
 
 
   ],

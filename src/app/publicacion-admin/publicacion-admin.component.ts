@@ -66,10 +66,6 @@ export class PublicacionAdminComponent implements OnInit {
     this.router.navigate([path]);
     }
 
-  getPhoto(publicacion: Publicacion):Url{
-   return publicacion.fotos[0].url;
-  }
-
   cambiarImagen(publicacion) {
     this.currentPhoto = this.currentPhoto + 0;
    // this.imagenPath = publicacion.fotos[this.currentPhoto].url;
@@ -163,6 +159,19 @@ export class PublicacionAdminComponent implements OnInit {
         }
         console.log(publicacion.fotos);
       }
+    );
+  }
+
+  deletePublication(publicacion) {
+    const dialogRef = this.dialog.open(DialogConfirmPublicacionComponent, {
+      data: { titulo: 'Borrar Publicación', pregunta: 'Está seguro que desea borrar la publicación?' }
+    });
+    dialogRef.afterClosed().subscribe(
+      result => {
+          if (result) {
+            this.pcf.deletePublicacion(publicacion.id);
+          }
+        }
     );
   }
 

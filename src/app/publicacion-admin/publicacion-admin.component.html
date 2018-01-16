@@ -1,37 +1,8 @@
 <div>
-<button mat-fab class="flotante"  routerLink="/admin/nuevaPublicacion" routerLinkActive="active">
+<button mat-icon-button class="flotante"  routerLink="/admin/nuevaPublicacion" routerLinkActive="active">
   <mat-icon class="myicon">add_circle</mat-icon>
 </button>
 </div>
-<!-- 
-<mat-grid-list cols="2" rowHeight="1:2">
-    <mat-grid-tile  *ngFor="let publicacion of publicaciones">
-      <mat-card >
-        <mat-card-header>
-            <mat-card-title>{{publicacion.titulo}}</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image *ngIf="publicacionTieneFotos(publicacion)" src= {{imagenPath}} height="200" >
-        <mat-card-content>
-          <p fxLayout="column">
-            <span> {{publicacion.descripcion}} </span>
-            <span> -- {{publicacion.fecha | date:'dd-MM-yyyy'}} </span>
-            <span>{{publicacion.precio}}</span>
-            <span>{{publicacion.cantidad}}</span>
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button (click)="cambiarImagen(publicacion)">ACTIVAR</button>
-          <button mat-button >GUARDAR</button>
-          <button mat-button >DESCARTAR CAMBIOS</button>
-        </mat-card-actions>
-      </mat-card>
-
-
-
-    </mat-grid-tile>
-    
-    
-  </mat-grid-list> -->
 
 <div fxLayout.xs="column" fxLayout.lg="row" fxLayoutAlign="space-around center" fxLayoutWrap   >
   <mat-card fxFlex="30"  *ngFor="let publicacion of publicaciones">
@@ -48,7 +19,7 @@
 
       <p fxLayout="column">
         <span>fecha: -- {{publicacion.fecha | date:'dd-MM-yyyy'}} </span>
-        <span class="editMode" (click) = "changeDescription(publicacion)" >descripcion: {{publicacion.description}} </span>
+        <span class="editMode" (click) = "changeDescription(publicacion)">descripcion: {{publicacion.description}} </span>
         <span class="editMode" (click) = "changePrecio(publicacion)">precio: {{publicacion.precio}}</span>
         <span class="editMode" (click) = "changeCantidad(publicacion)">cantidad: {{publicacion.cantidad}}   {{publicacion.tipoCantidad}} </span>
       </p>
@@ -60,10 +31,10 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-icon-button [disabled]="!isEdit(publicacion)" (click)="saveChangesPublication(publicacion)"><mat-icon >save</mat-icon></button>
+      <button mat-icon-button [disabled]="!isEdit(publicacion)" (click)="saveChangesPublication(publicacion)" matTooltip="Guardar Cambios" matTooltipPosition="below"><mat-icon >save</mat-icon></button>
       <!-- <mat-button-toggle mat-icon-button (change)="changeEditState($event.checked, publicacion)" ><mat-icon >mode_edit</mat-icon></mat-button-toggle> -->
-      <button mat-icon-button (click) = "updatePhotoPublication(publicacion)" ><mat-icon >photo</mat-icon></button>
-      <button mat-icon-button ><mat-icon >delete</mat-icon></button>
+      <button mat-icon-button (click) = "updatePhotoPublication(publicacion)" matTooltip="Agregar Foto" matTooltipPosition="below"><mat-icon >photo</mat-icon></button>
+      <button mat-icon-button (click) = "deletePublication(publicacion)" matTooltip="Borrar Publicación" matTooltipPosition="below"><mat-icon >delete</mat-icon></button>
     </mat-card-actions>
   </mat-card> 
 </div> 

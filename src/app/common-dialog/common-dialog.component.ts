@@ -104,7 +104,7 @@ export class DialogSelectPhotosComponent implements OnInit {
   imagesSelected: ImagenesStorage[] = [];
   dbImages: ImagesStoreService;
   files: any;
-  disabled = true;
+  
 
   constructor(dbImages: ImagesStoreService, public dialog: MatDialogRef <DialogSelectPhotosComponent>) {
     this.dbImages = dbImages;
@@ -116,6 +116,14 @@ export class DialogSelectPhotosComponent implements OnInit {
 
   onNoClick(): void {
     this.dialog.close();
+  }
+
+  haventFiles(): boolean {
+    return this.files ? this.files.length < 1 : true;
+  }
+
+  haventNewPhotos(): boolean {
+    return this.imagesSelected.length < 1;
   }
 
   chargeImages(): any {
@@ -154,8 +162,7 @@ export class DialogSelectPhotosComponent implements OnInit {
   onChange(event) {
     this.files = event.target.files;
     console.log(this.files);
-    if (this.disabled) {this.disabled = false; }
-   /* let reader = new FileReader();
+    /* let reader = new FileReader();
     if(event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
       console.log( reader.readAsDataURL(file));

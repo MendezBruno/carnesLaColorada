@@ -7,12 +7,13 @@ import { Publicacion } from '../modelo/publicacion';
 import { PublicacionCrudFirebaseService } from '../servicios/publicacion-crud-firebase';
 import { DialogConfirmPublicacionComponent } from '../common-dialog/common-dialog.component';
 
+const publicacionRoute = '/admin/publicacion';
 
 @Component({
   selector: 'app-crud-publicacion',
   templateUrl: './crud-publicacion.component.html',
   styleUrls: ['./crud-publicacion.component.css'],
-  providers:[ImagesStoreService],
+  providers: [ImagesStoreService],
 })
 export class CrudPublicacionComponent implements OnInit {
 
@@ -24,7 +25,11 @@ dbImages: ImagesStoreService;
 publicacion: Publicacion;
 
 
-  constructor(dbImeges: ImagesStoreService, public confirmDialog: MatDialog, public pcf: PublicacionCrudFirebaseService) {
+  constructor(
+     private router: Router,
+     dbImeges: ImagesStoreService,
+     public confirmDialog: MatDialog,
+     public pcf: PublicacionCrudFirebaseService) {
     this.dbImages = dbImeges;
 
    }
@@ -39,13 +44,17 @@ publicacion: Publicacion;
   this.openDialogConfirm(model);
   }
 
-
   openDialogConfirm(model): void {
     const dialogRef = this.confirmDialog.open(DialogConfirmPublicacionComponent, {
       data: { titulo: 'Nueva Publicacion', pregunta: 'Desea Guardar La Publicacion?' }
     });
     dialogRef.afterClosed().subscribe(
-      result => {  if (result) {this.uploadPublicacion(model); } }
+      result => {
+        if (result) {
+        this.uploadPublicacion(model);
+        this.router.navigate([publicacionRoute]);
+        }
+      }
     );
   }
 

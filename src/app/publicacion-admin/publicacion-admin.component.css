@@ -1,12 +1,50 @@
 .flotante {
     display:scroll;
+    align-content: center;
         position:fixed;
-        bottom:420px;
+        bottom:40px;
         right:100px;
+        z-index: 10000;
+       
 }
 
 .myicon{
+    
+    height:100%;
+    width: 100%; 
+    font-size: 64px;
+    color: green;
+    
+}
+
+.publicacion-card{
+    height: 400px;
+    width: 300px;
+}
+
+.mat-card{
     height: auto;
-    width: auto;
-    color: red;
+    width: 300px;
+    margin-bottom: 20px
+}
+
+.example{
+    background: lightblue;
+}
+
+
+
+.line-separator{
+
+    height:1px;
+    
+    background:#717171;
+    
+    border-bottom:1px solid #313030;
+    
+    }
+
+.editMode{
+    cursor: url(../../assets/icons/ic_mode_edit_black_24dp_1x.png) 0 20, auto;
+    
 }

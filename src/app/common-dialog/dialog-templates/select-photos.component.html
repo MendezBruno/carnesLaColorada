@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>Agregar Fotos</h2>
+<h2>Seleccionar fotos para la publicacion</h2>
+<mat-dialog-content>
+        
+    <div>
+        
+        
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                <mat-panel-title>
+                        <mat-icon>computer</mat-icon>
+                </mat-panel-title>
+                <mat-panel-description>
+                    Importar 
+                </mat-panel-description>
+                </mat-expansion-panel-header>
+                    <div fxLayout="column">
+                        <input id="file" name="file" type="file" (change)="onChange($event)"  class="file-input"/>
+                        <div fxLayout="row">
+                            <button fxFlex="20" (click)="upload()" [disabled]="haventFiles()">Subir</button>
+                            <span fxFlex="80" > Haga click en el boton para subir la foto</span>
+                        </div>
+                    </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+        
+        <div>
+            <div  fxLayout="row" fxLayoutAlign= "start center">
+                <!-- <img fxFlex="40" src="" alt=""> --> <!-- TODO Poner un icono que represente la nube   -->
+                <mat-icon fxFlex= "20" class="md-32">cloud</mat-icon>
+                <h2  fxFlex="80">Fotos en la Nube</h2>
+            </div>
+            <div fxLayout="row" fxLayoutWrap fxLayoutAlign= "start center" class="fotosnube">
+                <div *ngFor="let image of imagesStorages">
+                    <img src="{{image.url}}" width="100" height="auto" (click)="onClick(image)"/>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2>Fotos seleccionadas</h2>
+            <div fxLayout="row" fxLayoutAlign= "start center" class="fotosproductos">
+                <div *ngFor="let image of imagesSelected">
+                    <div style="position: relative;"> 
+                        <img src="{{image.url}}" width="100" height="auto"/>
+                            <button type="button" mat-icon-button  class="flotante" (click)="removeImage(image)"> 
+                                <mat-icon class="flotante">clear</mat-icon>
+                            </button>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+</mat-dialog-content>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Cambiar</button>
+  <button mat-button [mat-dialog-close]="imagesSelected" [disabled]="haventNewPhotos()" >Terminar</button>
+</div>

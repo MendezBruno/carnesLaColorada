@@ -33,7 +33,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule  } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 
 import { ProductoComponent } from './producto/producto.component';
@@ -41,7 +41,17 @@ import { UsuarioCrudFirebaseService } from './servicios/usuario-crud-firebase.se
 import { ProductoCrudFirebaseService } from './servicios/producto-crud-firebase.service';
 import { ConsolaAdminComponent } from './consola-admin/consola-admin.component';
 import { PublicacionAdminComponent } from './publicacion-admin/publicacion-admin.component';
+import { EditPublicacionComponent,
+         EditPrecioPublicacionComponent,
+         EditCantidadPublicacionComponent,
+         DialogSelectPhotosComponent,
+         DialogConfirmPublicacionComponent} from './common-dialog/common-dialog.component';
 import { CrudPublicacionComponent } from './crud-publicacion/crud-publicacion.component';
+import { PublicacionCrudFirebaseService } from './servicios/publicacion-crud-firebase';
+import { PublicacionComponent } from './publicacion/publicacion.component';
+import { CaruselComponent } from './carusel/carusel.component';
+import { CommonDialogComponent } from './common-dialog/common-dialog.component';
+import { MouseEditModeDirective } from './directives/mouse-edit-mode.directive';
 
 
 
@@ -69,8 +79,17 @@ export const firebaseConfig = {
     ConsolaAdminComponent,
     PublicacionAdminComponent,
     CrudPublicacionComponent,
-    
-    
+    DialogConfirmPublicacionComponent,
+    EditPublicacionComponent,
+    EditPrecioPublicacionComponent,
+    EditCantidadPublicacionComponent,
+    DialogSelectPhotosComponent,
+    PublicacionComponent,
+    CaruselComponent,
+    CommonDialogComponent,
+    MouseEditModeDirective,
+
+
   ],
   imports: [
     BrowserModule,
@@ -88,8 +107,15 @@ export const firebaseConfig = {
     UsuarioService,
     AutenticacionFirebaseService,
     UsuarioCrudFirebaseService,
-    ProductoCrudFirebaseService
+    ProductoCrudFirebaseService,
+    PublicacionCrudFirebaseService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogConfirmPublicacionComponent,
+    EditPublicacionComponent,
+    EditPrecioPublicacionComponent,
+    EditCantidadPublicacionComponent,
+    DialogSelectPhotosComponent]
 })
 export class AppModule { }

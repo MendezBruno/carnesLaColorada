@@ -1,0 +1,40 @@
+
+.flotante {
+    position: absolute;
+    top:1px;
+    right:1px;
+    height: 20px;
+    width: 20px;
+    z-index: 100;
+}
+
+.fotosnube{
+    display:scroll;
+    height:auto;
+    width: 500px; 
+    border: 1px solid black;
+    overflow-y: scroll;
+    background: lightgray;
+}
+
+.fotosproductos{
+    display:scroll;
+    height:auto;
+    width: 500px; 
+    border: 1px solid black;
+    overflow-x: scroll;
+    background: lightgray;
+}
+
+.md-64{
+    height:50%;
+    width: 100%; 
+    font-size: 64px;
+}
+
+.md-32{
+    height:50%;
+    width: 100%; 
+    font-size: 32px;
+}
+

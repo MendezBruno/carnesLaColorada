@@ -7,6 +7,7 @@ import {
   MatMenuModule,
   MatIconModule,
   MatFormFieldModule,
+  MatSelectModule,
   MatInputModule,
   MatCardModule,
   MatButtonModule,
@@ -15,7 +16,13 @@ import {
   MatCheckboxModule,
   MatGridListModule,
   MatSnackBarModule,
-  MatDialog
+  MatDialog,
+  MatSidenavModule,
+  MatDialogModule,
+  MatSlideToggleModule,
+  MatButtonToggleModule,
+  MatExpansionModule,
+  MatTooltipModule,
 
 
   } from '@angular/material';
@@ -27,6 +34,7 @@ import {
     MatMenuModule,
     MatIconModule,
     MatFormFieldModule,
+    MatSelectModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
@@ -35,9 +43,12 @@ import {
     MatCheckboxModule,
     MatGridListModule,
     MatSnackBarModule,
-    
-
-
+    MatSidenavModule,
+    MatDialogModule,
+    MatSlideToggleModule,
+    MatButtonToggleModule,
+    MatExpansionModule,
+    MatTooltipModule,
   ],
   exports: [
     CommonModule,
@@ -46,6 +57,7 @@ import {
     MatIconModule,
     MatToolbarModule,
     MatFormFieldModule,
+    MatSelectModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
@@ -54,8 +66,12 @@ import {
     MatCheckboxModule,
     MatGridListModule,
     MatSnackBarModule,
-    
-
+    MatSidenavModule,
+    MatDialogModule,
+    MatSlideToggleModule,
+    MatButtonToggleModule,
+    MatExpansionModule,
+    MatTooltipModule,
   ]
 })
 export class MaterialModule { }

@@ -1,20 +1,40 @@
 <div>
-<button mat-fab class="flotante"  routerLink="/admin/nuevaPublicacion" routerLinkActive="active">
+<button mat-icon-button class="flotante"  routerLink="/admin/nuevaPublicacion" routerLinkActive="active">
   <mat-icon class="myicon">add_circle</mat-icon>
 </button>
 </div>
-<div fxLayoutAlign="start center"  >
-      <mat-list>
-          <div fxFlex="30" fxLayoutWrap="row">
-            <mat-list-item *ngFor="let publicacion of publicaciones">
-              <h1>{{publicacion.titulo}}</h1>
-              <img matListAvatar src= {{publicacion.fotos[1]}} >
-              <p matLine>
-                <span> {{publicacion.descripcion}} </span>
-                <span> -- {{publicacion.fecha | date:'dd-MM-yyyy'}} </span>
-                <span>{{publicacion.precio}}</span>
-              </p>
-            </mat-list-item>
-          </div>
-      </mat-list>
-</div>
+
+<div fxLayout.xs="column" fxLayout.lg="row" fxLayoutAlign="space-around center" fxLayoutWrap   >
+  <mat-card fxFlex="30"  *ngFor="let publicacion of publicaciones">
+    <mat-card-header>
+      <mat-card-title>{{publicacion.titulo}}</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+
+      <div style="width: 100%; height: 200">
+          <app-carusel *ngIf="publicacionTieneFotos(publicacion)" [imagenes]="publicacion.fotos"></app-carusel> 
+          <div class="line-separator"></div>
+      </div>
+
+      <p fxLayout="column">
+        <span>fecha: -- {{publicacion.fecha | date:'dd-MM-yyyy'}} </span>
+        <span class="editMode" (click) = "changeDescription(publicacion)">descripcion: {{publicacion.description}} </span>
+        <span class="editMode" (click) = "changePrecio(publicacion)">precio: {{publicacion.precio}}</span>
+        <span class="editMode" (click) = "changeCantidad(publicacion)">cantidad: {{publicacion.cantidad}}   {{publicacion.tipoCantidad}} </span>
+      </p>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <!-- <button fxFlex="20" mat-button>{{ publicacion.activada ? 'Desactivar': 'Activar'}}</button> -->
+        <mat-slide-toggle (change)="changeActiveState($event.checked, publicacion) "> </mat-slide-toggle>
+        <span fxFlex="10" ></span>
+        <p fxFlex="70">{{ publicacion.activada ? 'ACTIVADA': 'DESACTIVADA'}}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button [disabled]="!isEdit(publicacion)" (click)="saveChangesPublication(publicacion)" matTooltip="Guardar Cambios" matTooltipPosition="below"><mat-icon >save</mat-icon></button>
+      <!-- <mat-button-toggle mat-icon-button (change)="changeEditState($event.checked, publicacion)" ><mat-icon >mode_edit</mat-icon></mat-button-toggle> -->
+      <button mat-icon-button (click) = "updatePhotoPublication(publicacion)" matTooltip="Agregar Foto" matTooltipPosition="below"><mat-icon >photo</mat-icon></button>
+      <button mat-icon-button (click) = "deletePublication(publicacion)" matTooltip="Borrar Publicación" matTooltipPosition="below"><mat-icon >delete</mat-icon></button>
+    </mat-card-actions>
+  </mat-card> 
+</div> 

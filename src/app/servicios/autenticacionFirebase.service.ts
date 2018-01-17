@@ -57,11 +57,16 @@ export class AutenticacionFirebaseService {
     return this.userFDetails.photoURL;
   }
 
-  loginAdmin(email:string, password:string){
+  getUid(): string {
+    return this.userFDetails.uid;
+  }
+
+  loginAdmin(email: string, password: string) {
       return firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log('Error En login Admin: ' + errorCode + errorMessage );
       // ...
     });
   }

@@ -33,12 +33,12 @@ export class PublicacionCrudFirebaseService {
     }
 
     guardarPublicacion(publicacion: Publicacion) {
-    let refKey = this.itemsRef.push(publicacion).key;
+    const refKey = this.itemsRef.push(publicacion).key;
     console.log('Guarde La Publicacion');
     console.log(refKey);
     publicacion.id = refKey;
     this.db.database.ref(this.dbPath + SEPARADOR + refKey).set(publicacion);
-    
+
     }
     obtenerListaDeProductos( ): Observable<Publicacion[]> {
       return this.db.list(this.dbPath).valueChanges();
@@ -57,8 +57,4 @@ export class PublicacionCrudFirebaseService {
     deleteEverything() {
       this.itemsRef.remove();
     }
-
-
-  
-
 }

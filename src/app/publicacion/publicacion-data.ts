@@ -18,4 +18,5 @@ export const UNAPUBLICACION: Publicacion = {
     description: 'asado de ternera',
     titulo: 'Asado',
     precio: 110,
+    stock: 10,
   };

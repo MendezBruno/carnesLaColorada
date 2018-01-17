@@ -10,7 +10,8 @@ import { EditPublicacionComponent,
    EditPrecioPublicacionComponent,
    EditCantidadPublicacionComponent,
    DialogConfirmPublicacionComponent,
-   DialogSelectPhotosComponent} from '../common-dialog/common-dialog.component';
+   DialogSelectPhotosComponent,
+   EditStockPublicacionComponent} from '../common-dialog/common-dialog.component';
 import { forEach } from '@angular/router/src/utils/collection';
 
 
@@ -130,6 +131,22 @@ export class PublicacionAdminComponent implements OnInit {
       if (result) {
         if (result.publicacionDataCantidad) { publicacion.cantidad = result.publicacionDataCantidad; }
         if (result.publicacionDataTipoCantidad)  {publicacion.tipoCantidad = result.publicacionDataTipoCantidad; }
+        if (!this.isEdit(publicacion)) {this.changeStateEdit(publicacion); }
+      }
+    });
+  }
+
+  changeStock(publicacion: Publicacion) {
+    const dialogRef = this.dialog.open(EditStockPublicacionComponent, {
+      width: '250px',
+      data: { publicacionDataStock: publicacion.stock }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      if (result) {
+        if (result >= 0) { publicacion.stock = result; }
         if (!this.isEdit(publicacion)) {this.changeStateEdit(publicacion); }
       }
     });

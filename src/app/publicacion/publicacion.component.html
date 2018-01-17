@@ -2,16 +2,17 @@
   <mat-card-header>
     <mat-card-title>{{publicacion.titulo}}</mat-card-title>
   </mat-card-header>
-  
+
   <mat-card-content>
     <div style="width: 100%; height: 300">
-        <app-carusel *ngIf="publicacionTieneFotos()" [imagenes]="publicacion.fotos"></app-carusel> 
+        <app-carusel *ngIf="publicacionTieneFotos()" [imagenes]="publicacion.fotos"></app-carusel>
         <div class="line-separator"></div>
     </div>
     <p fxLayout="column">
         <span> {{publicacion.description}} </span>
         <span> {{publicacion.precio}} </span>
         <span> {{publicacion.cantidad}}   {{publicacion.tipoCantidad}} </span>
+        <span> Disponibles: {{publicacion.stock}} </span>
     </p>
     <input matInput type="number" placeholder="Cantidad" [(ngModel)]="model.cantidad" name="cantidad">
   </mat-card-content>

@@ -1,15 +1,21 @@
 <mat-toolbar color ="primary">
     <a mat-button routerLink="/inicio" routerLinkActive="active">La Colorada</a>
-    <span class="example-spacer"></span>
+       
+    <span class="example-spacer"> </span>
+    
+    <!-- Iconos funciones laterales izquierdos -->
     <button mat-icon-button routerLink="" routerLinkActive="active">
       <mat-icon>local_grocery_store</mat-icon>
     </button>
+    <span> 0 </span>
     
-    <mat-icon fxFlex="5" fxHide fxShow.gt-md class="icon-container" *ngIf="isLoggedIn()">
-      <img class="profilePic" [src]="userpicture">
-    </mat-icon>
+    <!-- <mat-icon fxHide fxShow.gt-md class="icon-container" *ngIf="isLoggedIn()"> -->
+    <div class="pictureUser">
+      <img fxHide fxShow.gt-md *ngIf="isLoggedIn()" class="profilePic" [src]="userpicture"  height="50px" width="50px">
+    </div>
+      <!-- </mat-icon> -->
     
-    <button mat-icon-button [matMenuTriggerFor]="menu">
+    <button  mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>view_headline</mat-icon>
     </button>
     <mat-menu #menu="matMenu">

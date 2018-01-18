@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Carro } from '../modelo/carro';
+import 'rxjs/add/operator/toPromise';
+
 
 const SEPARADOR = '/';
 
@@ -33,12 +35,18 @@ export class CarritoService {
     });
   }
 
-  guardarCarro(carro: Carro) {
+  createCarro(userId: string): Carro {
+    let carro = new Carro(userId);
+    return this.guardarCarro(carro);
+  }
+
+  guardarCarro(carro: Carro): Carro {
     const refKey = this.itemsRef.push(carro).key;
     console.log('Guarde La carro');
     console.log(refKey);
     carro.id = refKey;
     this.db.database.ref(this.dbPath + SEPARADOR + refKey).set(carro);
+    return carro;
   }
 
   obtenerListaDeCarros( ): Observable<Carro[]> {
@@ -58,6 +66,14 @@ export class CarritoService {
   }
   deleteEverything() {
     this.itemsRef.remove();
+  }
+
+  getCarroById(id: string): Promise<Carro> {
+    let carro: Carro;
+    return this.obtenerListaDeCarros().toPromise().then( (data) => {
+      carro = data.find(unCarro => unCarro.userId === id);
+      return carro;
+    });
   }
 }
 

@@ -55,6 +55,7 @@ import { CommonDialogComponent } from './common-dialog/common-dialog.component';
 import { MouseEditModeDirective } from './directives/mouse-edit-mode.directive';
 import { SearchComponent } from './search/search.component';
 import { PublicacionFilter } from './search/publicacion-filter';
+import { CarritoService } from './servicios/carrito.service';
 
 
 
@@ -114,7 +115,8 @@ export const firebaseConfig = {
     AutenticacionFirebaseService,
     UsuarioCrudFirebaseService,
     ProductoCrudFirebaseService,
-    PublicacionCrudFirebaseService
+    PublicacionCrudFirebaseService,
+    CarritoService,
   ],
   bootstrap: [AppComponent],
   entryComponents: [

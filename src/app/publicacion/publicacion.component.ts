@@ -28,19 +28,17 @@ export class PublicacionComponent implements OnInit {
     this.carritoService.obtenerListaDeCarros().subscribe(
       (data) => {
         this.carro = data.find(carro => carro.userId === userId);
-        if (!this.carro) { this.createCarro(userId); }
+        if (!this.carro) { this.carro = this.carritoService.createCarro(userId); }
       }
     );
   }
 
-  createCarro(userId: string) {
-    this.carro = new Carro(userId);
-    this.carritoService.guardarCarro(this.carro);
-  }
-
   addToShop() {
-    if (this.model.cantidad < 1) { return; }
-    // Todo agregar publicacion al carro!!
+    if (this.model.cantidad < 1 || this.carro.haveThisPublication(this.publicacion.id)) { return; }
+    this.carro.addItem(this.model.cantidad, this.publicacion.id);
+    this.carritoService.updateCarro(this.carro.id, this.carro);
+    // todo actualizar stock de publicacion?
+    // *todo* agregar alguna tipo de animacion que muestre que se agrega al carro? (snack bar?)
   }
 
   verificarCarro() {

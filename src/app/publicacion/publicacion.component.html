@@ -14,7 +14,7 @@
         <span> {{publicacion.cantidad}}   {{publicacion.tipoCantidad}} </span>
         <span> Disponibles: {{publicacion.stock}} </span>
     </p>
-    <input matInput type="number" placeholder="Cantidad" [(ngModel)]="model.cantidad" name="cantidad">
+    <input matInput type="number" placeholder="Cantidad" [(ngModel)]="model.cantidad" name="cantidad" max="publicacion.stock">
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)= "addToShop()" >AGREGAR</button>

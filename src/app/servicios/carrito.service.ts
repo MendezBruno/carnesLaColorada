@@ -69,11 +69,18 @@ export class CarritoService {
   }
 
   getCarroById(id: string): Promise<Carro> {
-    let carro: Carro;
-    return this.obtenerListaDeCarros().toPromise().then( (data) => {
-      carro = data.find(unCarro => unCarro.userId === id);
-      return carro;
-    });
+
+    let promise = new Promise<Carro>((resolve, reject) => {
+      let carro;
+      this.obtenerListaDeCarros().subscribe(
+        (data) => {
+          carro = data.find(unCarro => unCarro.userId === id);
+          if (!carro) { carro = this.createCarro(id); } else {  resolve(new Carro(id)); }
+        },
+        (error) => {console.log(error); }
+      );
+   });
+   return promise;
   }
 }
 

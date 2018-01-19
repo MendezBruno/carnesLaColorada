@@ -17,33 +17,70 @@ export class NavBarComponent implements OnInit {
   username: string;
   userpicture: string;
   carro: Carro;
-  //todo agregar el numero de compras que hay en el carro.
+  // todo agregar el numero de compras que hay en el carro.
 
 
   private af: AutenticacionFirebaseService;
 
   constructor(af: AutenticacionFirebaseService, private carritoService: CarritoService) {
     this.af = af;
+
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+   this.initilize();
+  }
 
-  getMyCarrito() {
+  initilize() {
+    this.af.promiseUid().then(
+      (userID) => {
+        console.log('entre a la promesa del ID:');
+        console.log(userID);
+        this.getMyCarrito(userID);
+      },
+      (error) => {console.log(error); });
+
+      this.af.promiseUid().catch((error) => {console.log(error); });
+    }
+
+  getMyCarrito(userID: string) {
     console.log('carro del nav: ');
     if (this.carro) { return; }
-    this.carritoService.getCarroById(this.getUserID()).then(
+    this.carritoService.getCarroById(userID).then(
+      (carro) => {if (carro) {  this.carro = carro; } else {
+        this.carro = this.carritoService.createCarro(this.getUserID());
+      }
+    }
+  );
+    this.carritoService.getCarroById(userID).catch(
       (carro) => {if (carro) {  this.carro = carro; }}
     );
-    if (!this.carro) {
-      this.carro = this.carritoService.createCarro(this.getUserID());
-    }
+
+    
+
+
     console.log( this.carro );
   }
+
+  // getMyCarrito(userId: string): void {
+
+  //   if (this.carro) { return; }
+  //   this.carritoService.obtenerListaDeCarros().subscribe(
+  //           (data) => {
+  //             console.log('entre al suscribe de carro: ');
+  //             this.carro = data.find(carro => carro.userId === userId);
+  //             console.log(this.carro);
+  //             if (!this.carro) {
+  //               this.carro = this.carritoService.createCarro(userId);
+  //                 console.log('carro del nav creado: ');
+  //                 console.log(this.carro); }
+  //     }
+  //   );
+  // }
 
   isLoggedIn() {
     if ( this.af.isLoggedIn() ) {
       this.userpicture = this.af.getPicture();
-      this.getMyCarrito();
       return true;
     }
    return false;

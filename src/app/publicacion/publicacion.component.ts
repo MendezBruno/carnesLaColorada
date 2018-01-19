@@ -24,14 +24,8 @@ export class PublicacionComponent implements OnInit {
     this.verificarCarro();
   }
 
-  getMyCarrito(userId: string): void {
-    this.carritoService.obtenerListaDeCarros().subscribe(
-      (data) => {
-        this.carro = data.find(carro => carro.userId === userId);
-        if (!this.carro) { this.carro = this.carritoService.createCarro(userId); }
-      }
-    );
-  }
+
+
 
   addToShop() {
     if (this.model.cantidad < 1 || this.carro.haveThisPublication(this.publicacion.id)) { return; }
@@ -42,12 +36,23 @@ export class PublicacionComponent implements OnInit {
   }
 
   verificarCarro() {
-    this.getMyCarrito(this.fUser.getUid());
+   this.getMyCarrito(this.fUser.getUid());
   }
 
   publicacionTieneFotos(): boolean {
     return this.publicacion.fotos.length > 0;
   }
 
+
+  getMyCarrito(userId: string): void {
+
+    if (this.carro) { return; }
+    this.carritoService.obtenerListaDeCarros().subscribe(
+      (data) => {
+        this.carro = data.find(carro => carro.userId === userId);
+
+      }
+    );
+  }
 
 }

@@ -5,22 +5,25 @@ import { Carro } from '../modelo/carro';
 import 'rxjs/add/operator/toPromise';
 
 
+
 const SEPARADOR = '/';
 
 @Injectable()
 export class CarritoService {
 
   private dbPath = 'carritos';
-  publications: Observable<any[]>;
   public itemsRef: any;
   carritoRef: any;
   public carrito: Carro;
-  public carritos: Carro[] = [];
+  public carritos: Observable<any[]>;
+ 
+  public db;
 
+  constructor(db: AngularFireDatabase) {
 
-  constructor(private db: AngularFireDatabase) {
-
+    this.db = db;
     this.itemsRef = this.db.list(this.dbPath);
+    console.log('entre al constructor de carrito');
     this.carritos = this.itemsRef.snapshotChanges().map(changes => {
       console.log(changes);
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
@@ -33,11 +36,19 @@ export class CarritoService {
         console.log(action.payload.val());
       });
     });
+
   }
 
+  isPathRootCreate() {
+   return this.db.database.ref(this.dbPath).once('value');
+ //   .then(function(snapshot) {
+ //       this.pathExist = snapshot.exists();
+ //   });
+  }
+
+
   createCarro(userId: string): Carro {
-    let carro = new Carro(userId);
-    return this.guardarCarro(carro);
+    return this.guardarCarro(new Carro(userId));
   }
 
   guardarCarro(carro: Carro): Carro {
@@ -70,17 +81,31 @@ export class CarritoService {
 
   getCarroById(id: string): Promise<Carro> {
 
-    let promise = new Promise<Carro>((resolve, reject) => {
-      let carro;
-      this.obtenerListaDeCarros().subscribe(
-        (data) => {
-          carro = data.find(unCarro => unCarro.userId === id);
-          if (!carro) { carro = this.createCarro(id); } else {  resolve(new Carro(id)); }
-        },
-        (error) => {console.log(error); }
-      );
-   });
+
+
+    const promise = new Promise<Carro>( (resolve, reject) => {
+      if (this.carritos) {
+        this.carritos.subscribe( (carritos) => resolve( carritos.find(unCarro => unCarro.userId === id)));
+      }else {
+        reject(new Carro(id));
+      }
+
+    });
    return promise;
-  }
+   }
+
+  //  this.obtenerListaDeCarros().subscribe(
+  //   (data) => {
+  //      if (data) {
+  //         carro = data.find(unCarro => unCarro.userId === id);
+  //         resolve(carro); }
+  //      else {reject(new Carro(id)); }},
+  //   (error) => {reject(error); },
+  //   () => {console.log('Se completo el puto subcribe'); }
+  // );
+
+
+
 }
 
+// (!carro) { resolve(this.createCarro(id)); } else {  resolve(new Carro(id)); }},

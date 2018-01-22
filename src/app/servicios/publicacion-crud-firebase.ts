@@ -30,6 +30,7 @@ export class PublicacionCrudFirebaseService {
               console.log(action.payload.val());
             });
           });
+
     }
 
     guardarPublicacion(publicacion: Publicacion) {

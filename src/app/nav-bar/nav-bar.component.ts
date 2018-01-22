@@ -24,19 +24,29 @@ export class NavBarComponent implements OnInit {
 
   constructor(af: AutenticacionFirebaseService, private carritoService: CarritoService) {
     this.af = af;
-
+    this.initilize();
   }
 
   ngOnInit() {
-   this.initilize();
+   
   }
 
   initilize() {
+    if (this.carro) { return; }
     this.af.promiseUid().then(
       (userID) => {
         console.log('entre a la promesa del ID:');
         console.log(userID);
-        this.getMyCarrito(userID);
+        this.carritoService.isPathRootCreate().then(
+          (snapshot) => {
+                 if (snapshot.exists()) {
+                    this.carritoService.getCarroById(userID).then(
+                    (carro) => {  this.carro = carro; });
+                  } else {
+                    this.carritoService.createCarro(userID);
+                  }
+
+                });
       },
       (error) => {console.log(error); });
 
@@ -45,22 +55,10 @@ export class NavBarComponent implements OnInit {
 
   getMyCarrito(userID: string) {
     console.log('carro del nav: ');
-    if (this.carro) { return; }
+//    if (this.carro) { return; }
     this.carritoService.getCarroById(userID).then(
-      (carro) => {if (carro) {  this.carro = carro; } else {
-        this.carro = this.carritoService.createCarro(this.getUserID());
-      }
-    }
-  );
-    this.carritoService.getCarroById(userID).catch(
-      (carro) => {if (carro) {  this.carro = carro; }}
-    );
-
-    
-
-
-    console.log( this.carro );
-  }
+      (carro) => {  this.carro = carro; }
+  ); }
 
   // getMyCarrito(userId: string): void {
 

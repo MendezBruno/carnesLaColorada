@@ -40,17 +40,20 @@ export class PublicacionComponent implements OnInit {
   }
 
   publicacionTieneFotos(): boolean {
-    return this.publicacion.fotos.length > 0;
+    if (this.publicacion.fotos) { return this.publicacion.fotos.length > 0; }
+    return false;
   }
 
 
   getMyCarrito(userId: string): void {
 
+    let bdCarro: Carro;
     if (this.carro) { return; }
     this.carritoService.obtenerListaDeCarros().subscribe(
       (data) => {
-        this.carro = data.find(carro => carro.userId === userId);
-
+        bdCarro = data.find(carro => carro.userId === userId);
+        this.carro = new Carro(bdCarro.userId);
+        this.carro.id = bdCarro.id;
       }
     );
   }

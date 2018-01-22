@@ -64,6 +64,7 @@ publicacion: Publicacion;
         model.tipoCantidad,
         model.cantidad,
         model.precio,
+        model.stock,
         this.imagesSelected,
         model.descripcion,
         model.titulo));

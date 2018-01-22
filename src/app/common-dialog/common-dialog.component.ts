@@ -72,6 +72,22 @@ export class EditCantidadPublicacionComponent implements OnInit {
   }
 }
 
+@Component({
+  selector: 'app-dialog-edit-stock-publicacion',
+  templateUrl: './dialog-templates/edit-stock-publicacion.component.html'
+})
+
+export class EditStockPublicacionComponent implements OnInit {
+  constructor(public dialog: MatDialogRef<EditStockPublicacionComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  ngOnInit() { }
+
+  onNoClick(): void {
+    this.dialog.close();
+  }
+}
+
 
 @Component({
   selector: 'app-dialog-confirm-component',
@@ -80,10 +96,9 @@ export class EditCantidadPublicacionComponent implements OnInit {
 
 export class DialogConfirmPublicacionComponent implements OnInit {
 
-  constructor(public dialog: MatDialogRef<DialogConfirmPublicacionComponent>, 
+  constructor(public dialog: MatDialogRef<DialogConfirmPublicacionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
-  
 
   ngOnInit() { }
 }
@@ -104,7 +119,6 @@ export class DialogSelectPhotosComponent implements OnInit {
   imagesSelected: ImagenesStorage[] = [];
   dbImages: ImagesStoreService;
   files: any;
-  
 
   constructor(dbImages: ImagesStoreService, public dialog: MatDialogRef <DialogSelectPhotosComponent>) {
     this.dbImages = dbImages;
@@ -132,7 +146,7 @@ export class DialogSelectPhotosComponent implements OnInit {
         this.imagesStorages = data;
         console.log(this.imagesStorages);
       }
-    )
+    );
   }
 
   onClick(image) {
@@ -162,14 +176,6 @@ export class DialogSelectPhotosComponent implements OnInit {
   onChange(event) {
     this.files = event.target.files;
     console.log(this.files);
-    /* let reader = new FileReader();
-    if(event.target.files && event.target.files.length > 0) {
-      let file = event.target.files[0];
-      console.log( reader.readAsDataURL(file));
-      console.log(reader);
-    }
-    */
-    
   }
 
 

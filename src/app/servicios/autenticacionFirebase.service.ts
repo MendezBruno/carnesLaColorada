@@ -5,6 +5,8 @@ import { Usuario } from '../modelo/usuario';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
+
+
 @Injectable()
 export class AutenticacionFirebaseService {
 
@@ -13,9 +15,9 @@ export class AutenticacionFirebaseService {
 
   constructor(public afAuth: AngularFireAuth, private router: Router) {
 
- this.userF = afAuth.authState;
+  this.userF = afAuth.authState;
 
-   this.userF.subscribe(
+  this.userF.subscribe(
       (userF) => {
         if (userF) {
           this.userFDetails = userF;
@@ -57,11 +59,31 @@ export class AutenticacionFirebaseService {
     return this.userFDetails.photoURL;
   }
 
-  loginAdmin(email:string, password:string){
+  getUid(): string {
+    return this.userFDetails.uid;
+  }
+
+  promiseUid(): Promise<string> {
+   let promise = new Promise<string>((resolve, reject) => {
+      let userid;
+      this.userF.subscribe(
+        (userF) => {
+          userid = userF.uid;
+          if (userid) { resolve(userid); } else {reject('todo mal'); }
+        }
+      );
+   });
+   return promise;
+  }
+
+
+
+  loginAdmin(email: string, password: string) {
       return firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log('Error En login Admin: ' + errorCode + errorMessage );
       // ...
     });
   }

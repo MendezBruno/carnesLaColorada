@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../modelo/producto';
 import { PRODUCTOS } from './tienda-data';
+import { Publicacion } from '../modelo/publicacion';
+import { Router } from '@angular/router';
+import { PublicacionCrudFirebaseService } from '../servicios/publicacion-crud-firebase';
+import { PublicacionFilter } from '../search/publicacion-filter';
 
 @Component({
   selector: 'app-tienda',
@@ -9,14 +13,27 @@ import { PRODUCTOS } from './tienda-data';
 })
 export class TiendaComponent implements OnInit {
 
-    productos: Producto[];
-    links: string[] = ['uno', 'dos', 'tres'];
 
-  constructor() {
-    this.productos = PRODUCTOS;
-  }
+    publicaciones: Publicacion[];
+    currentPhoto = 0;
+    querySearch: string;
+
+    constructor(private router: Router, private pcf: PublicacionCrudFirebaseService) {
+      this.pcf = pcf;
+      this.pcf.obtenerListaDeProductos().subscribe(
+        (data) => {
+          this.publicaciones =  data;
+        }
+      );
+      console.log('llegaron las publicaciones:');
+    }
+
 
   ngOnInit() {
+  }
+
+  handleQueryStringUpdate(queryString):  void {
+    this.querySearch = queryString;
   }
 
 }

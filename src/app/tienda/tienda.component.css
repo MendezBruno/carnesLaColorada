@@ -13,3 +13,11 @@
     background-color: cornflowerblue;
     margin: 10px;
 }
+
+.toolbar
+{
+  background: white;
+  border: 1px solid grey;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}

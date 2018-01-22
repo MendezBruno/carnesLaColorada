@@ -1,15 +1,23 @@
-<mat-card class="example-card">
+<mat-card>
   <mat-card-header>
-    <!-- <div mat-card-avatar class="example-header-image"></div> -->
-    <mat-card-title>{{publicacion.nombre}}</mat-card-title>
+    <mat-card-title>{{publicacion.titulo}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image src= {{publicacion.fotos[1]}}>
+
   <mat-card-content>
-    <p>
-     {{ publicacion.descripcion }}
+    <div style="width: 100%; height: 300">
+        <app-carusel *ngIf="publicacionTieneFotos()" [imagenes]="publicacion.fotos"></app-carusel>
+        <div class="line-separator"></div>
+    </div>
+    <p fxLayout="column">
+        <span> {{publicacion.description}} </span>
+        <span> {{publicacion.precio}} </span>
+        <span> {{publicacion.cantidad}}   {{publicacion.tipoCantidad}} </span>
+        <span> Disponibles: {{publicacion.stock}} </span>
+        <input matInput type="number" placeholder="Cantidad" [(ngModel)]="model.cantidad" name="cantidad" max="publicacion.stock">
     </p>
+    
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>COMPRAR</button>
+    <button mat-button (click)= "addToShop()" >AGREGAR</button>
   </mat-card-actions>
 </mat-card>

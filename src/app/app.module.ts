@@ -35,7 +35,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import * as firebase from 'firebase';
 
-
+// CARNICERIA APP COMPONENTS
 import { ProductoComponent } from './producto/producto.component';
 import { UsuarioCrudFirebaseService } from './servicios/usuario-crud-firebase.service';
 import { ProductoCrudFirebaseService } from './servicios/producto-crud-firebase.service';
@@ -45,13 +45,17 @@ import { EditPublicacionComponent,
          EditPrecioPublicacionComponent,
          EditCantidadPublicacionComponent,
          DialogSelectPhotosComponent,
-         DialogConfirmPublicacionComponent} from './common-dialog/common-dialog.component';
+         DialogConfirmPublicacionComponent,
+         EditStockPublicacionComponent} from './common-dialog/common-dialog.component';
 import { CrudPublicacionComponent } from './crud-publicacion/crud-publicacion.component';
 import { PublicacionCrudFirebaseService } from './servicios/publicacion-crud-firebase';
 import { PublicacionComponent } from './publicacion/publicacion.component';
 import { CaruselComponent } from './carusel/carusel.component';
 import { CommonDialogComponent } from './common-dialog/common-dialog.component';
 import { MouseEditModeDirective } from './directives/mouse-edit-mode.directive';
+import { SearchComponent } from './search/search.component';
+import { PublicacionFilter } from './search/publicacion-filter';
+import { CarritoService } from './servicios/carrito.service';
 
 
 
@@ -83,11 +87,14 @@ export const firebaseConfig = {
     EditPublicacionComponent,
     EditPrecioPublicacionComponent,
     EditCantidadPublicacionComponent,
+    EditStockPublicacionComponent,
     DialogSelectPhotosComponent,
     PublicacionComponent,
     CaruselComponent,
     CommonDialogComponent,
     MouseEditModeDirective,
+    SearchComponent,
+    PublicacionFilter,
 
 
   ],
@@ -108,7 +115,8 @@ export const firebaseConfig = {
     AutenticacionFirebaseService,
     UsuarioCrudFirebaseService,
     ProductoCrudFirebaseService,
-    PublicacionCrudFirebaseService
+    PublicacionCrudFirebaseService,
+    CarritoService,
   ],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -116,6 +124,7 @@ export const firebaseConfig = {
     EditPublicacionComponent,
     EditPrecioPublicacionComponent,
     EditCantidadPublicacionComponent,
-    DialogSelectPhotosComponent]
+    DialogSelectPhotosComponent,
+    EditStockPublicacionComponent]
 })
 export class AppModule { }

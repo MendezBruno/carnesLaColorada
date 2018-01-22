@@ -1,17 +1,16 @@
-.example-spacer {
-    
+.example-spacer {    
     flex: 1 1 auto;
+}
+
+.profilePic{
+   /* border: 1px solid #ddd;*/
     
-    }
+    border-radius: 100%;
+    
+   
+}
 
-.icon-container{
-    border-right: 1px solid #e0e0e0;
-    }
-
-.profilePic
-{
-display: block;
-margin-left: 10;
-margin-right: 10;
-margin-top: 10%;
+.pictureUser {
+    padding-left: 40px;
+    padding-right: 20px;
 }

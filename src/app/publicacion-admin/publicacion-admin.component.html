@@ -9,11 +9,11 @@
     <mat-card-header>
       <mat-card-title>{{publicacion.titulo}}</mat-card-title>
     </mat-card-header>
-    
+
     <mat-card-content>
 
       <div style="width: 100%; height: 200">
-          <app-carusel *ngIf="publicacionTieneFotos(publicacion)" [imagenes]="publicacion.fotos"></app-carusel> 
+          <app-carusel *ngIf="publicacionTieneFotos(publicacion)" [imagenes]="publicacion.fotos"></app-carusel>
           <div class="line-separator"></div>
       </div>
 
@@ -22,6 +22,7 @@
         <span class="editMode" (click) = "changeDescription(publicacion)">descripcion: {{publicacion.description}} </span>
         <span class="editMode" (click) = "changePrecio(publicacion)">precio: {{publicacion.precio}}</span>
         <span class="editMode" (click) = "changeCantidad(publicacion)">cantidad: {{publicacion.cantidad}}   {{publicacion.tipoCantidad}} </span>
+        <span class="editMode" (click) = "changeStock(publicacion)">stock: {{publicacion.stock}}</span>
       </p>
       <div fxLayout="row" fxLayoutAlign="start center">
         <!-- <button fxFlex="20" mat-button>{{ publicacion.activada ? 'Desactivar': 'Activar'}}</button> -->
@@ -36,5 +37,5 @@
       <button mat-icon-button (click) = "updatePhotoPublication(publicacion)" matTooltip="Agregar Foto" matTooltipPosition="below"><mat-icon >photo</mat-icon></button>
       <button mat-icon-button (click) = "deletePublication(publicacion)" matTooltip="Borrar Publicación" matTooltipPosition="below"><mat-icon >delete</mat-icon></button>
     </mat-card-actions>
-  </mat-card> 
-</div> 
+  </mat-card>
+</div>

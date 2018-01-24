@@ -66,12 +66,12 @@ export class NavBarComponent implements OnInit {
   createReferenceToCarro(carroId: string) {
     this.carritoService.isPathItemsCreate(carroId).then(
       (snapshot) => {
-          if (snapshot.exists()) {
+
             this.carritoService.getRefenceItemsObsevable(carroId).subscribe(
-            (carro) => {
-              this.carro.items = carro.items;
+            (items) => {
+              this.carro.items = items;
             });
-          }
+
     });
   }
 

@@ -9,6 +9,7 @@ import 'rxjs/add/operator/toPromise';
 const SEPARADOR = '/';
 
 @Injectable()
+
 export class CarritoService {
 
   private dbPath = 'carritos';
@@ -94,18 +95,14 @@ export class CarritoService {
    return promise;
    }
 
-  //  this.obtenerListaDeCarros().subscribe(
-  //   (data) => {
-  //      if (data) {
-  //         carro = data.find(unCarro => unCarro.userId === id);
-  //         resolve(carro); }
-  //      else {reject(new Carro(id)); }},
-  //   (error) => {reject(error); },
-  //   () => {console.log('Se completo el puto subcribe'); }
-  // );
+  getRefenceItemsObsevable(idCarro: string): Observable<any> {
+    return this.db.database.ref(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items')
+                           .snapshotChanges(['child_added'], ['child_removed']);
+  }
 
-
-
+  isPathItemsCreate(idCarro: string) {
+    return this.db.database.ref(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items').once('value');
+  }
 }
 
 // (!carro) { resolve(this.createCarro(id)); } else {  resolve(new Carro(id)); }},

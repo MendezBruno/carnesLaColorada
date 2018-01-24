@@ -28,7 +28,6 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit() {
-   
   }
 
   initilize() {
@@ -41,14 +40,18 @@ export class NavBarComponent implements OnInit {
           (snapshot) => {
                  if (snapshot.exists()) {
                     this.carritoService.getCarroById(userID).then(
-                    (carro) => {  this.carro = carro; });
+                    (carro) => {
+                      this.carro = carro;
+                      this.createReferenceToCarro(this.carro.id);
+                    });
                   } else {
-                    this.carritoService.createCarro(userID);
+                    this.carro = this.carritoService.createCarro(userID);
                   }
-
                 });
       },
       (error) => {console.log(error); });
+
+
 
       this.af.promiseUid().catch((error) => {console.log(error); });
     }
@@ -60,21 +63,17 @@ export class NavBarComponent implements OnInit {
       (carro) => {  this.carro = carro; }
   ); }
 
-  // getMyCarrito(userId: string): void {
-
-  //   if (this.carro) { return; }
-  //   this.carritoService.obtenerListaDeCarros().subscribe(
-  //           (data) => {
-  //             console.log('entre al suscribe de carro: ');
-  //             this.carro = data.find(carro => carro.userId === userId);
-  //             console.log(this.carro);
-  //             if (!this.carro) {
-  //               this.carro = this.carritoService.createCarro(userId);
-  //                 console.log('carro del nav creado: ');
-  //                 console.log(this.carro); }
-  //     }
-  //   );
-  // }
+  createReferenceToCarro(carroId: string) {
+    this.carritoService.isPathItemsCreate(carroId).then(
+      (snapshot) => {
+          if (snapshot.exists()) {
+            this.carritoService.getRefenceItemsObsevable(carroId).subscribe(
+            (carro) => {
+              this.carro.items = carro.items;
+            });
+          }
+    });
+  }
 
   isLoggedIn() {
     if ( this.af.isLoggedIn() ) {

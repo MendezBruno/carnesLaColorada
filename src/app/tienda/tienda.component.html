@@ -1,13 +1,13 @@
 
-<div fxLayoutWrap="row" fxLayoutAlign="center center">
-<mat-toolbar fxFlex="50" class="toolbar">
-  <app-search  (queryStringUpdated)="handleQueryStringUpdate($event)"></app-search>
-</mat-toolbar>
+<div fxLayoutWrap="row" fxLayoutAlign="center center" style="padding-top: 10px">
+  <mat-toolbar fxFlex="50" >
+    <app-search  (queryStringUpdated)="handleQueryStringUpdate($event)"></app-search>
+  </mat-toolbar>
 </div>
-<div fxLayout.xs="column" fxLayout.lg="row" fxLayoutWrap="row" fxLayoutAlign="start center"  fxLayoutGap=10%  fxLayoutWrap>  
- <div fxFlex="30" *ngFor="let publicacion of publicaciones | PublicacionFilter: querySearch"> 
-   <app-publicacion [publicacion]= "publicacion" ></app-publicacion> 
- </div>
+<div fxLayout.xs="column" fxLayout.lg="row" fxLayoutWrap="row" fxLayoutAlign="start center"  fxLayoutGap=10%  fxLayoutWrap style="padding-top: 10px">  
+  <div fxFlex="30" *ngFor="let publicacion of publicaciones | PublicacionFilter: querySearch"> 
+    <app-publicacion [publicacion]= "publicacion" ></app-publicacion> 
+  </div>
 </div>
 
       

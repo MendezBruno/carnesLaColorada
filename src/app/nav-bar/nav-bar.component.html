@@ -7,7 +7,7 @@
     <button mat-icon-button routerLink="" routerLinkActive="active">
       <mat-icon>local_grocery_store</mat-icon>
     </button>
-    <span> 0 </span>
+    <span> {{carro.items? carro.items.length: 0}} </span>
     
     <!-- <mat-icon fxHide fxShow.gt-md class="icon-container" *ngIf="isLoggedIn()"> -->
     <div class="pictureUser">

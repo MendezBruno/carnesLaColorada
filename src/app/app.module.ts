@@ -56,6 +56,7 @@ import { MouseEditModeDirective } from './directives/mouse-edit-mode.directive';
 import { SearchComponent } from './search/search.component';
 import { PublicacionFilter } from './search/publicacion-filter';
 import { CarritoService } from './servicios/carrito.service';
+import { CarritoComponent } from './carrito/carrito.component';
 
 
 
@@ -95,6 +96,7 @@ export const firebaseConfig = {
     MouseEditModeDirective,
     SearchComponent,
     PublicacionFilter,
+    CarritoComponent,
 
 
   ],

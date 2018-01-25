@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Carro } from '../modelo/carro';
 import 'rxjs/add/operator/toPromise';
+import { AutenticacionFirebaseService } from './autenticacionFirebase.service';
 
 
 
@@ -20,10 +21,11 @@ export class CarritoService {
   carritoRef: any;
   public carrito: Carro;
   public carritos: Observable<any[]>;
-
   public db;
 
-  constructor(db: AngularFireDatabase) {
+  public userId;
+
+  constructor(db: AngularFireDatabase, private authFb: AutenticacionFirebaseService) {
 
     this.db = db;
     this.carritosRef = this.db.list(this.dbPath);
@@ -40,7 +42,7 @@ export class CarritoService {
         console.log(action.payload.val());
       });
     });
-
+    this.userId = this.authFb.getUid();
   }
 
   isPathRootCreate() {
@@ -108,12 +110,17 @@ export class CarritoService {
     return this.db.list(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items').valueChanges();
   }
 
+  // obtenerListaItems (idCarro: string): Observable<any> {
+  //  this.getCarroById(this.userId).then(
+  //    (carro) => {
+  //   return this.db.list(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items').valueChanges()}; );
+  // }
+
   isPathItemsCreate(idCarro: string) {
     return this.db.database.ref(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items').once('value');
   }
 
   addItem(item) {
-      // carro.items.length < 1 ? this.addInfoToCarro(carro.id, carro) : this.updateCarro(carro.id, carro);
       this.itemsRef.push(item);
   }
 }

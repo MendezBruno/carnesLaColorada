@@ -64,7 +64,7 @@ export class AutenticacionFirebaseService {
   }
 
   promiseUid(): Promise<string> {
-   let promise = new Promise<string>((resolve, reject) => {
+   const promise = new Promise<string>((resolve, reject) => {
       let userid;
       this.userF.subscribe(
         (userF) => {

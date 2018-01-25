@@ -17,25 +17,25 @@ import { CarritoService } from '../servicios/carrito.service';
 export class TiendaComponent implements OnInit {
 
 
-    publicaciones: Publicacion[];
-    currentPhoto = 0;
-    querySearch: string;
-    carro: Carro;
+  publicaciones: Publicacion[];
+  currentPhoto = 0;
+  querySearch: string;
+  carro: Carro;
 
-    constructor( private fUser: AutenticacionFirebaseService,
-                 private pcf: PublicacionCrudFirebaseService,
-                 private carritoService: CarritoService,
-                 private router: Router) {
-      this.pcf = pcf;
-      this.pcf.obtenerListaDeProductos().subscribe(
-        (data) => {
-          this.publicaciones =  data;
-          console.log(this.publicaciones);
-        }
-      );
-      console.log('llegaron las publicaciones:');
-      this.verificarCarro();
-    }
+  constructor( private fUser: AutenticacionFirebaseService,
+                private pcf: PublicacionCrudFirebaseService,
+                private carritoService: CarritoService,
+                private router: Router) {
+    this.pcf = pcf;
+    this.pcf.obtenerListaDeProductos().subscribe(
+      (data) => {
+        this.publicaciones =  data;
+        console.log(this.publicaciones);
+      }
+    );
+    console.log('llegaron las publicaciones:');
+    this.verificarCarro();
+  }
 
 
   ngOnInit() {

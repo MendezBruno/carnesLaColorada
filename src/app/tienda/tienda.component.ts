@@ -46,7 +46,10 @@ export class TiendaComponent implements OnInit {
   }
 
   verificarCarro() {
-    this.getMyCarrito(this.fUser.getUid());
+    this.fUser.promiseUid().then(
+      (uid) => {
+      this.getMyCarrito(uid);
+    });
   }
 
   getMyCarrito(userId: string): void {
@@ -58,6 +61,7 @@ export class TiendaComponent implements OnInit {
         bdCarro = data.find(carro => carro.userId === userId);
         this.carro = new Carro(bdCarro.userId);
         this.carro.id = bdCarro.id;
+        if (bdCarro.items) { this.carro.items = bdCarro.items; }
       }
     );
   }

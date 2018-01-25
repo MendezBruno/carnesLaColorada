@@ -99,9 +99,9 @@ export class CarritoService {
    }
 
   getRefenceItemsObsevable(idCarro: string): Observable<any> {
-    this.itemsRef = this.db.list(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items')
-                           .snapshotChanges(['child_added'], ['child_removed']);
-    this.itemsRef.map(changes => {
+    this.itemsRef = this.db.list(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items');
+    this.itemsRef.snapshotChanges(['child_added'], ['child_removed']);
+    this.itemsRef.snapshotChanges().map(changes => {
                             console.log(changes);
                             return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
                           });

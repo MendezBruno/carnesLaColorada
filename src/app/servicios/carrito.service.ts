@@ -14,16 +14,23 @@ const SEPARADOR = '/';
 
 export class CarritoService {
 
+  // Carritos
   private dbPath = 'carritos';
-  private dbPathItems = 'carritos/items';
-  public itemsRef: any;
   public carritosRef: any;
   carritoRef: any;
   public carrito: Carro;
   public carritos: Observable<any[]>;
+ 
+  // Items de los carritos
+  private dbPathItems = 'carritos/items';
+  public itemsRef: any;
+  itemRef: any;
+  public item: Item;
+  public Items: Observable<any[]>;
+
   public db;
 
-  public userId;
+
 
   constructor(db: AngularFireDatabase, private authFb: AutenticacionFirebaseService) {
 
@@ -42,7 +49,7 @@ export class CarritoService {
         console.log(action.payload.val());
       });
     });
-    this.userId = this.authFb.getUid();
+
   }
 
   isPathRootCreate() {
@@ -86,16 +93,12 @@ export class CarritoService {
   }
 
   getCarroById(id: string): Promise<Carro> {
-
-
-
     const promise = new Promise<Carro>( (resolve, reject) => {
       if (this.carritos) {
         this.carritos.subscribe( (carritos) => resolve( carritos.find(unCarro => unCarro.userId === id)));
       }else {
         reject(new Carro(id));
       }
-
     });
    return promise;
    }
@@ -110,11 +113,9 @@ export class CarritoService {
     return this.db.list(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items').valueChanges();
   }
 
-  // obtenerListaItems (idCarro: string): Observable<any> {
-  //  this.getCarroById(this.userId).then(
-  //    (carro) => {
-  //   return this.db.list(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items').valueChanges()}; );
-  // }
+  obtenerListaItems (idCarro: string): Observable<any> {
+   return this.db.list(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items').valueChanges();
+  }
 
   isPathItemsCreate(idCarro: string) {
     return this.db.database.ref(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items').once('value');

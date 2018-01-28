@@ -4,7 +4,7 @@
     <span class="example-spacer"> </span>
 
     <!-- Iconos funciones laterales izquierdos -->
-    <button mat-icon-button routerLink="" routerLinkActive="active">
+    <button mat-icon-button (click) = "goTo()" >
       <mat-icon>local_grocery_store</mat-icon>
     </button>
     <span> {{(carro && carro.items)? carro.items.length: 0}} </span>

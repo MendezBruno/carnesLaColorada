@@ -2,6 +2,8 @@ import { Component, OnInit} from '@angular/core';
 import { AutenticacionFirebaseService } from '../servicios/autenticacionFirebase.service';
 import { CarritoService } from '../servicios/carrito.service';
 import { Carro } from '../modelo/carro';
+import { Router } from '@angular/router';
+
 
 
 
@@ -22,7 +24,7 @@ export class NavBarComponent implements OnInit {
 
   private af: AutenticacionFirebaseService;
 
-  constructor(af: AutenticacionFirebaseService, private carritoService: CarritoService) {
+  constructor(af: AutenticacionFirebaseService, private carritoService: CarritoService, private router: Router) {
     this.af = af;
     this.initilize();
   }
@@ -66,7 +68,6 @@ export class NavBarComponent implements OnInit {
   createReferenceToCarro(carroId: string) {
     this.carritoService.isPathItemsCreate(carroId).then(
       (snapshot) => {
-
             this.carritoService.getRefenceItemsObsevable(carroId).subscribe(
             (items) => {
               this.carro.items = items;
@@ -95,6 +96,9 @@ export class NavBarComponent implements OnInit {
     return this.af.getUid();
   }
 
+  goTo() {
+    this.router.navigate(['carrito', this.carro.id]);
+  }
 
 
 }

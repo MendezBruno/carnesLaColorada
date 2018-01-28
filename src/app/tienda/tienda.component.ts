@@ -61,8 +61,16 @@ export class TiendaComponent implements OnInit {
         bdCarro = data.find(carro => carro.userId === userId);
         this.carro = new Carro(bdCarro.userId);
         this.carro.id = bdCarro.id;
-        if (bdCarro.items) { this.carro.items = bdCarro.items; }
-      }
+        // if (bdCarro.items) {
+        //   this.carro.setItems(bdCarro.items);
+        // }
+        //if (bdCarro.items) { this.carro.items = bdCarro.items; }
+        this.carritoService.getRefenceItemsObsevable(this.carro.id).subscribe(
+          (items) => {
+            this.carro.items = items;
+          });
+      },
+      (error) => {console.log('error al obtener carrito en la tienda'); }
     );
   }
 

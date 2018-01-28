@@ -11,6 +11,13 @@ export class Carro {
         this.userId = userId;
       }
 
+      setItems(items: any[]): void {
+         items.forEach(
+         (item) => {this.items.push(item); }
+       );
+      }
+
+
       addItem(stock: number, publicacionId: string): Item {
         const item: Item = {stock: stock, publicacionId: publicacionId} ;
         console.log('voy hacer push de este item: ');
@@ -22,12 +29,9 @@ export class Carro {
       haveThisPublication(publicacionId: string): boolean {
         return this.items.filter(item => item.publicacionId === publicacionId).length > 0;
       }
-}
 
 
-interface Item {
-  stock: number;
-  publicacionId: string;
 }
+
 
 

@@ -1,0 +1,45 @@
+.main{
+    position: absolute;
+    height: 100%;
+}
+
+html{
+    position: absolute;
+    height: 100%;
+}
+
+
+
+.action-div {
+background: rgb(185, 245, 245);
+height: 20%;
+margin-bottom: 0px;
+}
+
+.boton{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 24px;
+    
+}
+
+.tarjeta {
+height: 150px;
+margin: 15px;
+}
+
+.imagen{
+    width: 25%;
+    height:75%;
+}
+
+@media (min-width: 500px) {
+    .imagen {
+       width: 20%;
+    }
+}
+
+@media (min-width: 900px) {
+    .imagen {
+       width: 10%;
+    }
+}

@@ -13,6 +13,7 @@ import { TiendaComponent } from './tienda/tienda.component';
 import { ConsolaAdminComponent } from './consola-admin/consola-admin.component';
 import { PublicacionAdminComponent } from './publicacion-admin/publicacion-admin.component';
 import { CrudPublicacionComponent } from './crud-publicacion/crud-publicacion.component';
+import { CarritoComponent } from './carrito/carrito.component';
 
 
 const appRoutes: Routes = [
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
     { path: 'admin/login', component: LoginComponent},
     { path: 'admin/consola', component: ConsolaAdminComponent},
     { path: 'admin/publicacion', component: PublicacionAdminComponent},
-    { path: 'admin/nuevaPublicacion', component: CrudPublicacionComponent}
+    { path: 'admin/nuevaPublicacion', component: CrudPublicacionComponent},
+    { path: 'carrito/:id', component: CarritoComponent},
 ];
 
 @NgModule({

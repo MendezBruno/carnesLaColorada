@@ -2,6 +2,8 @@ import { Component, OnInit} from '@angular/core';
 import { AutenticacionFirebaseService } from '../servicios/autenticacionFirebase.service';
 import { CarritoService } from '../servicios/carrito.service';
 import { Carro } from '../modelo/carro';
+import { Router } from '@angular/router';
+
 
 
 
@@ -22,13 +24,12 @@ export class NavBarComponent implements OnInit {
 
   private af: AutenticacionFirebaseService;
 
-  constructor(af: AutenticacionFirebaseService, private carritoService: CarritoService) {
+  constructor(af: AutenticacionFirebaseService, private carritoService: CarritoService, private router: Router) {
     this.af = af;
     this.initilize();
   }
 
   ngOnInit() {
-   
   }
 
   initilize() {
@@ -41,14 +42,18 @@ export class NavBarComponent implements OnInit {
           (snapshot) => {
                  if (snapshot.exists()) {
                     this.carritoService.getCarroById(userID).then(
-                    (carro) => {  this.carro = carro; });
+                    (carro) => {
+                      this.carro = carro;
+                      this.createReferenceToCarro(this.carro.id);
+                    });
                   } else {
-                    this.carritoService.createCarro(userID);
+                    this.carro = this.carritoService.createCarro(userID);
                   }
-
                 });
       },
       (error) => {console.log(error); });
+
+
 
       this.af.promiseUid().catch((error) => {console.log(error); });
     }
@@ -60,21 +65,16 @@ export class NavBarComponent implements OnInit {
       (carro) => {  this.carro = carro; }
   ); }
 
-  // getMyCarrito(userId: string): void {
+  createReferenceToCarro(carroId: string) {
+    this.carritoService.isPathItemsCreate(carroId).then(
+      (snapshot) => {
+            this.carritoService.getRefenceItemsObsevable(carroId).subscribe(
+            (items) => {
+              this.carro.items = items;
+            });
 
-  //   if (this.carro) { return; }
-  //   this.carritoService.obtenerListaDeCarros().subscribe(
-  //           (data) => {
-  //             console.log('entre al suscribe de carro: ');
-  //             this.carro = data.find(carro => carro.userId === userId);
-  //             console.log(this.carro);
-  //             if (!this.carro) {
-  //               this.carro = this.carritoService.createCarro(userId);
-  //                 console.log('carro del nav creado: ');
-  //                 console.log(this.carro); }
-  //     }
-  //   );
-  // }
+    });
+  }
 
   isLoggedIn() {
     if ( this.af.isLoggedIn() ) {
@@ -96,6 +96,9 @@ export class NavBarComponent implements OnInit {
     return this.af.getUid();
   }
 
+  goTo() {
+    this.router.navigate(['carrito', this.carro.id]);
+  }
 
 
 }

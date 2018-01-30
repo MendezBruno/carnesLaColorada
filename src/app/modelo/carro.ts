@@ -1,5 +1,7 @@
 import { Publicacion } from './publicacion';
- 
+import { Item } from './item';
+
+
 
 export class Carro {
 
@@ -11,22 +13,29 @@ export class Carro {
         this.userId = userId;
       }
 
-      addItem(stock: number, publicacionId: string) {
-        const item: Item = {stock: stock, publicacionId: publicacionId} ;
+      setItems(items: any[]): void {
+         items.forEach(
+         (item) => {this.items.push(item); }
+       );
+      }
+
+
+      addItem(stock: number, publicacionId: string): Item {
+        let item: Item = new Item();
+         item.stock = stock;
+         item.publicacionId = publicacionId;
         console.log('voy hacer push de este item: ');
         console.log( item );
         this.items.push(item);
+        return item;
       }
 
       haveThisPublication(publicacionId: string): boolean {
         return this.items.filter(item => item.publicacionId === publicacionId).length > 0;
       }
-}
 
 
-interface Item {
-  stock: number;
-  publicacionId: string;
 }
+
 
 

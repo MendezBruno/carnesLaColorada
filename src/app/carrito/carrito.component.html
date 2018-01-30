@@ -1,0 +1,25 @@
+<!-- <div fxLayout="column" fxFlexAlign="space-around center"  class="card-carrito"> -->
+  <div class="main">
+  <mat-card *ngFor="let item of itemsCar"  class="tarjeta" fxLayout="row" fxLayoutAlign="space-around center">
+      <div class="imagen">
+          <img *ngIf="itemTieneFotos(item)" src= {{item.fotos[0].url}} width="100%" height="100%">
+      </div>
+      <p>
+        <span>{{item.titulo}} </span>
+        <span>{{item.cantidad}} {{item.tipoCantidad}}</span>
+      </p>
+      <p> <span matPrefix>$&nbsp;</span> <span>{{item.precio}}</span> </p>
+      <button mat-icon-button type="button" (click)="borrarItem(item)"><mat-icon>delete</mat-icon></button>
+  </mat-card>
+  <div class="action-div" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutWrap>
+    <p fxFlex="70"> El Total de su compra hasta el momento: </p>
+    <p fxFlex="30" > <span matPrefix>$&nbsp;</span> <span>{{total}}</span> </p>
+    <button mat-raised-button class="boton" color="primary" (click)= "goToPedidos()" >Terminar Pedido</button>
+    <button mat-raised-button class="boton" color="accent" routerLink="/tienda" routerLinkActive="active" >Seguir Comprando</button>
+  </div>
+</div>
+<!-- </div> -->
+
+
+
+<!--  -->

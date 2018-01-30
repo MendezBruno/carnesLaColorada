@@ -4,6 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Carro } from '../modelo/carro';
 import 'rxjs/add/operator/toPromise';
 import { AutenticacionFirebaseService } from './autenticacionFirebase.service';
+import { Item } from '../modelo/Item';
 
 
 
@@ -121,8 +122,16 @@ export class CarritoService {
     return this.db.database.ref(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items').once('value');
   }
 
-  addItem(item) {
-      this.itemsRef.push(item);
+  addItem(item, idCarro) {
+    const refKey = this.itemsRef.push(item).key;
+    console.log('Guarde el Item');
+    console.log(refKey);
+    item.id = refKey;
+    this.db.database.ref(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items' + SEPARADOR + refKey).set(item);
+  }
+
+  deleteItem(key: string) {
+    this.itemsRef.remove(key);
   }
 }
 

@@ -24,7 +24,7 @@ export class PublicacionComponent implements OnInit {
       let item = this.carro.addItem(this.model.cantidad, this.publicacion.id);
    //   this.carro.items.length === 1 ? this.carritoService.addInfoToCarro(this.carro.id, this.carro) :
   //                               this.carritoService.addItem(item);
-      this.carritoService.addItem(item);
+      this.carritoService.addItem(item, this.carro.id);
    
                                     // todo actualizar stock de publicacion?
     // *todo* agregar alguna tipo de animacion que muestre que se agrega al carro? (snack bar?)

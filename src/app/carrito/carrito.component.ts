@@ -4,6 +4,7 @@ import { PublicacionCrudFirebaseService } from '../servicios/publicacion-crud-fi
 import { CarritoService } from '../servicios/carrito.service';
 import { ActivatedRoute } from '@angular/router';
 import { ImagenesStorage } from '../modelo/imagenesStorages';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carrito',
@@ -16,11 +17,13 @@ export class CarritoComponent implements OnInit {
   carroId: string;
   items: any[] = [];
   itemsCar: ItemCar[] = [];
+  total = 0;
 
-  constructor(private pfc: PublicacionCrudFirebaseService, private carServ: CarritoService, private route: ActivatedRoute) {
-    
-   // this.carServ.
-   }
+  constructor(
+    private pfc: PublicacionCrudFirebaseService,
+    private carServ: CarritoService,
+    private route: ActivatedRoute,
+    private router: Router) {  }
 
   ngOnInit() {
     this.route.params
@@ -31,6 +34,7 @@ export class CarritoComponent implements OnInit {
         (publicaciones) => {
           this.publicaciones = publicaciones;
           this.setModelos();
+          this.getTotal();
         }
       );
     });
@@ -53,16 +57,35 @@ export class CarritoComponent implements OnInit {
        itemCar.descripcion = publicacion.description;
        itemCar.fotos = publicacion.fotos;
        itemCar.precio = publicacion.precio;
+       itemCar.cantidad = publicacion.cantidad;
+       itemCar.tipoCantidad = publicacion.tipoCantidad;
        itemCar.publicacionId = publicacion.id;
        itemCar.titulo = publicacion.titulo;
        itemCar.stock = item.stock;
+       itemCar.itemId = item.id;
        this.itemsCar.push(itemCar);
       } );
+  }
+
+  getTotal() {
+    this.itemsCar.forEach (
+      itemCar => this.total = this.total + itemCar.precio
+    );
   }
 
   itemTieneFotos(item) {
     if (item.fotos) {return item.fotos.length > 0; }
     return false;
+  }
+
+  borrarItem(item) {
+    console.log(item);
+    this.carServ.deleteItem(item.itemId);
+    this.itemsCar.splice(this.itemsCar.indexOf(item), 1);
+  }
+
+  goToPedidos() {
+    this.router.navigate(['pedidos', this.carroId]);
   }
 
 }
@@ -71,10 +94,13 @@ export class CarritoComponent implements OnInit {
 class ItemCar {
 
   stock: number;
+  itemId: string;
   publicacionId: string;
   fotos: ImagenesStorage[];
   titulo: string;
   descripcion: string;
   precio: number;
+  cantidad: number;
+  tipoCantidad: string;
 
 }

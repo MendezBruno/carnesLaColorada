@@ -1,4 +1,6 @@
 import { Publicacion } from './publicacion';
+import { Item } from './item';
+
 
 
 export class Carro {
@@ -19,7 +21,9 @@ export class Carro {
 
 
       addItem(stock: number, publicacionId: string): Item {
-        const item: Item = {stock: stock, publicacionId: publicacionId} ;
+        let item: Item = new Item();
+         item.stock = stock;
+         item.publicacionId = publicacionId;
         console.log('voy hacer push de este item: ');
         console.log( item );
         this.items.push(item);

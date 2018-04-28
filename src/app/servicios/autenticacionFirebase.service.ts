@@ -3,7 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Usuario } from '../modelo/usuario';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 
 
@@ -23,7 +23,8 @@ export class AutenticacionFirebaseService {
           this.userFDetails = userF;
           console.log('entre al suscribe');
           console.log(this.userFDetails);
-        }else {
+          localStorage.setItem('currentUser', JSON.stringify(userF));
+        } else {
           this.userFDetails = null;
         }
       }
@@ -43,12 +44,17 @@ export class AutenticacionFirebaseService {
     this.afAuth.auth.signOut().then((res) => this.router.navigate(['/firebase']));
   }
 
-  isLoggedIn() {
+  isLoggedFaceBook() {
     if (this.userFDetails == null ) {
         return false;
       } else {
         return true;
       }
+  }
+
+  isLoggedIn() {
+    const user = localStorage.getItem('currentUser');
+    return user !== undefined && user !== null;
   }
 
   getName(): string {

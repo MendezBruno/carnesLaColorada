@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
 import { Publicacion } from '../modelo/publicacion';
+import { Observable } from 'rxjs';
 
 const SEPARADOR = '/';
 
@@ -41,7 +41,7 @@ export class PublicacionCrudFirebaseService {
     this.db.database.ref(this.dbPath + SEPARADOR + refKey).set(publicacion);
 
     }
-    obtenerListaDeProductos( ): Observable<Publicacion[]> {
+    obtenerListaDeProductos( ): Observable<any> {
       return this.db.list(this.dbPath).valueChanges();
     }
 

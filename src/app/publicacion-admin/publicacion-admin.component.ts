@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { PublicacionCrudFirebaseService } from '../servicios/publicacion-crud-firebase';
 import { Publicacion } from '../modelo/publicacion';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Url } from 'url';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';

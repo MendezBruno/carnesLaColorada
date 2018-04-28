@@ -19,7 +19,7 @@ export class CrudPublicacionComponent implements OnInit {
 
 
 model: any = {};
-imagesStorages: ImagenesStorage[];
+imagesStorages: ImagenesStorage[][];
 imagesSelected: ImagenesStorage[] = [];
 dbImages: ImagesStoreService;
 publicacion: Publicacion;

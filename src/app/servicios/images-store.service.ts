@@ -6,22 +6,22 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireList } from 'angularfire2/database/interfaces';
 import { ImagenesStorage } from '../modelo/imagenesStorages';
 
-//import { storage } from 'firebase/app';
+// import { storage } from 'firebase/app';
 
 @Injectable()
 export class ImagesStoreService {
 
 basePath: string = 'imagenes';
-imagesStorages: ImagenesStorage[];
-imagesObservable: Observable<ImagenesStorage[]>;
+imagesStorages: ImagenesStorage[][];
+imagesObservable: Observable<ImagenesStorage[][]>;
 imagesRef : AngularFireList<any[]>;
 db : AngularFireDatabase;
 
 // Get a reference to the storage service, which is used to create references in your storage bucket
-//storage = firebase.storage();
+// storage = firebase.storage();
 
 // Create a storage reference from our storage service
-//storageRef = this.storage.ref();
+// storageRef = this.storage.ref();
 
   constructor(private fb: FirebaseApp, db: AngularFireDatabase) {
 
@@ -32,18 +32,18 @@ db : AngularFireDatabase;
     this.db = db;
   }
 
-  getListImages(){
+  getListImages() {
      this.imagesRef = this.db.list('imagenes');
      this.imagesObservable = this.imagesRef.valueChanges();
-     this.imagesObservable.subscribe( 
+     this.imagesObservable.subscribe(
       (data) => {
-        this.imagesStorages = data
-        console.log(this.imagesStorages)
+        this.imagesStorages = data;
+        console.log(this.imagesStorages);
       }
     )
   }
 
-getListImageStorage () :  Observable<ImagenesStorage[]> {
+getListImageStorage ():  Observable<ImagenesStorage[][]> {
   this.imagesRef = this.db.list('imagenes');
   return this.imagesRef.valueChanges();
 }
@@ -57,7 +57,7 @@ uploadImage(file){
   let fileName:string = file.name;
   fileName = fileName.slice(0 , fileName.indexOf('.'));
   let fileTimeStamp = file.timeStamp;
-  let storageReference = firebase.storage().ref('imagenes/'+ fileName);
+  let storageReference = firebase.storage().ref('imagenes/' + fileName);
   let uploadTask = storageReference.put(file);
 
 

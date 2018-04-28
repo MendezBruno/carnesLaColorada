@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app';
 import { AutenticacionFirebaseService } from '../servicios/autenticacionFirebase.service';
 import { MatButtonModule } from '@angular/material';

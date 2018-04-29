@@ -22,7 +22,7 @@ export class CarritoService {
   constructor() {
     const carro = localStorage.getItem('currentCarro');
     if (carro) {
-      this.carrito = JSON.parse(carro);
+      this.carrito = new Carro(JSON.parse(carro));
       this.carroExist = true;
     }
   }
@@ -47,8 +47,8 @@ export class CarritoService {
     // this.itemsRef.remove(key);
   }
 
-  addItem(item: any) {
-    this.carrito.addItem(item);
+  addItem(cantidad: number, idPublicacion: string) {
+    this.carrito.addItem(new Item (cantidad, idPublicacion));
   }
 
 

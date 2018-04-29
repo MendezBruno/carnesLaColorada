@@ -21,8 +21,8 @@ export class PublicacionComponent implements OnInit {
   ngOnInit() {
   }
   addToShop() {
-    if (this.model.cantidad < 1 || this.carro.haveThisPublication(this.publicacion.id)) { return; }
-    this.carritoService.addItem(new Item(this.model.cantidad, this.publicacion.id);
+    if (this.model.cantidad < 1 || this.haveThisPublication(this.publicacion.id)) { return; }
+    this.carritoService.addItem(this.model.cantidad, this.publicacion.id);
   }
 
   publicacionTieneFotos(): boolean {
@@ -30,6 +30,9 @@ export class PublicacionComponent implements OnInit {
     return false;
   }
 
+  haveThisPublication(publicacionId: string): boolean {
+    return this.carro.items.filter(item => item.publicacionId === publicacionId).length > 0;
+  }
 
 }
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { Producto } from '../modelo/producto';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
@@ -25,5 +25,5 @@ export class ProductoCrudFirebaseService {
     return this.db.list(this.dbPath).valueChanges();
   }
 
-  
+
 }

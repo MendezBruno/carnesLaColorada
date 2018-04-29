@@ -36,7 +36,12 @@ export class NavBarComponent implements OnInit {
 
   initilize() {
     if (this.carro) { return; }
-    this.carritoService.obtenerCarro().then( carro => this.carro );
+    this.carritoService.obtenerCarro().then(
+      carro => {
+        this.carro = carro;
+        console.log('llego el carro al nav-bar: ' +  this.carro);
+      }
+    );
 
   }
 

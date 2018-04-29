@@ -164,7 +164,7 @@ export class DialogSelectPhotosComponent implements OnInit {
   }
 
   upload() {
-    if(this.files && this.files.length > 0) {
+    if (this.files && this.files.length > 0) {
       let file: any;
       for ( file of this.files) {
         this.dbImages.uploadImage(file);

@@ -75,7 +75,7 @@ export class CarritoService {
     const refKey = this.carritosRef.push(carro).key;
     console.log('Guarde La carro');
     console.log(refKey);
-    carro.id = refKey;
+    // carro.id = refKey;
     this.db.database.ref(this.dbPath + SEPARADOR + refKey).set(carro);
     return carro;
   }

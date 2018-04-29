@@ -5,29 +5,17 @@ import { Item } from './Item';
 
 export class Carro {
 
-      id: string;
-      userId: string;
       items: Item[] = [];
 
-      constructor (userId?: string) {
-        this.userId = userId;
+      constructor (carroJson?: any) {
+        this.items = carroJson.items;
       }
 
-      addItem(stock: number, publicacionId: string): Item {
-        const item: Item = new Item();
-         item.stock = stock;
-         item.publicacionId = publicacionId;
+      addItem(item): Item {
         console.log('voy hacer push de este item: ');
-        console.log( item );
         this.items.push(item);
         return item;
       }
-
-      haveThisPublication(publicacionId: string): boolean {
-        return this.items.filter(item => item.publicacionId === publicacionId).length > 0;
-      }
-
-
 }
 
 

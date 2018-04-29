@@ -34,17 +34,21 @@ export class TiendaComponent implements OnInit {
       }
     );
     console.log('llegaron las publicaciones:');
-    this.verificarCarro();
+   // this.verificarCarro();
   }
 
 
   ngOnInit() {
+    this.carritoService.obtenerCarro().then( carro => this.carro = carro );
   }
 
   handleQueryStringUpdate(queryString):  void {
     this.querySearch = queryString;
   }
+}
 
+
+/*
   verificarCarro() {
     this.fUser.promiseUid().then(
       (uid) => {
@@ -64,7 +68,7 @@ export class TiendaComponent implements OnInit {
         // if (bdCarro.items) {
         //   this.carro.setItems(bdCarro.items);
         // }
-        //if (bdCarro.items) { this.carro.items = bdCarro.items; }
+        // if (bdCarro.items) { this.carro.items = bdCarro.items; }
         this.carritoService.getRefenceItemsObsevable(this.carro.id).subscribe(
           (items) => {
             this.carro.items = items;
@@ -73,5 +77,4 @@ export class TiendaComponent implements OnInit {
       (error) => {console.log('error al obtener carrito en la tienda'); }
     );
   }
-
-}
+*/

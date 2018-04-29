@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { PublicacionCrudFirebaseService } from '../servicios/publicacion-crud-firebase';
 import { Publicacion } from '../modelo/publicacion';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Url } from 'url';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
@@ -44,7 +44,7 @@ export class PublicacionAdminComponent implements OnInit {
      let publicacion: any;
       for ( publicacion of publicaciones) {
         if (publicacion) {
-          let editState = {id: publicacion.id, state: false}
+          const editState = {id: publicacion.id, state: false};
           this.editStates.push(editState);
         }
       }
@@ -83,7 +83,7 @@ export class PublicacionAdminComponent implements OnInit {
   }
 
   changeStateEdit(publicacion) {
-   let auxEditState = this.editStates.find(editState => editState.id === publicacion.id);
+   const auxEditState = this.editStates.find(editState => editState.id === publicacion.id);
    auxEditState.state = !auxEditState.state;
   }
 
@@ -98,7 +98,7 @@ export class PublicacionAdminComponent implements OnInit {
       console.log(result);
       if (result) {
          publicacion.description = result;
-         if (!this.isEdit(publicacion)) { this.changeStateEdit(publicacion);}
+         if (!this.isEdit(publicacion)) { this.changeStateEdit(publicacion); }
         }
     });
   }
@@ -114,7 +114,7 @@ export class PublicacionAdminComponent implements OnInit {
       console.log(result);
       if (result) {
         publicacion.precio = result;
-        if (!this.isEdit(publicacion)) { this.changeStateEdit(publicacion);}
+        if (!this.isEdit(publicacion)) { this.changeStateEdit(publicacion); }
       }
     });
   }

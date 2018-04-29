@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Publicacion } from '../modelo/publicacion';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 const SEPARADOR = '/';
 

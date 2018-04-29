@@ -12,11 +12,11 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
-  
-  
 
-   model:any={};
+
+
+
+   model: any = {};
 
   constructor(private mFirebaseBD: AutenticacionFirebaseService,
               private router: Router,
@@ -25,14 +25,14 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  loginAdmin(){
+  loginAdmin() {
     this.mFirebaseBD.loginAdmin(this.model.userName, this.model.password)
                     .then(( this.irConsolaAdmin() ))
-                    .catch( this.informarNoConexion())
+                    .catch( this.informarNoConexion());
   }
 
   irConsolaAdmin(): any {
-    this.router.navigate(['/admin/consola'])
+    this.router.navigate(['/admin/consola']);
   }
 
   informarNoConexion(): any {

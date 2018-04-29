@@ -41,6 +41,7 @@ export class AutenticacionFirebaseService {
   }
 
   logout() {
+    localStorage.setItem('currentUser', null);
     this.afAuth.auth.signOut().then((res) => this.router.navigate(['/firebase']));
   }
 

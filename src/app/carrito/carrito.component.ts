@@ -5,6 +5,7 @@ import { CarritoService } from '../servicios/carrito.service';
 import { ActivatedRoute } from '@angular/router';
 import { ImagenesStorage } from '../modelo/imagenesStorages';
 import { Router } from '@angular/router';
+import { Carro } from '../modelo/carro';
 
 @Component({
   selector: 'app-carrito',
@@ -13,47 +14,34 @@ import { Router } from '@angular/router';
 })
 export class CarritoComponent implements OnInit {
 
+  carrito: Carro;
   publicaciones: Publicacion[];
-  carroId: string;
-  items: any[] = [];
   itemsCar: ItemCar[] = [];
+  items: any;
   total = 0;
 
   constructor(
     private pfc: PublicacionCrudFirebaseService,
     private carServ: CarritoService,
     private route: ActivatedRoute,
-    private router: Router) {  }
+    private router: Router) {
+
+     }
 
   ngOnInit() {
-    this.route.params
-    .subscribe(params => {
-      this.carroId = params['id'].toString();
-      this.getItems(this.carroId);
-      this.pfc.obtenerListaDeProductos().subscribe(
-        (publicaciones) => {
-          this.publicaciones = publicaciones;
-          this.setModelos();
-          this.getTotal();
-        }
-      );
-    });
+    this.carServ.obtenerCarro().then(
+        carro => {
+           this.carrito = carro;
+           this.setModelos();
+        });
   }
 
-  getItems(carroId) {
-    this.carServ.obtenerListaItems(carroId).subscribe(
-      (items) => {
-        console.log('cargando items de carrito:');
-        console.log(items);
-        console.log('termine de cargar los item del carrito');
-        this.items = items;
-      });
-  }
+  getItems() { }
 
   setModelos() {
-       this.items.forEach( (item) => {
-       let publicacion = this.publicaciones.find(unaPublicacion => unaPublicacion.id === item.publicacionId );
-       let itemCar = new ItemCar();
+       this.carrito.items.forEach( (item) => {
+       const publicacion = this.publicaciones.find(unaPublicacion => unaPublicacion.id === item.publicacionId );
+       const itemCar = new ItemCar();
        itemCar.descripcion = publicacion.description;
        itemCar.fotos = publicacion.fotos;
        itemCar.precio = publicacion.precio;
@@ -85,7 +73,7 @@ export class CarritoComponent implements OnInit {
   }
 
   goToPedidos() {
-    this.router.navigate(['pedidos', this.carroId]);
+    this.router.navigate(['pedidos']);
   }
 
 }
@@ -104,3 +92,33 @@ class ItemCar {
   tipoCantidad: string;
 
 }
+
+
+/* oninit()
+
+this.route.params
+    .subscribe(params => {
+      this.carroId = params['id'].toString();
+      this.getItems(this.carroId);
+      this.pfc.obtenerListaDeProductos().subscribe(
+        (publicaciones) => {
+          this.publicaciones = publicaciones;
+          this.setModelos();
+          this.getTotal();
+        }
+      );
+    });
+
+    */
+
+    /*
+  getItems(carroId) {
+    this.carServ.obtenerListaItems(carroId).subscribe(
+      (items) => {
+        console.log('cargando items de carrito:');
+        console.log(items);
+        console.log('termine de cargar los item del carrito');
+        this.items = items;
+      });
+  }
+*/

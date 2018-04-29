@@ -3,5 +3,7 @@ export class Item {
   stock: number;
   publicacionId: string;
 
-  constructor () { }
+  constructor (cantidad: Number, idPublicacion: string) {
+
+   }
 }

@@ -16,16 +16,18 @@ import { Router } from '@angular/router';
 
 export class NavBarComponent implements OnInit {
 
+  isLogIn = false;
   username: string;
   userpicture: string;
   carro: Carro;
   // todo agregar el numero de compras que hay en el carro.
 
 
-  private af: AutenticacionFirebaseService;
+  private afService: AutenticacionFirebaseService;
 
-  constructor(af: AutenticacionFirebaseService, private carritoService: CarritoService, private router: Router) {
-    this.af = af;
+  constructor(afService: AutenticacionFirebaseService, private carritoService: CarritoService, private router: Router) {
+    this.afService = afService;
+    this.isLoggedIn();
     this.initilize();
   }
 
@@ -34,7 +36,14 @@ export class NavBarComponent implements OnInit {
 
   initilize() {
     if (this.carro) { return; }
-    this.af.promiseUid().then(
+    this.carritoService.obtenerCarro().then( carro => this.carro );
+
+  }
+
+  /*
+  initilize() {
+    if (this.carro) { return; }
+    this.afService.promiseUid().then(
       (userID) => {
         console.log('entre a la promesa del ID:');
         console.log(userID);
@@ -55,16 +64,20 @@ export class NavBarComponent implements OnInit {
 
 
 
-      this.af.promiseUid().catch((error) => {console.log(error); });
+      this.afService.promiseUid().catch((error) => {console.log(error); });
     }
+*/
 
+/*
   getMyCarrito(userID: string) {
     console.log('carro del nav: ');
 //    if (this.carro) { return; }
     this.carritoService.getCarroById(userID).then(
       (carro) => {  this.carro = carro; }
   ); }
+*/
 
+/*
   createReferenceToCarro(carroId: string) {
     this.carritoService.isPathItemsCreate(carroId).then(
       (snapshot) => {
@@ -75,29 +88,29 @@ export class NavBarComponent implements OnInit {
 
     });
   }
+*/
 
   isLoggedIn() {
-    if ( this.af.isLoggedIn() ) {
-      this.userpicture = this.af.getPicture();
-      return true;
+    if ( this.afService.isLoggedIn() ) {
+      const user = localStorage.getItem('currentUser');
+      this.isLogIn = true;
     }
-   return false;
   }
 
   logout() {
-    this.af.logout();
+    this.afService.logout();
   }
 
   getUserName( ) {
-    return this.af.getName();
+    return this.afService.getName();
   }
 
   getUserID() {
-    return this.af.getUid();
+    return this.afService.getUid();
   }
 
   goTo() {
-    this.router.navigate(['carrito', this.carro.id]);
+    this.router.navigate(['carrito']);
   }
 
 

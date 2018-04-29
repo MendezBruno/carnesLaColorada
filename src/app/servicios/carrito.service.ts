@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Carro } from '../modelo/carro';
 import 'rxjs/add/operator/toPromise';
@@ -15,124 +15,44 @@ const SEPARADOR = '/';
 
 export class CarritoService {
 
-  // Carritos
-  private dbPath = 'carritos';
-  public carritosRef: any;
-  carritoRef: any;
-  public carrito: Carro;
-  public carritos: Observable<any[]>;
- 
-  // Items de los carritos
-  private dbPathItems = 'carritos/items';
-  public itemsRef: any;
-  itemRef: any;
-  public item: Item;
-  public Items: Observable<any[]>;
-
-  public db;
+  carroExist = false;
+  carrito: Carro;
 
 
-
-  constructor(db: AngularFireDatabase, private authFb: AutenticacionFirebaseService) {
-
-    this.db = db;
-    this.carritosRef = this.db.list(this.dbPath);
-    console.log('entre al constructor de carrito');
-    this.carritos = this.carritosRef.snapshotChanges().map(changes => {
-      console.log(changes);
-      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-    });
-    this.carritosRef.snapshotChanges(['child_added'])
-    .subscribe(actions => {
-      actions.forEach(action => {
-        console.log(action.type);
-        console.log(action.key);
-        console.log(action.payload.val());
-      });
-    });
-
-  }
-
-  isPathRootCreate() {
-   return this.db.database.ref(this.dbPath).once('value');
- //   .then(function(snapshot) {
- //       this.pathExist = snapshot.exists();
- //   });
+  constructor() {
+    const carro = localStorage.getItem('currentCarro');
+    if (carro) {
+      this.carrito = JSON.parse(carro);
+      this.carroExist = true;
+    }
   }
 
 
-  createCarro(userId: string): Carro {
-    return this.guardarCarro(new Carro(userId));
+  obtenerCarro(): Promise<Carro> {
+    return this.carroExist ?  Promise.resolve(this.carrito) : Promise.resolve(this.crearCarro());
   }
 
-  guardarCarro(carro: Carro): Carro {
-    const refKey = this.carritosRef.push(carro).key;
-    console.log('Guarde La carro');
-    console.log(refKey);
-    carro.id = refKey;
-    this.db.database.ref(this.dbPath + SEPARADOR + refKey).set(carro);
-    return carro;
+  crearCarro(): Carro {
+    this.carrito = new Carro();
+    localStorage.setItem('currentCarro', JSON.stringify(this.carrito));
+    return this.carrito;
   }
 
-  obtenerListaDeCarros( ): Observable<Carro[]> {
-    return this.db.list(this.dbPath).valueChanges();
-  }
-
-  addInfoToCarro(key: string, carroWithNewInfo: Carro) {
-    this.db.database.ref(this.dbPath + SEPARADOR + key).set(carroWithNewInfo);
-  }
-
-  updateCarro(key: string, modifiedCarro: Carro) {
-    this.carritosRef.update(key, modifiedCarro);
-  }
-
-  deleteCarro(key: string) {
-    this.carritosRef.remove(key);
-  }
-  deleteEverything() {
-    this.carritosRef.remove();
-  }
-
-  getCarroById(id: string): Promise<Carro> {
-    const promise = new Promise<Carro>( (resolve, reject) => {
-      if (this.carritos) {
-        this.carritos.subscribe( (carritos) => resolve( carritos.find(unCarro => unCarro.userId === id)));
-      }else {
-        reject(new Carro(id));
-      }
-    });
-   return promise;
-   }
-
-  getRefenceItemsObsevable(idCarro: string): Observable<any> {
-    this.itemsRef = this.db.list(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items');
-    this.itemsRef.snapshotChanges(['child_added'], ['child_removed']);
-    this.itemsRef.snapshotChanges().map(changes => {
-                            console.log(changes);
-                            return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-                          });
-    return this.db.list(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items').valueChanges();
-  }
-
-  obtenerListaItems (idCarro: string): Observable<any> {
-   return this.db.list(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items').valueChanges();
-  }
-
-  isPathItemsCreate(idCarro: string) {
-    return this.db.database.ref(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items').once('value');
-  }
-
-  addItem(item, idCarro) {
-    const refKey = this.itemsRef.push(item).key;
-    console.log('Guarde el Item');
-    console.log(refKey);
-    item.id = refKey;
-    this.db.database.ref(this.dbPath + SEPARADOR + idCarro + SEPARADOR + 'items' + SEPARADOR + refKey).set(item);
+  deleteCarro() {
+    localStorage.setItem('currentCarro', null);
+    this.carrito = null;
   }
 
   deleteItem(key: string) {
-    this.itemsRef.remove(key);
+    // this.itemsRef.remove(key);
   }
+
+  addItem(item: any) {
+    this.carrito.addItem(item);
+  }
+
+
+
 }
 
 // (!carro) { resolve(this.createCarro(id)); } else {  resolve(new Carro(id)); }},

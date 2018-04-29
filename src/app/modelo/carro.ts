@@ -9,19 +9,12 @@ export class Carro {
       userId: string;
       items: Item[] = [];
 
-      constructor (userId: string) {
+      constructor (userId?: string) {
         this.userId = userId;
       }
 
-      setItems(items: any[]): void {
-         items.forEach(
-         (item) => {this.items.push(item); }
-       );
-      }
-
-
       addItem(stock: number, publicacionId: string): Item {
-        let item: Item = new Item();
+        const item: Item = new Item();
          item.stock = stock;
          item.publicacionId = publicacionId;
         console.log('voy hacer push de este item: ');

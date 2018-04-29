@@ -3,6 +3,7 @@ import { Publicacion } from '../modelo/publicacion';
 import { AutenticacionFirebaseService } from '../servicios/autenticacionFirebase.service';
 import { CarritoService } from '../servicios/carrito.service';
 import { Carro } from '../modelo/carro';
+import { Item } from '../modelo/Item';
 
 @Component({
   selector: 'app-publicacion',
@@ -21,13 +22,7 @@ export class PublicacionComponent implements OnInit {
   }
   addToShop() {
     if (this.model.cantidad < 1 || this.carro.haveThisPublication(this.publicacion.id)) { return; }
-      let item = this.carro.addItem(this.model.cantidad, this.publicacion.id);
-   //   this.carro.items.length === 1 ? this.carritoService.addInfoToCarro(this.carro.id, this.carro) :
-  //                               this.carritoService.addItem(item);
-      this.carritoService.addItem(item, this.carro.id);
-   
-                                    // todo actualizar stock de publicacion?
-    // *todo* agregar alguna tipo de animacion que muestre que se agrega al carro? (snack bar?)
+    this.carritoService.addItem(new Item(this.model.cantidad, this.publicacion.id);
   }
 
   publicacionTieneFotos(): boolean {
@@ -37,3 +32,18 @@ export class PublicacionComponent implements OnInit {
 
 
 }
+
+
+/*
+
+ if (this.model.cantidad < 1 || this.carro.haveThisPublication(this.publicacion.id)) { return; }
+      let item = this.carro.addItem(this.model.cantidad, this.publicacion.id);
+   //   this.carro.items.length === 1 ? this.carritoService.addInfoToCarro(this.carro.id, this.carro) :
+  //                               this.carritoService.addItem(item);
+      this.carritoService.addItem(item, this.carro.id);
+
+                                    // todo actualizar stock de publicacion?
+    // *todo* agregar alguna tipo de animacion que muestre que se agrega al carro? (snack bar?)
+
+
+*/

@@ -28,11 +28,11 @@ const appRoutes: Routes = [
     { path: 'admin/consola', component: ConsolaAdminComponent},
     { path: 'admin/publicacion', component: PublicacionAdminComponent},
     { path: 'admin/nuevaPublicacion', component: CrudPublicacionComponent},
-    { path: 'carrito/:id', component: CarritoComponent},
+    { path: 'carrito', component: CarritoComponent},
 ];
 
 @NgModule({
-    imports: [ RouterModule.forRoot(appRoutes)],  //Para debug],
+    imports: [ RouterModule.forRoot(appRoutes)],  // Para debug],
     exports: [ RouterModule ]
   })
 export class AppRoutingModule {}

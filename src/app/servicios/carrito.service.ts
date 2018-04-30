@@ -20,8 +20,8 @@ export class CarritoService {
 
 
   constructor() {
-    const carro = localStorage.getItem('currentCarro');
-    if (carro) {
+    if (this.hayCarro()) {
+      const carro = localStorage.getItem('currentCarro');
       this.carrito = new Carro(JSON.parse(carro));
       this.carroExist = true;
     }
@@ -34,7 +34,7 @@ export class CarritoService {
 
   crearCarro(): Carro {
     this.carrito = new Carro();
-    localStorage.setItem('currentCarro', JSON.stringify(this.carrito));
+    this.actualizar();
     return this.carrito;
   }
 
@@ -49,10 +49,16 @@ export class CarritoService {
 
   addItem(cantidad: number, idPublicacion: string) {
     this.carrito.addItem(new Item (cantidad, idPublicacion));
+    this.actualizar();
+  }
+  hayCarro(): boolean {
+  const carro = localStorage.getItem('currentCarro');
+    return carro !== undefined && carro !== null;
   }
 
-
-
+  actualizar() {
+    localStorage.setItem('currentCarro', JSON.stringify(this.carrito));
+  }
 }
 
 // (!carro) { resolve(this.createCarro(id)); } else {  resolve(new Carro(id)); }},

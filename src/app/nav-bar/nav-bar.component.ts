@@ -97,7 +97,9 @@ export class NavBarComponent implements OnInit {
 
   isLoggedIn() {
     if ( this.afService.isLoggedIn() ) {
-      const user = localStorage.getItem('currentUser');
+      const user = JSON.parse(localStorage.getItem('currentUser'));
+      this.userpicture = user.providerData[0].photoURL;
+      this.username = user.displayName;
       this.isLogIn = true;
     }
   }

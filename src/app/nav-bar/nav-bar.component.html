@@ -20,7 +20,7 @@
     </button>
     <mat-menu #menu="matMenu">
       <div>
-        <button mat-menu-item *ngIf="!isLoggedIn()" routerLink="firebase" routerLinkActive="active">
+        <button mat-menu-item *ngIf="!isLogIn" routerLink="firebase" routerLinkActive="active">
           <mat-icon>account_circle</mat-icon>
           <span >Entrar</span>
         </button>
@@ -29,7 +29,7 @@
           <mat-icon>settings_applications</mat-icon>
           <span>Configuracion</span>
         </button>
-        <button mat-menu-item *ngIf="isLoggedIn()" (click)="logout()"> <!-- TODO agregar un componente de salidad saludando -->
+        <button mat-menu-item *ngIf="isLogIn" (click)="logout()"> <!-- TODO agregar un componente de salidad saludando -->
           <mat-icon>exit_to_app</mat-icon>
           <span>Salir</span>
         </button>

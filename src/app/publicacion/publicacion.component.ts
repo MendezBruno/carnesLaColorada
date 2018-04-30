@@ -15,10 +15,17 @@ export class PublicacionComponent implements OnInit {
   model: any = {};
   @Input() publicacion: Publicacion;
   @Input() carro: Carro;
+  carrito: Carro;
 
-  constructor( private carritoService: CarritoService) {  }
+  constructor( private carritoService: CarritoService) {
+    this.model.cantidad = 0;
+   }
 
   ngOnInit() {
+    this.carritoService.obtenerCarro().then(
+      carro => {
+         this.carro = carro;
+      });
   }
   addToShop() {
     if (this.model.cantidad < 1 || this.haveThisPublication(this.publicacion.id)) { return; }

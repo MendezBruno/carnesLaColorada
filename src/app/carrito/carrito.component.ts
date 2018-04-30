@@ -29,14 +29,22 @@ export class CarritoComponent implements OnInit {
      }
 
   ngOnInit() {
-    this.carServ.obtenerCarro().then(
-        carro => {
-           this.carrito = carro;
-           this.setModelos();
-        });
+    this.pfc.obtenerListaDeProductos().subscribe(
+      (publicaciones) => {
+        this.publicaciones = publicaciones;
+        this.initialize();
+      });
+
   }
 
-  getItems() { }
+  initialize() {
+    this.carServ.obtenerCarro().then(
+      carro => {
+         this.carrito = carro;
+         this.setModelos();
+         this.getTotal();
+      });
+  }
 
   setModelos() {
        this.carrito.items.forEach( (item) => {

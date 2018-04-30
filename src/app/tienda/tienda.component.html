@@ -6,7 +6,7 @@
 </div>
 <div fxLayout.xs="column" fxLayout.lg="row" fxLayoutWrap="row" fxLayoutAlign="start center"  fxLayoutGap=10%  fxLayoutWrap style="padding-top: 10px">  
   <div fxFlex="30" *ngFor="let publicacion of publicaciones | PublicacionFilter: querySearch"> 
-    <app-publicacion [carro]="carro" [publicacion]= "publicacion" ></app-publicacion> 
+    <app-publicacion [publicacion]= "publicacion" ></app-publicacion> 
   </div>
 </div>
 

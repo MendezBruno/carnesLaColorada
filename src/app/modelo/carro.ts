@@ -5,10 +5,10 @@ import { Item } from './Item';
 
 export class Carro {
 
-      items: Item[] = [];
+      items: Item[];
 
       constructor (carroJson?: any) {
-        this.items = carroJson.items;
+        this.items = carroJson ?  carroJson.items : [];
       }
 
       addItem(item): Item {

@@ -11,11 +11,11 @@ import { ImagenesStorage } from '../modelo/imagenesStorages';
 @Injectable()
 export class ImagesStoreService {
 
-basePath: string = 'imagenes';
+basePath = 'imagenes';
 imagesStorages: ImagenesStorage[][];
 imagesObservable: Observable<ImagenesStorage[][]>;
-imagesRef : AngularFireList<any[]>;
-db : AngularFireDatabase;
+imagesRef: AngularFireList<any[]>;
+db: AngularFireDatabase;
 
 // Get a reference to the storage service, which is used to create references in your storage bucket
 // storage = firebase.storage();
@@ -40,7 +40,7 @@ db : AngularFireDatabase;
         this.imagesStorages = data;
         console.log(this.imagesStorages);
       }
-    )
+    );
   }
 
 getListImageStorage ():  Observable<ImagenesStorage[][]> {
@@ -49,23 +49,23 @@ getListImageStorage ():  Observable<ImagenesStorage[][]> {
 }
 
 
-addImageStorage(imageStorage: ImagenesStorage){
+addImageStorage(imageStorage: ImagenesStorage) {
 
 }
 
-uploadImage(file){
-  let fileName:string = file.name;
+uploadImage(file) {
+  let fileName: string = file.name;
   fileName = fileName.slice(0 , fileName.indexOf('.'));
-  let fileTimeStamp = file.timeStamp;
-  let storageReference = firebase.storage().ref('imagenes/' + fileName);
-  let uploadTask = storageReference.put(file);
+  const fileTimeStamp = file.timeStamp;
+  const storageReference = firebase.storage().ref('imagenes/' + fileName);
+  const uploadTask = storageReference.put(file);
 
 
   // Register three observers:
   // 1. 'state_changed' observer, called any time the state changes
   // 2. Error observer, called on failure
   // 3. Completion observer, called on successful completion
-  uploadTask.on('state_changed', function(snapshot: any){
+  uploadTask.on('state_changed', function(snapshot: any) {
   // Observe state change events such as progress, pause, and resume
   // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
 
@@ -83,9 +83,9 @@ uploadImage(file){
   }, function() {
     // Handle successful uploads on complete
     // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-    var downloadURL = uploadTask.snapshot.downloadURL;
-    let imagenRef = firebase.database().ref('imagenes/' + fileName);
-    let imagenesStorages = new ImagenesStorage();
+    const downloadURL = uploadTask.snapshot.downloadURL;
+    const imagenRef = firebase.database().ref('imagenes/' + fileName);
+    const imagenesStorages = new ImagenesStorage();
     imagenesStorages.name = fileName;
     imagenesStorages.url = downloadURL;
     imagenRef.set(imagenesStorages);

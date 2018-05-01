@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AutenticacionFirebaseService } from '../servicios/autenticacionFirebase.service';
+import { AutenticacionFirebaseService } from '../../servicios/autenticacionFirebase.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 

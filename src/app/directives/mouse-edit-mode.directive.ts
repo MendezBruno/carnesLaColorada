@@ -12,11 +12,11 @@ span: ElementRef;
    }
 
 @HostListener('mouseenter') onMouseEnter() {
-    
+
 }
 
 @HostListener('mouseleave') onMouseLeave() {
-    
+
 }
 
 

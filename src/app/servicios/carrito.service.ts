@@ -43,8 +43,8 @@ export class CarritoService {
     this.carrito = null;
   }
 
-  deleteItem(key: string) {
-    // this.itemsRef.remove(key);
+  deleteItem(idItem: string) {
+    this.carrito.items.splice(this.carrito.items.findIndex(item => item.id === idItem), 1);
   }
 
   addItem(cantidad: number, idPublicacion: string) {

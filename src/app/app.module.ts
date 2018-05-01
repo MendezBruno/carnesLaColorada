@@ -14,13 +14,13 @@ import { AppRoutingModule } from './app-routing';
 import { AppComponent } from './app.component';
 
 // Componentes del sistema
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { UserCrudComponent } from './user-crud/user-crud.component';
-import { AdminUsersComponent} from './admin-users/admin-users.component';
-import { LoginComponent } from './login/login.component';
-import { FirebaseComponent } from './firebase/firebase.component';
-import { TiendaComponent } from './tienda/tienda.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { UserCrudComponent } from './components/user-crud/user-crud.component';
+import { AdminUsersComponent} from './components/admin/admin-users/admin-users.component';
+import { LoginComponent } from './components/login/login.component';
+import { FirebaseComponent } from './components/firebase/firebase.component';
+import { TiendaComponent } from './components/tienda/tienda.component';
 
 
 
@@ -36,27 +36,27 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 
 // CARNICERIA APP COMPONENTS
-import { ProductoComponent } from './producto/producto.component';
+import { ProductoComponent } from './components/producto/producto.component';
 import { UsuarioCrudFirebaseService } from './servicios/usuario-crud-firebase.service';
 import { ProductoCrudFirebaseService } from './servicios/producto-crud-firebase.service';
-import { ConsolaAdminComponent } from './consola-admin/consola-admin.component';
-import { PublicacionAdminComponent } from './publicacion-admin/publicacion-admin.component';
+import { ConsolaAdminComponent } from './components/admin/consola-admin/consola-admin.component';
+import { PublicacionAdminComponent } from './components/admin/publicacion-admin/publicacion-admin.component';
 import { EditPublicacionComponent,
          EditPrecioPublicacionComponent,
          EditCantidadPublicacionComponent,
          DialogSelectPhotosComponent,
          DialogConfirmPublicacionComponent,
-         EditStockPublicacionComponent} from './common-dialog/common-dialog.component';
-import { CrudPublicacionComponent } from './crud-publicacion/crud-publicacion.component';
+         EditStockPublicacionComponent} from './components/common-dialog/common-dialog.component';
+import { CrudPublicacionComponent } from './components/admin/crud-publicacion/crud-publicacion.component';
 import { PublicacionCrudFirebaseService } from './servicios/publicacion-crud-firebase';
-import { PublicacionComponent } from './publicacion/publicacion.component';
-import { CaruselComponent } from './carusel/carusel.component';
-import { CommonDialogComponent } from './common-dialog/common-dialog.component';
+import { PublicacionComponent } from './components/publicacion/publicacion.component';
+import { CaruselComponent } from './components/carusel/carusel.component';
+import { CommonDialogComponent } from './components/common-dialog/common-dialog.component';
 import { MouseEditModeDirective } from './directives/mouse-edit-mode.directive';
-import { SearchComponent } from './search/search.component';
-import { PublicacionFilter } from './search/publicacion-filter';
+import { SearchComponent } from './components/search/search.component';
+import { PublicacionFilter } from './components/search/publicacion-filter';
 import { CarritoService } from './servicios/carrito.service';
-import { CarritoComponent } from './carrito/carrito.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 
 

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ImagesStoreService } from '../servicios/images-store.service';
-import { ImagenesStorage } from '../modelo/imagenesStorages';
+import { ImagesStoreService } from '../../../servicios/images-store.service';
+import { ImagenesStorage } from '../../../modelo/imagenesStorages';
 import { MatDialog, MatDialogRef } from '@angular/material';
-import { Publicacion } from '../modelo/publicacion';
-import { PublicacionCrudFirebaseService } from '../servicios/publicacion-crud-firebase';
-import { DialogConfirmPublicacionComponent } from '../common-dialog/common-dialog.component';
+import { Publicacion } from '../../../modelo/publicacion';
+import { PublicacionCrudFirebaseService } from '../../../servicios/publicacion-crud-firebase';
+import { DialogConfirmPublicacionComponent } from '../../common-dialog/common-dialog.component';
 
 const publicacionRoute = '/admin/publicacion';
 

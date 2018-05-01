@@ -1,6 +1,6 @@
-import { Producto } from '../modelo/producto';
+import { Producto } from '../../modelo/producto';
 
-let asado:string[] = [
+const asado: string[] = [
     '../../assets/imagenes/asado-tira.jpg',
     '../../assets/imagenes/carne-con-hueso.jpg',
     '../../assets/imagenes/Costillares.jpg'

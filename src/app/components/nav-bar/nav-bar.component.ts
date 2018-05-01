@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
-import { AutenticacionFirebaseService } from '../servicios/autenticacionFirebase.service';
-import { CarritoService } from '../servicios/carrito.service';
-import { Carro } from '../modelo/carro';
+import { AutenticacionFirebaseService } from '../../servicios/autenticacionFirebase.service';
+import { CarritoService } from '../../servicios/carrito.service';
+import { Carro } from '../../modelo/carro';
 import { Router } from '@angular/router';
 
 

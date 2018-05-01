@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Publicacion } from '../modelo/publicacion';
+import { Publicacion } from '../../modelo/publicacion';
 
 
 @Pipe({

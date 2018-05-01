@@ -8,7 +8,7 @@ import { Url } from 'url';
 })
 export class CaruselComponent implements OnInit {
 
-  
+
   @Input() imagenes;
   imagenPath: any;
   index = 0;

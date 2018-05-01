@@ -1,4 +1,4 @@
-import { Usuario } from '../modelo/usuario';
+import { Usuario } from '../../modelo/usuario';
 
 export const USER: Usuario[] = [{
     id: 'kjjhdf483sdY',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductoCrudFirebaseService } from '../servicios/producto-crud-firebase.service';
-import { Producto } from '../modelo/producto';
+import { ProductoCrudFirebaseService } from '../../servicios/producto-crud-firebase.service';
+import { Producto } from '../../modelo/producto';
 import { UNPRODUCTO } from './producto-data';
 
 @Component({

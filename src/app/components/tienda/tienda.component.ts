@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Producto } from '../modelo/producto';
+import { Producto } from '../../modelo/producto';
 import { PRODUCTOS } from './tienda-data';
-import { Publicacion } from '../modelo/publicacion';
+import { Publicacion } from '../../modelo/publicacion';
 import { Router } from '@angular/router';
-import { PublicacionCrudFirebaseService } from '../servicios/publicacion-crud-firebase';
+import { PublicacionCrudFirebaseService } from '../../servicios/publicacion-crud-firebase';
 import { PublicacionFilter } from '../search/publicacion-filter';
-import { AutenticacionFirebaseService } from '../servicios/autenticacionFirebase.service';
-import { Carro } from '../modelo/carro';
-import { CarritoService } from '../servicios/carrito.service';
+import { AutenticacionFirebaseService } from '../../servicios/autenticacionFirebase.service';
+import { Carro } from '../../modelo/carro';
+import { CarritoService } from '../../servicios/carrito.service';
 
 @Component({
   selector: 'app-tienda',

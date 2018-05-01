@@ -1,11 +1,11 @@
-import { Producto } from '../modelo/producto';
+import { Producto } from '../../modelo/producto';
 
-let asado:string[] = [
+const asado: string[] = [
     '../../assets/imagenes/asado-tira.jpg',
     '../../assets/imagenes/carne-con-hueso.jpg',
     '../../assets/imagenes/Costillares.jpg'
 
-  ]
+  ];
 
 export const PRODUCTOS: Producto[] = [{
     id: 1,
@@ -41,5 +41,6 @@ export const PRODUCTOS: Producto[] = [{
     description: 'asado de ternera',
     cantidad: 20
 
-  } ]
+  } ];
+
 

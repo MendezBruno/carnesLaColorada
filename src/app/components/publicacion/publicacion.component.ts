@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Publicacion } from '../modelo/publicacion';
-import { AutenticacionFirebaseService } from '../servicios/autenticacionFirebase.service';
-import { CarritoService } from '../servicios/carrito.service';
-import { Carro } from '../modelo/carro';
-import { Item } from '../modelo/Item';
+import { Publicacion } from '../../modelo/publicacion';
+import { AutenticacionFirebaseService } from '../../servicios/autenticacionFirebase.service';
+import { CarritoService } from '../../servicios/carrito.service';
+import { Carro } from '../../modelo/carro';
+import { Item } from '../../modelo/Item';
 
 @Component({
   selector: 'app-publicacion',

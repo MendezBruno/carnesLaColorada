@@ -45,6 +45,6 @@
     }
 
 .editMode{
-    cursor: url(../../assets/icons/ic_mode_edit_black_24dp_1x.png) 0 20, auto;
+    cursor: url(/assets/icons/ic_mode_edit_black_24dp_1x.png) 0 20, auto;
     
 }

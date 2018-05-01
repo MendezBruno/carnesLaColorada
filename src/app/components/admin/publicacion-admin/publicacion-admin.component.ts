@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { PublicacionCrudFirebaseService } from '../servicios/publicacion-crud-firebase';
-import { Publicacion } from '../modelo/publicacion';
+import { PublicacionCrudFirebaseService } from '../../../servicios/publicacion-crud-firebase';
+import { Publicacion } from '../../../modelo/publicacion';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Url } from 'url';
@@ -11,7 +11,7 @@ import { EditPublicacionComponent,
    EditCantidadPublicacionComponent,
    DialogConfirmPublicacionComponent,
    DialogSelectPhotosComponent,
-   EditStockPublicacionComponent} from '../common-dialog/common-dialog.component';
+   EditStockPublicacionComponent} from '../../common-dialog/common-dialog.component';
 import { forEach } from '@angular/router/src/utils/collection';
 
 

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Publicacion } from '../modelo/publicacion';
-import { PublicacionCrudFirebaseService } from '../servicios/publicacion-crud-firebase';
-import { CarritoService } from '../servicios/carrito.service';
+import { Publicacion } from '../../modelo/publicacion';
+import { PublicacionCrudFirebaseService } from '../../servicios/publicacion-crud-firebase';
+import { CarritoService } from '../../servicios/carrito.service';
 import { ActivatedRoute } from '@angular/router';
-import { ImagenesStorage } from '../modelo/imagenesStorages';
+import { ImagenesStorage } from '../../modelo/imagenesStorages';
 import { Router } from '@angular/router';
-import { Carro } from '../modelo/carro';
+import { Carro } from '../../modelo/carro';
 
 @Component({
   selector: 'app-carrito',

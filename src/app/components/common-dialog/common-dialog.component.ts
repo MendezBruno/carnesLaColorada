@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ImagenesStorage } from '../modelo/imagenesStorages';
-import { ImagesStoreService } from '../servicios/images-store.service';
+import { ImagenesStorage } from '../../modelo/imagenesStorages';
+import { ImagesStoreService } from '../../servicios/images-store.service';
 import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({

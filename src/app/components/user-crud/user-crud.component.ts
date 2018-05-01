@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule, MatButton } from '@angular/material';
-import { Usuario } from '../modelo/usuario';
-import { UsuarioService } from '../servicios/user-crud.service';
+import { Usuario } from '../../modelo/usuario';
+import { UsuarioService } from '../../servicios/user-crud.service';
 
 @Component({
   selector: 'app-user-crud',
@@ -11,19 +11,19 @@ import { UsuarioService } from '../servicios/user-crud.service';
 })
 export class UserCrudComponent implements OnInit {
 
-    nuevoUsuario :any = {};
-  
+    nuevoUsuario: any = {};
+
     constructor(private _usuarioService: UsuarioService) { }
-  
+
     ngOnInit() {
     }
-  
-    guardarUsuario(newUsuario: Usuario){
+
+    guardarUsuario(newUsuario: Usuario) {
       console.log(newUsuario);
       this._usuarioService.addUsuario(newUsuario);
-      
+
     }
 
-    
+
 
 }

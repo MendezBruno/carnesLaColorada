@@ -1,5 +1,5 @@
-import { Publicacion } from '../modelo/publicacion';
-import { ImagenesStorage } from '../modelo/imagenesStorages';
+import { Publicacion } from '../../modelo/publicacion';
+import { ImagenesStorage } from '../../modelo/imagenesStorages';
 
 const asado: ImagenesStorage[] = [
     // '../../assets/imagenes/asado-tira.jpg',

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
-import { AutenticacionFirebaseService } from '../servicios/autenticacionFirebase.service';
+import { AutenticacionFirebaseService } from '../../servicios/autenticacionFirebase.service';
 import { MatButtonModule } from '@angular/material';
-import { Usuario } from '../modelo/usuario';
-import { UsuarioCrudFirebaseService } from '../servicios/usuario-crud-firebase.service';
+import { Usuario } from '../../modelo/usuario';
+import { UsuarioCrudFirebaseService } from '../../servicios/usuario-crud-firebase.service';
 import { Router } from '@angular/router';
 
 @Component({

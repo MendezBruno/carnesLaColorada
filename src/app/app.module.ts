@@ -2,11 +2,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatButton, MatToolbarModule} from '@angular/material';
 import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-// Material
+
+// Variable de entorno
+import { environment } from '../environments/environment';
 
 // Routing
 import { AppRoutingModule } from './app-routing';
@@ -15,12 +16,6 @@ import { AppComponent } from './app.component';
 
 // Componentes del sistema
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { InicioComponent } from './components/inicio/inicio.component';
-import { UserCrudComponent } from './components/user-crud/user-crud.component';
-import { AdminUsersComponent} from './components/admin/admin-users/admin-users.component';
-import { LoginComponent } from './components/login/login.component';
-import { FirebaseComponent } from './components/firebase/firebase.component';
-import { TiendaComponent } from './components/tienda/tienda.component';
 
 
 
@@ -33,21 +28,20 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule  } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase'; por el momento no se utiliza
 
 // CARNICERIA APP COMPONENTS
 import { ProductoComponent } from './components/producto/producto.component';
 import { UsuarioCrudFirebaseService } from './servicios/usuario-crud-firebase.service';
 import { ProductoCrudFirebaseService } from './servicios/producto-crud-firebase.service';
-import { ConsolaAdminComponent } from './components/admin/consola-admin/consola-admin.component';
-import { PublicacionAdminComponent } from './components/admin/publicacion-admin/publicacion-admin.component';
+
 import { EditPublicacionComponent,
          EditPrecioPublicacionComponent,
          EditCantidadPublicacionComponent,
          DialogSelectPhotosComponent,
          DialogConfirmPublicacionComponent,
-         EditStockPublicacionComponent} from './components/common-dialog/common-dialog.component';
-import { CrudPublicacionComponent } from './components/admin/crud-publicacion/crud-publicacion.component';
+         EditStockPublicacionComponent } from './components/common-dialog/common-dialog.component';
+
 import { PublicacionCrudFirebaseService } from './servicios/publicacion-crud-firebase';
 import { PublicacionComponent } from './components/publicacion/publicacion.component';
 import { CaruselComponent } from './components/carusel/carusel.component';
@@ -56,19 +50,21 @@ import { MouseEditModeDirective } from './directives/mouse-edit-mode.directive';
 import { SearchComponent } from './components/search/search.component';
 import { PublicacionFilter } from './components/search/publicacion-filter';
 import { CarritoService } from './servicios/carrito.service';
-import { CarritoComponent } from './components/carrito/carrito.component';
+import { PedidosComponent } from './vista/admin/pedidos/pedidos.component';
+import { LoginUserComponent } from './vista/login-user/login-user.component';
+import { LoginComponent } from './vista/admin/login/login.component';
+import { AdminUserComponent } from './vista/admin/admin-user/admin-user.component';
+import { InicioComponent } from './vista/inicio/inicio.component';
+import { UserCrudComponent } from './vista/user-crud/user-crud.component';
+import { TiendaComponent } from './vista/tienda/tienda.component';
+import { PublicacionAdminComponent } from './vista/admin/publicacion-admin/publicacion-admin.component';
+import { ConsolaAdminComponent } from './vista/admin/consola-admin/consola-admin.component';
+import { CrudPublicacionComponent } from './vista/admin/crud-publicacion/crud-publicacion.component';
+import { CarritoComponent } from './vista/carrito/carrito.component';
 
 
 
-export const firebaseConfig = {
-  apiKey: 'AIzaSyCEH5CWZ0IlVb1vYS92vP3PmHN9uLis1Ao',
-  authDomain: 'carniceria-app.firebaseapp.com',
-  databaseURL: 'https://carniceria-app.firebaseio.com',
-  projectId: 'carniceria-app',
-  storageBucket: 'carniceria-app.appspot.com',
-  messagingSenderId: '1011498024113'
 
-};
 
 @NgModule({
   declarations: [
@@ -76,9 +72,9 @@ export const firebaseConfig = {
     NavBarComponent,
     InicioComponent,
     UserCrudComponent,
-    AdminUsersComponent,
+    AdminUserComponent,
     LoginComponent,
-    FirebaseComponent,
+    LoginUserComponent,
     ProductoComponent,
     TiendaComponent,
     ConsolaAdminComponent,
@@ -97,6 +93,9 @@ export const firebaseConfig = {
     SearchComponent,
     PublicacionFilter,
     CarritoComponent,
+    PedidosComponent,
+    LoginUserComponent,
+    AdminUserComponent,
 
 
   ],
@@ -107,7 +106,7 @@ export const firebaseConfig = {
     FormsModule,
     FlexLayoutModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
 

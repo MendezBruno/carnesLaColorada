@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../modelo/usuario';
-import { USER } from '../components/user-crud/usuario-data';
+import { USER } from '../vista/user-crud/usuario-data';
 
 @Injectable()
 export class UsuarioService {

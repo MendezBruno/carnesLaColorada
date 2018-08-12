@@ -57,8 +57,10 @@ import { SearchComponent } from './components/search/search.component';
 import { PublicacionFilter } from './components/search/publicacion-filter';
 import { CarritoService } from './servicios/carrito.service';
 import { CarritoComponent } from './components/carrito/carrito.component';
+import { StoreModule } from '@ngrx/store';
 
-
+// reducers
+import { carroReducer } from '../reducers/carro.reducer';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCEH5CWZ0IlVb1vYS92vP3PmHN9uLis1Ao',
@@ -110,6 +112,9 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    StoreModule.forRoot({
+      carro: carroReducer
+    })
 
   ],
   providers: [

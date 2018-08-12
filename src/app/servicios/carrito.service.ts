@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Carro } from '../modelo/carro';
-import 'rxjs/add/operator/toPromise';
 import { AutenticacionFirebaseService } from './autenticacionFirebase.service';
 import { Item } from '../modelo/Item';
-
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.states';
 
 
 
@@ -17,14 +17,16 @@ export class CarritoService {
 
   carroExist = false;
   carrito: Carro;
+  carroStore: Observable<Carro>;
 
 
-  constructor() {
+  constructor(private store: Store<AppState>) {
     if (this.hayCarro()) {
       const carro = localStorage.getItem('currentCarro');
       this.carrito = new Carro(JSON.parse(carro));
       this.carroExist = true;
     }
+    this.carroStore = this.store.select('carro');
   }
 
 

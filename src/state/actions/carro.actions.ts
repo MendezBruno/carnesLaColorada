@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
-import { Carro } from '../app/modelo/carro';
-import { Item } from '../app/modelo/Item';
+import { Carro } from '../../app/modelo/carro';
+import { Item } from '../../app/modelo/Item';
 // Section 2
 export const ADD_ITEM       = 'Add';
 export const REMOVE_ITEM    = 'Remove';

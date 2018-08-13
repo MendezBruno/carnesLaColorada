@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import * as carroActions from '../../state/actions/carro.actions';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Carro } from '../modelo/carro';
 import { AutenticacionFirebaseService } from './autenticacionFirebase.service';
 import { Item } from '../modelo/Item';
-import { Store } from '@ngrx/store';
-import { AppState } from '../app.states';
+import { AppState, CarroState } from '../app.states';
+import { Store, State } from '../../../node_modules/@ngrx/store';
 
 
 
@@ -18,15 +19,21 @@ export class CarritoService {
   carroExist = false;
   carrito: Carro;
   carroStore: Observable<Carro>;
+  subscription;
 
 
-  constructor(private store: Store<AppState>) {
+  constructor(public store: Store<CarroState>) {
     if (this.hayCarro()) {
       const carro = localStorage.getItem('currentCarro');
       this.carrito = new Carro(JSON.parse(carro));
       this.carroExist = true;
     }
-    this.carroStore = this.store.select('carro');
+    this.subscription = this.store.select('carro').subscribe(
+      (data: Carro) => {
+        this.carrito = data;
+        console.log(this.carrito);
+       }
+     );
   }
 
 
@@ -51,6 +58,7 @@ export class CarritoService {
 
   addItem(cantidad: number, idPublicacion: string) {
     this.carrito.addItem(new Item (cantidad, idPublicacion));
+    this.store.dispatch(new carroActions.AddItem(new Item (cantidad, idPublicacion)) );
     this.actualizar();
   }
   hayCarro(): boolean {

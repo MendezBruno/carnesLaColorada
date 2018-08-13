@@ -58,9 +58,12 @@ import { PublicacionFilter } from './components/search/publicacion-filter';
 import { CarritoService } from './servicios/carrito.service';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
 
 // reducers
-import { carroReducer } from '../reducers/carro.reducer';
+import { carroReducer } from '../state/reducers/carro.reducer';
+import { PublicacionEffects } from '../state/effects/publicacion.effects';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCEH5CWZ0IlVb1vYS92vP3PmHN9uLis1Ao',
@@ -114,7 +117,9 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     StoreModule.forRoot({
       carro: carroReducer
-    })
+    }),
+    EffectsModule.forRoot([PublicacionEffects])
+
 
   ],
   providers: [

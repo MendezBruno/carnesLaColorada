@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from './app.states';
+import { EffectGetPublicationsAction } from '../state/actions/publicacion.actions';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+
+  constructor(private store: Store<AppState> ) {
+
+   this.store.dispatch(new EffectGetPublicationsAction());
+  }
+
+
+
+
+
 }

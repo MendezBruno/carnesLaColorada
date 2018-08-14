@@ -14,6 +14,8 @@ carro: Carro;
 
 export interface PublicacionState {
 publicaciones: Publicacion[];
+load: boolean;
+loading: boolean;
 }
 
 

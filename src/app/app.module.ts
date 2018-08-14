@@ -64,6 +64,7 @@ import { EffectsModule } from '@ngrx/effects';
 // reducers
 import { carroReducer } from '../state/reducers/carro.reducer';
 import { PublicacionEffects } from '../state/effects/publicacion.effects';
+import { publicacionReducer } from '../state/reducers/publicacion.reducer';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCEH5CWZ0IlVb1vYS92vP3PmHN9uLis1Ao',
@@ -74,6 +75,7 @@ export const firebaseConfig = {
   messagingSenderId: '1011498024113'
 
 };
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -116,10 +118,11 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     StoreModule.forRoot({
-      carro: carroReducer
+      carro: carroReducer,
+      publicacion: publicacionReducer
     }),
-    EffectsModule.forRoot([PublicacionEffects])
-
+    EffectsModule.forRoot([PublicacionEffects]),
+    StoreDevtoolsModule.instrument()
 
   ],
   providers: [

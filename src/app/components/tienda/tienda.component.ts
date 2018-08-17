@@ -3,7 +3,7 @@ import { Producto } from '../../modelo/producto';
 import { PRODUCTOS } from './tienda-data';
 import { Publicacion } from '../../modelo/publicacion';
 import { Router } from '@angular/router';
-import { PublicacionCrudFirebaseService } from '../../servicios/publicacion-crud-firebase';
+import { PublicacionCrudFirebaseService } from '../../servicios/publicaciones/publicacion-crud-firebase';
 import { PublicacionFilter } from '../search/publicacion-filter';
 import { AutenticacionFirebaseService } from '../../servicios/autenticacionFirebase.service';
 import { Carro } from '../../modelo/carro';
@@ -27,7 +27,7 @@ export class TiendaComponent implements OnInit {
                 private carritoService: CarritoService,
                 private router: Router) {
     this.pcf = pcf;
-    this.pcf.obtenerListaDeProductos().subscribe(
+    this.pcf.obtenerListaDePublicaciones().subscribe(
       (data) => {
         this.publicaciones =  data;
         console.log(this.publicaciones);

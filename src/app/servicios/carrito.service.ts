@@ -6,7 +6,7 @@ import { Carro } from '../modelo/carro';
 import { AutenticacionFirebaseService } from './autenticacionFirebase.service';
 import { Item } from '../modelo/Item';
 import { AppState, CarroState } from '../app.states';
-import { Store, State } from '../../../node_modules/@ngrx/store';
+import { Store, State } from '@ngrx/store';
 
 
 

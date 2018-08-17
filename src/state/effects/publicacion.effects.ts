@@ -1,9 +1,9 @@
-import { Injectable } from '../../../node_modules/@angular/core';
+import { Injectable } from '@angular/core';
 import * as actionsPublication from '../actions/publicacion.actions';
 import { Actions, Effect } from '@ngrx/effects';
-import { Observable } from '../../../node_modules/rxjs';
+import { Observable } from 'rxjs';
 import { Action } from '@ngrx/store';
-import { PublicacionCrudFirebaseService } from '../../app/servicios/publicacion-crud-firebase';
+import { PublicacionCrudFirebaseService } from '../../app/servicios/publicaciones/publicacion-crud-firebase';
 import { LOAD_PUBLICATION } from '../actions/publicacion.actions';
 
 
@@ -15,7 +15,7 @@ export class PublicacionEffects {
 get_publicaciones$ = this.action$
 .ofType(actionsPublication.GET_PUBLICATION_ACTION)
 .switchMap( () => {
-     return this.publicacionService.obtenerListaDeProductos()
+     return this.publicacionService.obtenerListaDePublicaciones()
     .switchMap( (publicaciones) => {
         console.log('publicaciones es', publicaciones);
         return Observable.of(new actionsPublication.LoadPublicacion(publicaciones));

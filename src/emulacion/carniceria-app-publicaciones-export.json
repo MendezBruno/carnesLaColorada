@@ -1,0 +1,54 @@
+{
+  "-L3GoXI9waMPQ1gVdsIj" : {
+    "activada" : false,
+    "cantidad" : 4,
+    "description" : "especial",
+    "fecha" : "Sat Jan 20 2018 01:27:18 GMT-0300 (Hora estándar de Argentina)",
+    "id" : "-L3GoXI9waMPQ1gVdsIj",
+    "precio" : 400,
+    "stock" : 5,
+    "tipoCantidad" : "kg",
+    "titulo" : "carne picada"
+  },
+  "-L3c3nF0znlJ9DvhVx2A" : {
+    "activada" : false,
+    "cantidad" : 2,
+    "description" : "de Peceto",
+    "fecha" : "Wed Jan 24 2018 09:10:03 GMT-0300 (Hora estándar de Argentina)",
+    "fotos" : [ {
+      "name" : "/imagenes/1516624606.jpg",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/carniceria-app.appspot.com/o/imagenes%2F1516624606.jpg?alt=media&token=2bb41b64-f27f-40b5-a163-8203a52ab889"
+    } ],
+    "id" : "-L3c3nF0znlJ9DvhVx2A",
+    "precio" : 300,
+    "stock" : 10,
+    "tipoCantidad" : "kg",
+    "titulo" : "Milanesa"
+  },
+  "-L4aTMdpJyt69iKWAsKO" : {
+    "activada" : false,
+    "cantidad" : 1,
+    "description" : "de carne vacuna",
+    "fecha" : "Mon Feb 05 2018 11:58:01 GMT-0300",
+    "fotos" : [ {
+      "name" : "/imagenes/1516624741.jpg",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/carniceria-app.appspot.com/o/imagenes%2F1516624741.jpg?alt=media&token=3f07b8bb-9466-4ad3-a677-e858743d60e0"
+    } ],
+    "id" : "-L4aTMdpJyt69iKWAsKO",
+    "precio" : 80,
+    "stock" : 10,
+    "tipoCantidad" : "kg",
+    "titulo" : "chorizo"
+  },
+  "-LK-uhJzzSTzcp60gSm1" : {
+    "activada" : false,
+    "cantidad" : 123,
+    "description" : "asdas",
+    "fecha" : "Thu Aug 16 2018 01:07:36 GMT-0300 (-03)",
+    "id" : "-LK-uhJzzSTzcp60gSm1",
+    "precio" : 122,
+    "stock" : 231,
+    "tipoCantidad" : "kg",
+    "titulo" : "asdasd"
+  }
+}

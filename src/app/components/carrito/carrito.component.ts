@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Publicacion } from '../../modelo/publicacion';
-import { PublicacionCrudFirebaseService } from '../../servicios/publicacion-crud-firebase';
+import { PublicacionCrudFirebaseService } from '../../servicios/publicaciones/publicacion-crud-firebase';
 import { CarritoService } from '../../servicios/carrito.service';
 import { ActivatedRoute } from '@angular/router';
 import { ImagenesStorage } from '../../modelo/imagenesStorages';
@@ -29,7 +29,7 @@ export class CarritoComponent implements OnInit {
      }
 
   ngOnInit() {
-    this.pfc.obtenerListaDeProductos().subscribe(
+    this.pfc.obtenerListaDePublicaciones().subscribe(
       (publicaciones) => {
         this.publicaciones = publicaciones;
         this.initialize();
@@ -108,7 +108,7 @@ this.route.params
     .subscribe(params => {
       this.carroId = params['id'].toString();
       this.getItems(this.carroId);
-      this.pfc.obtenerListaDeProductos().subscribe(
+      this.pfc.obtenerListaDePublicaciones().subscribe(
         (publicaciones) => {
           this.publicaciones = publicaciones;
           this.setModelos();

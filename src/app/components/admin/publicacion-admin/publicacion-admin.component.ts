@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { PublicacionCrudFirebaseService } from '../../../servicios/publicacion-crud-firebase';
+import { PublicacionCrudFirebaseService } from '../../../servicios/publicaciones/publicacion-crud-firebase';
 import { Publicacion } from '../../../modelo/publicacion';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -29,7 +29,7 @@ export class PublicacionAdminComponent implements OnInit {
 
   constructor(private router: Router, private pcf: PublicacionCrudFirebaseService, db: AngularFireDatabase, public dialog: MatDialog) {
     this.pcf = pcf;
-    this.pcf.obtenerListaDeProductos().subscribe(
+    this.pcf.obtenerListaDePublicaciones().subscribe(
       (data) => {
         this.publicaciones =  data;
         this.initilizeEdit(this.publicaciones);
@@ -159,7 +159,7 @@ export class PublicacionAdminComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       result => {
           if (result) {
-            this.pcf.updatePublicacion(publicacion.id, publicacion);
+            this.pcf.updatePublicacion(publicacion);
             this.changeStateEdit(publicacion);
             }
         }

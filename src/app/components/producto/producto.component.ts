@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductoCrudFirebaseService } from '../../servicios/publicaciones/producto-crud-firebase.service';
+import { ProductoCrudFirebaseService } from '../../servicios/producto-crud-firebase.service';
 import { Producto } from '../../modelo/producto';
 import { UNPRODUCTO } from './producto-data';
 

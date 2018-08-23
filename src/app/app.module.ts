@@ -38,7 +38,7 @@ import * as firebase from 'firebase';
 // CARNICERIA APP COMPONENTS
 import { ProductoComponent } from './components/producto/producto.component';
 import { UsuarioCrudFirebaseService } from './servicios/usuario-crud-firebase.service';
-import { ProductoCrudFirebaseService } from './servicios/publicaciones/producto-crud-firebase.service';
+import { ProductoCrudFirebaseService } from './servicios/producto-crud-firebase.service';
 import { ConsolaAdminComponent } from './components/admin/consola-admin/consola-admin.component';
 import { PublicacionAdminComponent } from './components/admin/publicacion-admin/publicacion-admin.component';
 import { EditPublicacionComponent,
@@ -48,7 +48,7 @@ import { EditPublicacionComponent,
          DialogConfirmPublicacionComponent,
          EditStockPublicacionComponent} from './components/common-dialog/common-dialog.component';
 import { CrudPublicacionComponent } from './components/admin/crud-publicacion/crud-publicacion.component';
-import { PublicacionCrudFirebaseService } from './servicios/publicacion-crud-firebase';
+import { PublicacionCrudFirebaseService } from './servicios/publicaciones/publicacion-crud-firebase';
 import { PublicacionComponent } from './components/publicacion/publicacion.component';
 import { CaruselComponent } from './components/carusel/carusel.component';
 import { CommonDialogComponent } from './components/common-dialog/common-dialog.component';

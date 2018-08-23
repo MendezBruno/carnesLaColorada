@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
-import { Producto } from '../../modelo/producto';
+import { Producto } from '../modelo/producto';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -21,7 +21,7 @@ export class ProductoCrudFirebaseService {
   this.itemRef.push(producto);
   }
 
-  obtenerListaDePublicaciones( ): Observable<any[]> {
+  getPublicacion( ): Observable<any[]> {
     return this.db.list(this.dbPath).valueChanges();
   }
 

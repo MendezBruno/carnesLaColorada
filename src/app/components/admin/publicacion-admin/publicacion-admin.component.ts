@@ -29,7 +29,7 @@ export class PublicacionAdminComponent implements OnInit {
 
   constructor(private router: Router, private pcf: PublicacionCrudFirebaseService, db: AngularFireDatabase, public dialog: MatDialog) {
     this.pcf = pcf;
-    this.pcf.obtenerListaDePublicaciones().subscribe(
+    this.pcf.getPublicacion().subscribe(
       (data) => {
         this.publicaciones =  data;
         this.initilizeEdit(this.publicaciones);

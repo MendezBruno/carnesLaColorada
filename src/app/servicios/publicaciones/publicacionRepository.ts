@@ -8,14 +8,32 @@ import { Observable } from "../../../../node_modules/rxjs";
  */
 export interface PublicacionRepository {
 
-    
-    getPublicacion(): Observable<Publicacion>[];
+    /**
+     * obtiene la lista de publicaciones
+     */
+    getPublicacion(): Observable<Publicacion[]>;
 
+    /**
+     * Obtiene una publicacion con el id enviado
+     * @param id string autogenereado que representa el id de la publicacion
+     */
     getPublicacionById(id): Observable<Publicacion>;
     
+    /**
+     * Agrega una publicacion del tipo del parametro
+     * @param publicacion tipo Publicacion
+     */
     addPublicacion(publicacion: Publicacion);
 
+    /**
+     * Modifica una publicacion del tipo del parametro
+     * @param publicacion tipo Publicacion
+     */
     updatePublicacion(publicacion: Publicacion );
 
+    /**
+     * Borra la publicacion que coincide con la que se pasa por parametro
+     * @param publicacion tipo Publicacion
+     */
     deletePublicacion(publicacion: Publicacion);
 }

@@ -11,20 +11,16 @@ import { LOAD_PUBLICATION } from '../actions/publicacion.actions';
 @Injectable()
 export class PublicacionEffects {
 
-@Effect()
-get_publicaciones$ = this.action$
-.ofType(actionsPublication.GET_PUBLICATION_ACTION)
-.switchMap( () => {
-     return this.publicacionService.obtenerListaDePublicaciones()
-    .switchMap( (publicaciones) => {
-        console.log('publicaciones es', publicaciones);
-        return Observable.of(new actionsPublication.LoadPublicacion(publicaciones));
-    //  return new ;
-    }
-    );
-});
+    @Effect()
+    get_publicaciones$ = this.action$
+        .ofType(actionsPublication.GET_PUBLICATION_ACTION)
+        .switchMap(() => {
+            return this.publicacionService.getPublicacion()
+                .switchMap((publicaciones) => {
+                    console.log('publicaciones es', publicaciones);
+                    return Observable.of(new actionsPublication.LoadPublicacion(publicaciones));
+                });
+        });
 
-
-
-constructor( private action$: Actions, private publicacionService: PublicacionCrudFirebaseService ) {}
+    constructor(private action$: Actions, private publicacionService: PublicacionCrudFirebaseService) { }
 }

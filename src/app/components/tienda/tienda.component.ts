@@ -27,7 +27,7 @@ export class TiendaComponent implements OnInit {
                 private carritoService: CarritoService,
                 private router: Router) {
     this.pcf = pcf;
-    this.pcf.obtenerListaDePublicaciones().subscribe(
+    this.pcf.getPublicacion().subscribe(
       (data) => {
         this.publicaciones =  data;
         console.log(this.publicaciones);
@@ -37,7 +37,7 @@ export class TiendaComponent implements OnInit {
    // this.verificarCarro();
   }
 
-
+  // cambiar por el store del carrito
   ngOnInit() {
     this.carritoService.obtenerCarro().then( carro => this.carro = carro );
   }

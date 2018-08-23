@@ -3,12 +3,12 @@ import { ImagenesStorage } from './imagenesStorages';
 
 
 export class Publicacion {
-
+ 
     id: string;
     fecha: string;
     tipoCantidad: string;
     cantidad: number;
-    fotos: ImagenesStorage[];
+    fotos: ImagenesStorage[] = [];
     activada: boolean;
     description: string;
     titulo: string;
@@ -33,4 +33,10 @@ export class Publicacion {
         this.titulo = titulo;
         this.stock = stock;
     }
+
+
+    tieneFotos(): boolean {
+      return this.fotos.length > 0
+    }
+       // !!this.lala && (this.lala.length > 0)
 }

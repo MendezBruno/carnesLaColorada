@@ -29,7 +29,7 @@ export class CarritoComponent implements OnInit {
      }
 
   ngOnInit() {
-    this.pfc.obtenerListaDePublicaciones().subscribe(
+    this.pfc.getPublicacion().subscribe(
       (publicaciones) => {
         this.publicaciones = publicaciones;
         this.initialize();
@@ -108,7 +108,7 @@ this.route.params
     .subscribe(params => {
       this.carroId = params['id'].toString();
       this.getItems(this.carroId);
-      this.pfc.obtenerListaDePublicaciones().subscribe(
+      this.pfc.getPublicacion().subscribe(
         (publicaciones) => {
           this.publicaciones = publicaciones;
           this.setModelos();

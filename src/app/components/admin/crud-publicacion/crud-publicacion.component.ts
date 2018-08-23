@@ -59,7 +59,7 @@ publicacion: Publicacion;
   }
 
   uploadPublicacion(model) {
-    this.pcf.guardarPublicacion(
+    this.pcf.addPublicacion(
       new Publicacion(
         model.tipoCantidad,
         model.cantidad,

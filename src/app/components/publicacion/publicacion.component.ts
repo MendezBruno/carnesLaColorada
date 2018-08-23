@@ -16,12 +16,14 @@ export class PublicacionComponent implements OnInit {
   @Input() publicacion: Publicacion;
   @Input() carro: Carro;
   carrito: Carro;
+  hayFotos: boolean;
 
   constructor( private carritoService: CarritoService) {
     this.model.cantidad = 0;
    }
 
   ngOnInit() {
+    this.hayFotos = this.publicacion.tieneFotos()
     this.carritoService.obtenerCarro().then(
       carro => {
          this.carro = carro;
@@ -30,11 +32,6 @@ export class PublicacionComponent implements OnInit {
   addToShop() {
     if (this.model.cantidad < 1 || this.haveThisPublication(this.publicacion.id)) { return; }
     this.carritoService.addItem(this.model.cantidad, this.publicacion.id);
-  }
-
-  publicacionTieneFotos(): boolean {
-    if (this.publicacion.fotos) { return this.publicacion.fotos.length > 0; }
-    return false;
   }
 
   haveThisPublication(publicacionId: string): boolean {

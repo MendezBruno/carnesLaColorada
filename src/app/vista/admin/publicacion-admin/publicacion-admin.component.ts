@@ -11,7 +11,7 @@ import { EditPublicacionComponent,
    EditCantidadPublicacionComponent,
    DialogConfirmPublicacionComponent,
    DialogSelectPhotosComponent,
-   EditStockPublicacionComponent} from '../../common-dialog/common-dialog.component';
+   EditStockPublicacionComponent} from '../../../components/common-dialog/common-dialog.component';
 import { forEach } from '@angular/router/src/utils/collection';
 
 

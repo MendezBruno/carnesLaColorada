@@ -4,8 +4,8 @@ import { ImagesStoreService } from '../../../servicios/images-store.service';
 import { ImagenesStorage } from '../../../modelo/imagenesStorages';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { Publicacion } from '../../../modelo/publicacion';
+import { DialogConfirmPublicacionComponent } from '../../../components/common-dialog/common-dialog.component';
 import { PublicacionCrudFirebaseService } from '../../../servicios/publicaciones/publicacion-crud-firebase';
-import { DialogConfirmPublicacionComponent } from '../../common-dialog/common-dialog.component';
 
 const publicacionRoute = '/admin/publicacion';
 
@@ -76,7 +76,7 @@ publicacion: Publicacion;
         this.imagesStorages = data;
         console.log(this.imagesStorages);
       }
-    )
+    );
   }
 
   onClick(image) {

@@ -15,11 +15,12 @@ export class Publicacion {
     precio: number;
     stock: number;
 
+
     constructor (
-      tipoCantidad: string,
-      cantidad: number,
-      precio: number,
-      stock: number,
+      tipoCantidad?: string,
+      cantidad?: number,
+      precio?: number,
+      stock?: number,
       fotos?: any,
       descripcion?: string,
       titulo?: string) {
@@ -36,7 +37,7 @@ export class Publicacion {
 
 
     tieneFotos(): boolean {
-      return this.fotos.length > 0
+      return  !!this.fotos && this.fotos.length > 0;
     }
        // !!this.lala && (this.lala.length > 0)
 }

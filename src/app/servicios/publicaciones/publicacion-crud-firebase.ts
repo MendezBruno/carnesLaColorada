@@ -10,7 +10,7 @@ const SEPARADOR = '/';
 @Injectable()
 export class PublicacionCrudFirebaseService implements PublicacionRepository {
 
-  
+
   private dbPath = 'publicaciones';
   publications: Observable<any[]>;
   public itemsRef: any;
@@ -22,8 +22,8 @@ export class PublicacionCrudFirebaseService implements PublicacionRepository {
 
     this.itemsRef = this.db.list(this.dbPath);
     this.publications = this.itemsRef.snapshotChanges().pipe(
-      map((changes) => { changes }),
-      map(() => (c => ({ key: c.payload.key, ...c.payload.val() })) ) 
+      map((changes) =>  changes ),
+      map(() => (c => ({ key: c.payload.key, ...c.payload.val() })) )
     );
       this.itemsRef.snapshotChanges(['child_added'])
           .subscribe(actions => {
@@ -33,9 +33,9 @@ export class PublicacionCrudFirebaseService implements PublicacionRepository {
               console.log(action.payload.val());
             });
           });
-          
+
     }
-    
+
 
 
     addInfoToPublicatino(key: string, publicationWithNewInfo: Publicacion) {
@@ -44,7 +44,7 @@ export class PublicacionCrudFirebaseService implements PublicacionRepository {
     deleteEverything() {
       this.itemsRef.remove();
     }
-    
+
 
     updatePublicacion(modifiedPublication: Publicacion) {
       this.itemsRef.update(modifiedPublication.id, modifiedPublication);
@@ -63,7 +63,7 @@ export class PublicacionCrudFirebaseService implements PublicacionRepository {
       return this.db.list(this.dbPath).valueChanges() as Observable<Publicacion[]>;
     }
     getPublicacionById(id: any): Observable<Publicacion> {
-      throw new Error("Method not implemented.");
+      throw new Error('Method not implemented.');
     }
 
   }

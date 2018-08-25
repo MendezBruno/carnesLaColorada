@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { AppState } from './app.states';
+import { Store } from '@ngrx/store';
 import { EffectGetPublicationsAction } from '../state/actions/publicacion.actions';
 
 @Component({

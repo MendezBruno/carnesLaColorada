@@ -3,6 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Publicacion } from '../../modelo/publicacion';
 import { Observable } from 'rxjs/Observable';
 import { PublicacionRepository } from './publicacionRepository';
+import { map } from 'rxjs/operators';
 
 const SEPARADOR = '/';
 
@@ -20,10 +21,10 @@ export class PublicacionCrudFirebaseService implements PublicacionRepository {
   constructor(private db: AngularFireDatabase) {
 
     this.itemsRef = this.db.list(this.dbPath);
-    this.publications = this.itemsRef.snapshotChanges().map(changes => {
-      console.log(changes);
-      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-      });
+    this.publications = this.itemsRef.snapshotChanges().pipe(
+      map((changes) => { changes }),
+      map(() => (c => ({ key: c.payload.key, ...c.payload.val() })) ) 
+    );
       this.itemsRef.snapshotChanges(['child_added'])
           .subscribe(actions => {
             actions.forEach(action => {

@@ -1,4 +1,7 @@
-import { Component, Output, trigger, state, transition, style, animate, EventEmitter } from '@angular/core';
+import { Component, 
+    Output, 
+    EventEmitter } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-search',

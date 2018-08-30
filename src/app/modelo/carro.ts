@@ -1,11 +1,11 @@
 import { Publicacion } from './publicacion';
-import { Item } from './Item';
+import { Item } from './item';
 
 
 
 export class Carro {
 
-      items: Item[];
+      items: Item[] = [];
 
       constructor (carroJson?: any) {
         this.items = carroJson ?  carroJson.items : [];

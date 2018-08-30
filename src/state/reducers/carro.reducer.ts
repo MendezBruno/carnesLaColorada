@@ -3,7 +3,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as carroActions from '../actions/carro.actions';
 import { CarroState } from '../../app/app.states';
 import { Carro } from '../../app/modelo/carro';
-import { Item } from '../../app/modelo/Item';
+import { Item } from '../../app/modelo/item';
 
 export const initialState: CarroState = {carro: new Carro()};
 

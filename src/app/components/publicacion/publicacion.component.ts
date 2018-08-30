@@ -1,33 +1,38 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Publicacion } from '../../modelo/publicacion';
 import { AutenticacionFirebaseService } from '../../servicios/autenticacionFirebase.service';
 import { CarritoService } from '../../servicios/carrito.service';
 import { Carro } from '../../modelo/carro';
-import { Item } from '../../modelo/Item';
+import { Item } from '../../modelo/item';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../app.states';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-publicacion',
   templateUrl: './publicacion.component.html',
   styleUrls: ['./publicacion.component.css']
 })
-export class PublicacionComponent implements OnInit {
+export class PublicacionComponent implements OnInit, OnDestroy {
 
   model: any = {};
   @Input() publicacion: Publicacion;
   @Input() carro: Carro;
   carrito: Carro;
   hayFotos: boolean;
+  subscription: Subscription;
 
-  constructor( private carritoService: CarritoService) {
+  constructor( private carritoService: CarritoService, private store: Store<AppState>) {
     this.model.cantidad = 0;
    }
 
   ngOnInit() {
     this.hayFotos = this.publicacion.tieneFotos()
-    this.carritoService.obtenerCarro().then(
-      carro => {
-         this.carro = carro;
-      });
+    // this.carritoService.obtenerCarro().then(
+    //   carro => {
+    //      this.carro = carro;
+    //   });
+    this.subscription = this.store.select('carro').subscribe( carroState => this.carro = carroState.carro );
   }
   addToShop() {
     if (this.model.cantidad < 1 || this.haveThisPublication(this.publicacion.id)) { return; }
@@ -36,6 +41,10 @@ export class PublicacionComponent implements OnInit {
 
   haveThisPublication(publicacionId: string): boolean {
     return this.carro.items.filter(item => item.publicacionId === publicacionId).length > 0;
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

@@ -47,20 +47,20 @@ export class CarritoComponent implements OnInit {
   }
 
   setModelos() {
-       this.carrito.items.forEach( (item) => {
-       const publicacion = this.publicaciones.find(unaPublicacion => unaPublicacion.id === item.publicacionId );
-       const itemCar = new ItemCar();
-       itemCar.descripcion = publicacion.description;
-       itemCar.fotos = publicacion.fotos;
-       itemCar.precio = publicacion.precio;
-       itemCar.cantidad = publicacion.cantidad;
-       itemCar.tipoCantidad = publicacion.tipoCantidad;
-       itemCar.publicacionId = publicacion.id;
-       itemCar.titulo = publicacion.titulo;
-       itemCar.stock = item.stock;
-       itemCar.itemId = item.id;
-       this.itemsCar.push(itemCar);
-      } );
+      //  this.carrito.items.forEach( (item) => {
+      //  const publicacion = this.publicaciones.find(unaPublicacion => unaPublicacion.id === item.publicacionId );
+      //  const itemCar = new ItemCar();
+      //  itemCar.descripcion = publicacion.description;
+      //  itemCar.fotos = publicacion.fotos;
+      //  itemCar.precio = publicacion.precio;
+      //  itemCar.cantidad = publicacion.cantidad;
+      //  itemCar.tipoCantidad = publicacion.tipoCantidad;
+      //  itemCar.publicacionId = publicacion.id;
+      //  itemCar.titulo = publicacion.titulo;
+      //  itemCar.stock = item.stock;
+      //  itemCar.itemId = item.id;
+      //  this.itemsCar.push(itemCar);
+      // } );
   }
 
   getTotal() {
@@ -76,7 +76,7 @@ export class CarritoComponent implements OnInit {
 
   borrarItem(item) {
     console.log(item);
-    this.carServ.deleteItem(item.itemId);
+//    this.carServ.deleteItem(item.itemId);
     this.itemsCar.splice(this.itemsCar.indexOf(item), 1);
   }
 

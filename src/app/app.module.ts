@@ -58,7 +58,7 @@ import { UserCrudComponent } from './vista/user-crud/user-crud.component';
 import { TiendaComponent } from './vista/tienda/tienda.component';
 import { PublicacionAdminComponent } from './vista/admin/publicacion-admin/publicacion-admin.component';
 import { ConsolaAdminComponent } from './vista/admin/consola-admin/consola-admin.component';
-import { CrudPublicacionComponent } from './vista/admin/crud-publicacion/crud-publicacion.component';
+import { CrudProductComponent} from './vista/admin/crud-product/crud-product.component';
 import { CarritoComponent } from './vista/carrito/carrito.component';
 import { PublicacionCrudFirebaseService } from './servicios/publicaciones/publicacion-crud-firebase';
 
@@ -86,7 +86,7 @@ import { EffectsModule } from '@ngrx/effects';
     TiendaComponent,
     ConsolaAdminComponent,
     PublicacionAdminComponent,
-    CrudPublicacionComponent,
+    CrudProductComponent,
     DialogConfirmPublicacionComponent,
     EditPublicacionComponent,
     EditPrecioPublicacionComponent,

@@ -12,7 +12,7 @@ import { TiendaComponent } from './vista/tienda/tienda.component';
 import { LoginComponent } from './vista/admin/login/login.component';
 import { ConsolaAdminComponent } from './vista/admin/consola-admin/consola-admin.component';
 import { PublicacionAdminComponent } from './vista/admin/publicacion-admin/publicacion-admin.component';
-import { CrudPublicacionComponent } from './vista/admin/crud-publicacion/crud-publicacion.component';
+import { CrudProductComponent } from './vista/admin/crud-product/crud-product.component';
 import { CarritoComponent } from './vista/carrito/carrito.component';
 
 
@@ -28,7 +28,7 @@ const appRoutes: Routes = [
     { path: 'admin/login', component: LoginComponent},
     { path: 'admin/consola', component: ConsolaAdminComponent},
     { path: 'admin/publicacion', component: PublicacionAdminComponent},
-    { path: 'admin/nuevaPublicacion', component: CrudPublicacionComponent},
+    { path: 'admin/nuevaPublicacion', component: CrudProductComponent},
     { path: 'carrito', component: CarritoComponent},
 ];
 

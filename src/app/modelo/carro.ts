@@ -1,5 +1,5 @@
 import { Publicacion } from './publicacion';
-import { Item } from './Item';
+import { Item } from './item';
 
 
 

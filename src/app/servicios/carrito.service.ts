@@ -4,7 +4,7 @@ import * as carroActions from '../../state/actions/carro.actions';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Carro } from '../modelo/carro';
 import { AutenticacionFirebaseService } from './autenticacionFirebase.service';
-import { Item } from '../modelo/Item';
+import { Item } from '../modelo/item';
 import { AppState, CarroState } from '../app.states';
 import { Store, State } from '@ngrx/store';
 
@@ -52,15 +52,16 @@ export class CarritoService {
     this.carrito = null;
   }
 
-  deleteItem(idItem: string) {
-    this.carrito.items.splice(this.carrito.items.findIndex(item => item.id === idItem), 1);
-  }
+  // deleteItem(idItem: string) {
+  //   this.carrito.items.splice(this.carrito.items.findIndex(item => item.id === idItem), 1);
+  // }
 
-  addItem(cantidad: number, idPublicacion: string) {
-    this.carrito.addItem(new Item (cantidad, idPublicacion));
-    this.store.dispatch(new carroActions.AddItem(new Item (cantidad, idPublicacion)) );
-    this.actualizar();
-  }
+  // addItem(cantidad: number, idPublicacion: string) {
+  //   this.carrito.addItem(new Item (cantidad, idPublicacion));
+  //   this.store.dispatch(new carroActions.AddItem(new Item (cantidad, idPublicacion)) );
+  //   this.actualizar();
+  // }
+
   hayCarro(): boolean {
   const carro = localStorage.getItem('currentCarro');
     return carro !== undefined && carro !== null;

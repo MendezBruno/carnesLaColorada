@@ -17,42 +17,43 @@
 
 
               <mat-form-field>
-                <input matInput type="text" #inputTitle maxlength="20" placeholder="Titulo de la publicacion" required [(ngModel)]="model.titulo" name="titulo">
+                <input matInput type="text" #inputTitle maxlength="20" placeholder="Codigo" required [(ngModel)]="model.code" name="code">
                 <mat-hint aling="end">{{inputTitle.value?.length || 0 }}/20</mat-hint>
               </mat-form-field >
 
 
 
               <mat-form-field >
-                <textarea matInput type="text" #inputDescripcion maxlength="40" placeholder="Escriba una descripcion" required [(ngModel)]="model.descripcion" name="descripcion"></textarea>
+                <textarea matInput type="text" #inputDescripcion maxlength="40" placeholder="Nombre" required [(ngModel)]="model.name" name="name"></textarea>
                 <mat-hint aling="end">{{inputDescripcion.value?.length || 0 }}/40</mat-hint>
               </mat-form-field>
 
 
               <mat-form-field >
                 <mat-select placeholder="Clase de Producto"  [(ngModel)]="model.tipoProducto" name="tipoProducto" required >
-                  <mat-option value="carne">Carne</mat-option>
-                  <mat-option value="pollo">Pollo</mat-option>
-                  <mat-option value="cerdo">Cerdo</mat-option>
-                  <mat-option value="otro">Otro</mat-option>
+                  <mat-option value="CARNE">Carne</mat-option>
+                  <mat-option value="POLLO">Pollo</mat-option>
+                  <mat-option value="CERDO">Cerdo</mat-option>
+                  <mat-option value="OTRO">Otro</mat-option>
                 </mat-select>
               </mat-form-field>
 
               <div fxLayout="row" fxLayoutAlign="space-around center">
-                <mat-form-field fxFlex="40"  hideRequiredMarker="true">
+                <!-- <mat-form-field fxFlex="40"  hideRequiredMarker="true">
                   <input matInput type="number" placeholder="ingrese cantidad" [(ngModel)]="model.cantidad" name="cantidad" required>
-                </mat-form-field>
+                </mat-form-field> -->
 
                 <mat-form-field fxFlex="65">
                   <mat-select placeholder="Cantidad"  [(ngModel)]="model.tipoCantidad" name="tipoCantidad" >
                     <mat-option value="unidades">Unidades</mat-option>
                     <mat-option value="kg">Kg</mat-option>
+                    <mat-option value="Docenas">Docenas</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
 
               <mat-form-field>
-                <input matInput type="number" placeholder="Precio Total" [(ngModel)]="model.precio" name="precio" required>
+                <input matInput type="number" placeholder="Precio" [(ngModel)]="model.precio" name="precio" required>
                 <span matPrefix>$&nbsp;</span>
               </mat-form-field>
 

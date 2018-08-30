@@ -1,12 +1,16 @@
-export class Item {
-  id: string;
-  stock: number;
-  publicacionId: string;
+import { Product } from "./producto";
 
-  constructor (cantidad: number, idPublicacion: string) {
-    this.id = this.generateId();
-    this.stock = cantidad;
-    this.publicacionId = idPublicacion;
+export class Item {
+  product: Product;
+  cant: number;
+  precio: number;
+  fecha: Date;
+
+  constructor (product: Product , cant: number, precio?: number) {
+    this.product = product;
+    this.cant = cant;
+    this.precio = precio;
+    this.fecha = new Date(Date.now());
    }
 
 /**

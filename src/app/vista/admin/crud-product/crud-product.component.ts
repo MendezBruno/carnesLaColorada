@@ -3,33 +3,34 @@ import { Router } from '@angular/router';
 import { ImagesStoreService } from '../../../servicios/images-store.service';
 import { ImagenesStorage } from '../../../modelo/imagenesStorages';
 import { MatDialog, MatDialogRef } from '@angular/material';
-import { Publicacion } from '../../../modelo/publicacion';
 import { DialogConfirmPublicacionComponent } from '../../../components/common-dialog/common-dialog.component';
 import { PublicacionCrudFirebaseService } from '../../../servicios/publicaciones/publicacion-crud-firebase';
+import { Product } from '../../../modelo/producto';
+import { ProductCrudFirebaseService } from '../../../servicios/product/product-crud-firebase.service';
 
 const publicacionRoute = '/admin/publicacion';
 
 @Component({
-  selector: 'app-crud-publicacion',
-  templateUrl: './crud-publicacion.component.html',
-  styleUrls: ['./crud-publicacion.component.css'],
+  selector: 'app-crud-product',
+  templateUrl: './crud-product.component.html',
+  styleUrls: ['./crud-product.component.css'],
   providers: [ImagesStoreService],
 })
-export class CrudPublicacionComponent implements OnInit {
+export class CrudProductComponent implements OnInit {
 
 
 model: any = {};
 imagesStorages: ImagenesStorage[][];
 imagesSelected: ImagenesStorage[] = [];
 dbImages: ImagesStoreService;
-publicacion: Publicacion;
+product: Product;
 
 
   constructor(
      private router: Router,
      dbImeges: ImagesStoreService,
      public confirmDialog: MatDialog,
-     public pcf: PublicacionCrudFirebaseService) {
+     public productService: ProductCrudFirebaseService) {
     this.dbImages = dbImeges;
 
    }
@@ -59,12 +60,13 @@ publicacion: Publicacion;
   }
 
   uploadPublicacion(model) {
-    this.pcf.addPublicacion(
-      new Publicacion(
-        model.tipoCantidad,
-        model.cantidad,
-        model.precio,
+    this.productService.addPublicacion(
+      new Product(
+        model.code,
+        model.name,
+        model.tipoProducto,
         model.stock,
+        model.precio,
         this.imagesSelected,
         model.descripcion,
         model.titulo));

@@ -4,7 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Carro } from '../modelo/carro';
 import 'rxjs/add/operator/toPromise';
 import { AutenticacionFirebaseService } from './autenticacionFirebase.service';
-import { Item } from '../modelo/Item';
+import { Item } from '../modelo/item';
 
 
 

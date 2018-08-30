@@ -3,7 +3,7 @@ import { Publicacion } from '../../modelo/publicacion';
 import { AutenticacionFirebaseService } from '../../servicios/autenticacionFirebase.service';
 import { CarritoService } from '../../servicios/carrito.service';
 import { Carro } from '../../modelo/carro';
-import { Item } from '../../modelo/Item';
+import { Item } from '../../modelo/item';
 
 @Component({
   selector: 'app-publicacion',
@@ -29,14 +29,15 @@ export class PublicacionComponent implements OnInit {
          this.carro = carro;
       });
   }
-  addToShop() {
-    if (this.model.cantidad < 1 || this.haveThisPublication(this.publicacion.id)) { return; }
-    this.carritoService.addItem(this.model.cantidad, this.publicacion.id);
-  }
+ 
+  // addToShop() {
+  //   if (this.model.cantidad < 1 || this.haveThisPublication(this.publicacion.id)) { return; }
+  //   this.carritoService.addItem(this.model.cantidad, this.publicacion.id);
+  // }
 
-  haveThisPublication(publicacionId: string): boolean {
-    return this.carro.items.filter(item => item.publicacionId === publicacionId).length > 0;
-  }
+  // haveThisPublication(publicacionId: string): boolean {
+  //   return this.carro.items.filter(item => item.publicacionId === publicacionId).length > 0;
+  // }
 
 }
 

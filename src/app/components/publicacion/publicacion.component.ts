@@ -5,7 +5,7 @@ import { CarritoService } from '../../servicios/carrito.service';
 import { Carro } from '../../modelo/carro';
 import { Item } from '../../modelo/item';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../app.states';
+import { AppState, CarroState } from '../../app.states';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -17,8 +17,7 @@ export class PublicacionComponent implements OnInit, OnDestroy {
 
   model: any = {};
   @Input() publicacion: Publicacion;
-  @Input() carro: Carro;
-  carrito: Carro;
+  carro: Carro;
   hayFotos: boolean;
   subscription: Subscription;
 

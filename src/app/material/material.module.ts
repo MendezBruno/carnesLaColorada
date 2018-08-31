@@ -23,6 +23,7 @@ import {
   MatButtonToggleModule,
   MatExpansionModule,
   MatTooltipModule,
+  MatBadgeModule,
 
 
   } from '@angular/material';
@@ -49,6 +50,7 @@ import {
     MatButtonToggleModule,
     MatExpansionModule,
     MatTooltipModule,
+    MatBadgeModule,
   ],
   exports: [
     CommonModule,
@@ -72,6 +74,7 @@ import {
     MatButtonToggleModule,
     MatExpansionModule,
     MatTooltipModule,
+    MatBadgeModule,
   ]
 })
 export class MaterialModule { }

@@ -72,6 +72,8 @@ import { publicacionReducer } from '../state/reducers/publicacion.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { interceptorBackendServiceResponse } from './servicios/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -125,6 +127,11 @@ import { EffectsModule } from '@ngrx/effects';
 
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: interceptorBackendServiceResponse,
+      multi: true
+    },
     UsuarioService,
     AutenticacionFirebaseService,
     UsuarioCrudFirebaseService,

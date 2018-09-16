@@ -9,10 +9,11 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { EditPublicacionComponent,
    EditPrecioPublicacionComponent,
    EditCantidadPublicacionComponent,
-   DialogConfirmPublicacionComponent,
+   DialogConfirmComponent,
    DialogSelectPhotosComponent,
    EditStockPublicacionComponent} from '../../../components/common-dialog/common-dialog.component';
 import { forEach } from '@angular/router/src/utils/collection';
+import { ConfirmDialogModel } from '../../../components/common-dialog/models-data/confirmDialogModel';
 
 
 @Component({
@@ -153,9 +154,10 @@ export class PublicacionAdminComponent implements OnInit {
   }
 
   saveChangesPublication(publicacion) {
-    const dialogRef = this.dialog.open(DialogConfirmPublicacionComponent, {
-      data: { titulo: 'Guardar Cambios', pregunta: 'Quiere Guardar los cambios?' }
-    });
+    const data = new ConfirmDialogModel();
+    data.title = 'Guardar Cambios';
+    data.question = 'Quiere Guardar los cambios?';
+    const dialogRef = this.dialog.open(DialogConfirmComponent, { data });
     dialogRef.afterClosed().subscribe(
       result => {
           if (result) {
@@ -180,7 +182,7 @@ export class PublicacionAdminComponent implements OnInit {
   }
 
   deletePublication(publicacion) {
-    const dialogRef = this.dialog.open(DialogConfirmPublicacionComponent, {
+    const dialogRef = this.dialog.open(DialogConfirmComponent, {
       data: { titulo: 'Borrar Publicación', pregunta: 'Está seguro que desea borrar la publicación?' }
     });
     dialogRef.afterClosed().subscribe(

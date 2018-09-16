@@ -16,7 +16,6 @@ import {
   MatCheckboxModule,
   MatGridListModule,
   MatSnackBarModule,
-  MatDialog,
   MatSidenavModule,
   MatDialogModule,
   MatSlideToggleModule,

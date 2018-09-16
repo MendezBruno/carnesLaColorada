@@ -1,3 +1,31 @@
-<p>
-  aca deberia ir una lista de usuarios que pueda consultar y modificar.
-</p>
+<div fxFlex fxLayoutAlign="center center">
+  <mat-card fxFlex="70" class="main-card">
+    
+    <mat-toolbar class="toolbar"> 
+        <p fxFlex>Usuarios</p>
+        <button type="button" mat-mini-fab (click)="createNewUser()"><mat-icon>add</mat-icon></button>
+    </mat-toolbar>
+    
+    <div class="list">
+      <div *ngFor="let user of users" fxLayoutWrap="column">
+        <mat-card fxFlex="100" fxLayout="row">
+          
+          <div fxFlex="5" fxHide fxShow.gt-md class="icon-container">
+            <mat-icon fxFlex class="profilePic">person</mat-icon>
+          </div>
+
+          <mat-card-content fxFlex="90" fxLayout="column" >
+            <div fxLayout="row">
+              <p class="mat-headline" > {{user.nombre}} </p>
+            </div>
+            <p class="mat-subhead"> {{user.username}} </p>
+          </mat-card-content>
+          <div fxFlex fxLayout="row" >
+            <button type="button" mat-button (click)="editUser(user)" class="button" ><mat-icon>edit</mat-icon></button>
+            <button type="button" mat-button (click)="confirmDelete(user)"  class="button"><mat-icon>delete</mat-icon></button>
+         </div>
+        </mat-card>
+      </div>  
+    </div>
+  </mat-card>
+</div>

@@ -1,5 +1,6 @@
-import { Publicacion } from "../../modelo/publicacion";
-import { Observable } from "../../../../node_modules/rxjs";
+import { Observable } from 'rxjs';
+import { Publicacion } from '../../modelo/publicacion';
+
 
 /**
  * Publicacion Repository
@@ -18,7 +19,7 @@ export interface PublicacionRepository {
      * @param id string autogenereado que representa el id de la publicacion
      */
     getPublicacionById(id): Observable<Publicacion>;
-    
+
     /**
      * Agrega una publicacion del tipo del parametro
      * @param publicacion tipo Publicacion

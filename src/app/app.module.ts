@@ -20,7 +20,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 
 // servicios
-import { UsuarioService } from './servicios/user-crud.service';
+import { UsuarioService } from './servicios/users/user-crud.service';
 import { AutenticacionFirebaseService } from './servicios/autenticacionFirebase.service';
 
 // Firebase  New imports to update based on AngularFire2 version 4
@@ -32,15 +32,16 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // CARNICERIA APP COMPONENTS
 import { ProductoComponent } from './components/producto/producto.component';
-import { UsuarioCrudFirebaseService } from './servicios/usuario-crud-firebase.service';
+import { UserCrudFirebaseService } from './servicios/users/usuario-crud-firebase.service';
 import { ProductoCrudFirebaseService } from './servicios/producto-crud-firebase.service';
 
 import { EditPublicacionComponent,
          EditPrecioPublicacionComponent,
          EditCantidadPublicacionComponent,
          DialogSelectPhotosComponent,
-         DialogConfirmPublicacionComponent,
-         EditStockPublicacionComponent } from './components/common-dialog/common-dialog.component';
+         EditStockPublicacionComponent,
+         UserModalComponent,
+         DialogConfirmComponent} from './components/common-dialog/common-dialog.component';
 
 import { PublicacionComponent } from './components/publicacion/publicacion.component';
 import { CaruselComponent } from './components/carusel/carusel.component';
@@ -89,12 +90,13 @@ import { interceptorBackendServiceResponse } from './servicios/interceptor.servi
     ConsolaAdminComponent,
     PublicacionAdminComponent,
     CrudPublicacionComponent,
-    DialogConfirmPublicacionComponent,
     EditPublicacionComponent,
     EditPrecioPublicacionComponent,
     EditCantidadPublicacionComponent,
     EditStockPublicacionComponent,
     DialogSelectPhotosComponent,
+    UserModalComponent,
+    DialogConfirmComponent,
     PublicacionComponent,
     CaruselComponent,
     CommonDialogComponent,
@@ -134,18 +136,19 @@ import { interceptorBackendServiceResponse } from './servicios/interceptor.servi
     },
     UsuarioService,
     AutenticacionFirebaseService,
-    UsuarioCrudFirebaseService,
+    UserCrudFirebaseService,
     ProductoCrudFirebaseService,
     PublicacionCrudFirebaseService,
     CarritoService,
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    DialogConfirmPublicacionComponent,
     EditPublicacionComponent,
     EditPrecioPublicacionComponent,
     EditCantidadPublicacionComponent,
     DialogSelectPhotosComponent,
-    EditStockPublicacionComponent]
+    EditStockPublicacionComponent,
+    UserModalComponent,
+    DialogConfirmComponent]
 })
 export class AppModule { }

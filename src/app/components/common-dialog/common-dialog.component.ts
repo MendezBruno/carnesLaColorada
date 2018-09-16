@@ -3,6 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ImagenesStorage } from '../../modelo/imagenesStorages';
 import { ImagesStoreService } from '../../servicios/images-store.service';
 import { forEach } from '@angular/router/src/utils/collection';
+import { AdminUserComponent } from '../../vista/admin/admin-user/admin-user.component';
+import { ConfirmDialogModel } from './models-data/confirmDialogModel';
 
 @Component({
   selector: 'app-common-dialog',
@@ -88,16 +90,15 @@ export class EditStockPublicacionComponent implements OnInit {
   }
 }
 
-
 @Component({
-  selector: 'app-dialog-confirm-component',
+  selector: 'app-confirm-dialog-component',
   templateUrl: './dialog-templates/confirm-dialog-publicion.component.html',
 })
 
-export class DialogConfirmPublicacionComponent implements OnInit {
+export class DialogConfirmComponent implements OnInit {
 
-  constructor(public dialog: MatDialogRef<DialogConfirmPublicacionComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(public dialog: MatDialogRef<DialogConfirmComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogModel) { }
 
 
   ngOnInit() { }
@@ -180,3 +181,23 @@ export class DialogSelectPhotosComponent implements OnInit {
 
 
 }
+
+
+
+@Component({
+  selector: 'app-user-modal',
+  templateUrl: './userModal/userModal.component.html',
+  styleUrls: ['./userModal/userModal.component.css'],
+  })
+  export class UserModalComponent {
+    model: AdminUserComponent;
+
+    constructor(public dialogRef: MatDialogRef<UserModalComponent>) {}
+
+    // Detecta el enter para el login
+    keyDownFunction(event) {
+      if (event.keyCode === 13) {
+        console.log('Presiona Enter');
+      }
+    }
+  }

@@ -1,0 +1,76 @@
+.main-card{
+    margin-top: -64px;
+  }
+  
+  md-card{
+    padding: 0;
+  }
+  
+  md-toolbar{
+    height: 64px;
+  }
+  
+  
+  .profilePic
+  {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25%;
+  }
+  
+  md-card-content
+  {
+    margin-left: 1em;
+  }
+  
+  .toolbar
+  {
+    background: white;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .list{
+    margin-top: 1em;
+  }
+  
+  .chip{
+    margin-left: 2em;
+  }
+  
+  .verde{
+    background: lightgreen;
+  }
+  .violeta{
+    background: violet;
+  }
+  
+  #buttonImg{
+    max-width: 20px;
+    max-height: 20px;
+  }
+  
+  #smallButtonImg{
+    max-width: 20px;
+    max-height: 20px;
+  }
+  
+  .btn-default{
+    border: none;
+  }
+  
+  #nodesDiv{
+    display: inline-flex;
+    text-align: center;
+    margin-top: 5vh;
+    margin-bottom: 4vh;
+  }
+  
+  #addNode{
+    margin-left: 18vw;
+  }
+  
+  #nodeTitle{
+    margin: 0 auto;
+    margin-top: 3vh;
+  }

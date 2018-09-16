@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AutenticacionFirebaseService } from '../../servicios/autenticacionFirebase.service';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { UsuarioCrudFirebaseService } from '../../servicios/usuario-crud-firebase.service';
+import { UserCrudFirebaseService } from '../../servicios/users/usuario-crud-firebase.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ export class LoginUserComponent implements OnInit {
 
   constructor(private autenticacionFirebase: AutenticacionFirebaseService,
     private af: AngularFireAuth,
-    private fCrud: UsuarioCrudFirebaseService,
+    private fCrud: UserCrudFirebaseService,
     private router: Router) {
 
 }

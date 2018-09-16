@@ -4,8 +4,9 @@ import { ImagesStoreService } from '../../../servicios/images-store.service';
 import { ImagenesStorage } from '../../../modelo/imagenesStorages';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { Publicacion } from '../../../modelo/publicacion';
-import { DialogConfirmPublicacionComponent } from '../../../components/common-dialog/common-dialog.component';
+import { DialogConfirmComponent } from '../../../components/common-dialog/common-dialog.component';
 import { PublicacionCrudFirebaseService } from '../../../servicios/publicaciones/publicacion-crud-firebase';
+import { ConfirmDialogModel } from '../../../components/common-dialog/models-data/confirmDialogModel';
 
 const publicacionRoute = '/admin/publicacion';
 
@@ -45,9 +46,10 @@ publicacion: Publicacion;
   }
 
   openDialogConfirm(model): void {
-    const dialogRef = this.confirmDialog.open(DialogConfirmPublicacionComponent, {
-      data: { titulo: 'Nueva Publicacion', pregunta: 'Desea Guardar La Publicacion?' }
-    });
+    const data = new ConfirmDialogModel();
+    data.question = 'Desea Guardar La Publicacion?';
+    data.title = 'Nueva Publicacion';
+    const dialogRef = this.confirmDialog.open(DialogConfirmComponent, {data});
     dialogRef.afterClosed().subscribe(
       result => {
         if (result) {

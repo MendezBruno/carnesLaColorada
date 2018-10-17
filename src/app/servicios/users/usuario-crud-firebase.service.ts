@@ -10,7 +10,7 @@ const SEPARADOR = '/';
 @Injectable()
 export class UserCrudFirebaseService implements UserRepository {
 
-  private dbPath = 'clientes';
+  private dbPath = 'clients';
   private itemsRef: AngularFireList<any>;
   private clientRef: AngularFireObject<any>;
   clients: any;
@@ -36,8 +36,13 @@ export class UserCrudFirebaseService implements UserRepository {
   getUser(): Observable<User[]> {
     return this.db.list(this.dbPath).valueChanges() as Observable<User[]>;
   }
+
   getUserById(id: string): Observable<User> {
-    return this.db.object(this.dbPath + SEPARADOR + id ).valueChanges() as Observable<User>;
+    //  return this.db.object(this.dbPath + SEPARADOR + id ).valueChanges() as Observable<User>;
+    return this.db.list(this.dbPath,
+      ref => ref.orderByChild('uid').equalTo(id)).valueChanges().pipe(
+        map( (user: User[]) =>  user[0] )
+      );
   }
 
   addUser(user: User): Promise<User> {
@@ -47,6 +52,7 @@ export class UserCrudFirebaseService implements UserRepository {
     user.id = refKey;
     return this.db.database.ref(this.dbPath + SEPARADOR + refKey).set(user);
   }
+
   updateUser(modifierUser: User): Promise<any> {
     return this.itemsRef.update(modifierUser.id, modifierUser);
   }

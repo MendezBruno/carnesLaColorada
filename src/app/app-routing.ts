@@ -14,6 +14,7 @@ import { ConsolaAdminComponent } from './vista/admin/consola-admin/consola-admin
 import { PublicacionAdminComponent } from './vista/admin/publicacion-admin/publicacion-admin.component';
 import { CrudPublicacionComponent } from './vista/admin/crud-publicacion/crud-publicacion.component';
 import { CarritoComponent } from './vista/carrito/carrito.component';
+import { TestComponent } from './test/test.component';
 
 
 
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     { path: 'admin/publicacion', component: PublicacionAdminComponent},
     { path: 'admin/nuevaPublicacion', component: CrudPublicacionComponent},
     { path: 'carrito', component: CarritoComponent},
+    { path: 'test', component: TestComponent },
 ];
 
 @NgModule({

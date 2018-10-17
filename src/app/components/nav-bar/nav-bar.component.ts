@@ -17,7 +17,7 @@ import { AppState, CarroState } from '../../app.states';
   styleUrls: ['./nav-bar.component.css']
 })
 
-export class NavBarComponent implements OnInit, OnDestroy{
+export class NavBarComponent implements OnInit, OnDestroy {
 
   isLogIn = false;
   username: string;
@@ -42,6 +42,8 @@ export class NavBarComponent implements OnInit, OnDestroy{
   }
 
   initilize() {
+
+    // Esto se va a ir me parece...
     if (this.carro) { return; }
     this.carritoService.obtenerCarro().then(
       carro => {
@@ -53,65 +55,15 @@ export class NavBarComponent implements OnInit, OnDestroy{
     this.subscription = this.store.select('carro').subscribe(
       (data: CarroState) => {
         this.carro = new Carro();
-        if (data.carro.items) this.carro.items = data.carro.items;
+        if (data.carro.items) {this.carro.items = data.carro.items; }
         console.log(this.carro);
       }
     );
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe()
+    this.subscription.unsubscribe();
   }
-
-  /*
-  initilize() {
-    if (this.carro) { return; }
-    this.afService.promiseUid().then(
-      (userID) => {
-        console.log('entre a la promesa del ID:');
-        console.log(userID);
-        this.carritoService.isPathRootCreate().then(
-          (snapshot) => {
-                 if (snapshot.exists()) {
-                    this.carritoService.getCarroById(userID).then(
-                    (carro) => {
-                      this.carro = carro;
-                      this.createReferenceToCarro(this.carro.id);
-                    });
-                  } else {
-                    this.carro = this.carritoService.createCarro(userID);
-                  }
-                });
-      },
-      (error) => {console.log(error); });
-
-
-
-      this.afService.promiseUid().catch((error) => {console.log(error); });
-    }
-*/
-
-  /*
-    getMyCarrito(userID: string) {
-      console.log('carro del nav: ');
-  //    if (this.carro) { return; }
-      this.carritoService.getCarroById(userID).then(
-        (carro) => {  this.carro = carro; }
-    ); }
-  */
-
-  /*
-    createReferenceToCarro(carroId: string) {
-      this.carritoService.isPathItemsCreate(carroId).then(
-        (snapshot) => {
-              this.carritoService.getRefenceItemsObsevable(carroId).subscribe(
-              (items) => {
-                this.carro.items = items;
-              });
-  
-      });
-    }
-  */
 
   isLoggedIn() {
     if (this.afService.isLoggedIn()) {

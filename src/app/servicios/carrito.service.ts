@@ -30,8 +30,8 @@ export class CarritoService {
     }
     this.subscription = this.store.select('carro').subscribe(
       (data: Carro) => {
-        this.carrito = new Carro(); 
-        if ( data.items )  this.carrito.items = data.items;
+        this.carrito = new Carro();
+        if ( data.items )  { this.carrito.items = data.items; }
         console.log(this.carrito);
        }
      );

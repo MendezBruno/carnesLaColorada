@@ -75,6 +75,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { interceptorBackendServiceResponse } from './servicios/interceptor.service';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { interceptorBackendServiceResponse } from './servicios/interceptor.servi
     PedidosComponent,
     LoginUserComponent,
     AdminUserComponent,
+    TestComponent,
 
 
   ],

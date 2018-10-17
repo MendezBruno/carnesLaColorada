@@ -4,9 +4,9 @@
         <table  cellspacing="0">
             <tr>
                 <td>
-                    <mat-input-container>
+                    <mat-form-field>
                         <input matInput placeholder="Nombre y Apellido" required [(ngModel)]="model.user.name" name="name">
-                    </mat-input-container>
+                    </mat-form-field>
                 </td>
                 <td> <mat-form-field>
                     <mat-select placeholder="Rol" required [(ngModel)]="model.user.role" name="role">
@@ -19,14 +19,14 @@
             </tr>
             <tr>
                 <td>
-                    <mat-input-container>
+                    <mat-form-field>
                         <input matInput placeholder="Usuario" required [(ngModel)]="model.user.username" name="username">
-                    </mat-input-container>
+                    </mat-form-field>
                 </td>
                 <td>
-                    <mat-input-container>
+                    <mat-form-field>
                         <input matInput type="password" placeholder="Contraseña" required [(ngModel)]="model.user.password" name="password">
-                    </mat-input-container>
+                    </mat-form-field>
                 </td>
             </tr>
         </table>

@@ -186,8 +186,8 @@ export class DialogSelectPhotosComponent implements OnInit {
 
 @Component({
   selector: 'app-user-modal',
-  templateUrl: './userModal/userModal.component.html',
-  styleUrls: ['./userModal/userModal.component.css'],
+  templateUrl: './dialog-templates/userModal.component.html',
+  styleUrls: ['./dialog-templates/userModal.component.css'],
   })
   export class UserModalComponent {
     model: AdminUserComponent;

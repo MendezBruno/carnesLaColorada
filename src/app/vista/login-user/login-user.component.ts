@@ -25,7 +25,10 @@ export class LoginUserComponent implements OnInit {
   login() {
     this.autenticacionFirebase.login()
     .then( (data: firebase.auth.UserCredential) => {
-      if (data.additionalUserInfo.isNewUser) { this.fCrud.addUser(new SimpleUser(data.user)); }      this.goTo('/tienda');
+      if (data.additionalUserInfo.isNewUser) {
+        this.fCrud.addUser(new SimpleUser(data.user));
+      }
+      this.goTo('/tienda');
     })
     .catch((error) => {
       console.log(error);

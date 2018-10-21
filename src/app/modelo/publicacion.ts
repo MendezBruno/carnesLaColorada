@@ -3,7 +3,7 @@ import { ImagenesStorage } from './imagenesStorages';
 
 
 export class Publicacion {
- 
+
     id: string;
     fecha: string;
     tipoCantidad: string;

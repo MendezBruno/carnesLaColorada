@@ -50,7 +50,6 @@ import { MouseEditModeDirective } from './directives/mouse-edit-mode.directive';
 import { SearchComponent } from './components/search/search.component';
 import { PublicacionFilter } from './components/search/publicacion-filter';
 import { CarritoService } from './servicios/carrito.service';
-import { PedidosComponent } from './vista/admin/pedidos/pedidos.component';
 import { LoginUserComponent } from './vista/login-user/login-user.component';
 import { LoginComponent } from './vista/admin/login/login.component';
 import { AdminUserComponent } from './vista/admin/admin-user/admin-user.component';
@@ -76,6 +75,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { interceptorBackendServiceResponse } from './servicios/interceptor.service';
 import { TestComponent } from './test/test.component';
+import { AdminPedidosComponent } from './vista/admin/admin-pedidos/admin-pedidos.component';
+import { AdminMensajesComponent } from './vista/admin/admin-mensajes/admin-mensajes.component';
+import { PedidosComponent } from './vista/pedidos/pedidos.component';
+import { MensajesComponent } from './vista/mensajes/mensajes.component';
 
 @NgModule({
   declarations: [
@@ -109,6 +112,9 @@ import { TestComponent } from './test/test.component';
     LoginUserComponent,
     AdminUserComponent,
     TestComponent,
+    MensajesComponent,
+    AdminPedidosComponent,
+    AdminMensajesComponent,
 
 
   ],

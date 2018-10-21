@@ -92,7 +92,7 @@ export class EditStockPublicacionComponent implements OnInit {
 
 @Component({
   selector: 'app-confirm-dialog-component',
-  templateUrl: './dialog-templates/confirm-dialog-publicion.component.html',
+  templateUrl: './dialog-templates/confirm-dialog.component.html',
 })
 
 export class DialogConfirmComponent implements OnInit {

@@ -44,7 +44,7 @@ export class AutenticacionFirebaseService {
     localStorage.setItem('currentUser', null);
     this.afAuth.auth.signOut().then((res) => this.router.navigate(['/firebase']));
   }
-
+/* TODO:  hacer esto correctamente consulatando el provider del userFdetail
   isLoggedFaceBook() {
     if (this.userFDetails == null ) {
         return false;
@@ -52,7 +52,7 @@ export class AutenticacionFirebaseService {
         return true;
       }
   }
-
+*/
   isLoggedIn() {
     const user = localStorage.getItem('currentUser');
     return user !== undefined && user !== null;

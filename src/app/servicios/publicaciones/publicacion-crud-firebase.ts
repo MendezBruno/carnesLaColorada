@@ -41,14 +41,15 @@ export class PublicacionCrudFirebaseService implements PublicacionRepository {
     addInfoToPublicatino(key: string, publicationWithNewInfo: Publicacion) {
       this.db.database.ref(this.dbPath + SEPARADOR + key).set(publicationWithNewInfo);
     }
+
     deleteEverything() {
       this.itemsRef.remove();
     }
 
-
     updatePublicacion(modifiedPublication: Publicacion) {
       this.itemsRef.update(modifiedPublication.id, modifiedPublication);
     }
+
     addPublicacion(publicacion: Publicacion) {
       const refKey = this.itemsRef.push(publicacion).key;
       console.log('Guarde La Publicacion');
@@ -56,9 +57,11 @@ export class PublicacionCrudFirebaseService implements PublicacionRepository {
       publicacion.id = refKey;
       this.db.database.ref(this.dbPath + SEPARADOR + refKey).set(publicacion);
     }
+
     deletePublicacion(publicacion: Publicacion) {
       this.itemsRef.remove(publicacion.id);
     }
+
     getPublicacion(): Observable<Publicacion[]> {
       return this.db.list(this.dbPath).valueChanges() as Observable<Publicacion[]>;
     }
@@ -66,4 +69,4 @@ export class PublicacionCrudFirebaseService implements PublicacionRepository {
       throw new Error('Method not implemented.');
     }
 
-  }
+}

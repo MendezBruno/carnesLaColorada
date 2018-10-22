@@ -92,7 +92,7 @@ export class EditStockPublicacionComponent implements OnInit {
 
 @Component({
   selector: 'app-confirm-dialog-component',
-  templateUrl: './dialog-templates/confirm-dialog-publicion.component.html',
+  templateUrl: './dialog-templates/confirm-dialog.component.html',
 })
 
 export class DialogConfirmComponent implements OnInit {
@@ -186,8 +186,8 @@ export class DialogSelectPhotosComponent implements OnInit {
 
 @Component({
   selector: 'app-user-modal',
-  templateUrl: './userModal/userModal.component.html',
-  styleUrls: ['./userModal/userModal.component.css'],
+  templateUrl: './dialog-templates/userModal.component.html',
+  styleUrls: ['./dialog-templates/userModal.component.css'],
   })
   export class UserModalComponent {
     model: AdminUserComponent;

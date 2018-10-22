@@ -4,7 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Carro } from '../modelo/carro';
 import 'rxjs/add/operator/toPromise';
 import { AutenticacionFirebaseService } from './autenticacionFirebase.service';
-import { Item } from '../modelo/Item';
+import { Item } from '../modelo/item';
 
 
 
@@ -21,7 +21,7 @@ export class CarritoService {
   carritoRef: any;
   public carrito: Carro;
   public carritos: Observable<any[]>;
- 
+
   // Items de los carritos
   private dbPathItems = 'carritos/items';
   public itemsRef: any;
@@ -103,7 +103,7 @@ export class CarritoService {
     const promise = new Promise<Carro>( (resolve, reject) => {
       if (this.carritos) {
         this.carritos.subscribe( (carritos) => resolve( carritos.find(unCarro => unCarro.userId === id)));
-      }else {
+      } else {
         reject(new Carro(id));
       }
     });

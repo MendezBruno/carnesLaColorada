@@ -14,6 +14,11 @@ import { ConsolaAdminComponent } from './vista/admin/consola-admin/consola-admin
 import { PublicacionAdminComponent } from './vista/admin/publicacion-admin/publicacion-admin.component';
 import { CrudPublicacionComponent } from './vista/admin/crud-publicacion/crud-publicacion.component';
 import { CarritoComponent } from './vista/carrito/carrito.component';
+import { TestComponent } from './test/test.component';
+import { PedidosComponent } from './vista/pedidos/pedidos.component';
+import { AdminMensajesComponent } from './vista/admin/admin-mensajes/admin-mensajes.component';
+import { MensajesComponent } from './vista/mensajes/mensajes.component';
+import { AdminPedidosComponent } from './vista/admin/admin-pedidos/admin-pedidos.component';
 
 
 
@@ -21,15 +26,20 @@ const appRoutes: Routes = [
     { path: '', redirectTo: '/inicio', pathMatch: 'full'},
     { path: 'inicio', component: InicioComponent},
     { path: 'user', component: UserCrudComponent},
-    { path: 'adminusers', component: AdminUserComponent},
+    { path: 'admin/usuarios', component: AdminUserComponent},
     { path: 'login', component: LoginUserComponent},
     { path: 'admin/producto', component: ProductoComponent},
     { path: 'tienda', component: TiendaComponent},
+    { path: 'pedidos', component: PedidosComponent},
+    { path: 'mensajes', component: MensajesComponent},
     { path: 'admin/login', component: LoginComponent},
     { path: 'admin/consola', component: ConsolaAdminComponent},
     { path: 'admin/publicacion', component: PublicacionAdminComponent},
     { path: 'admin/nuevaPublicacion', component: CrudPublicacionComponent},
+    { path: 'admin/mensajes', component: AdminMensajesComponent},
+    { path: 'admin/pedidos', component: AdminPedidosComponent},
     { path: 'carrito', component: CarritoComponent},
+    { path: 'test', component: TestComponent },
 ];
 
 @NgModule({

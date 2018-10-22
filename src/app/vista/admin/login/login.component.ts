@@ -28,15 +28,15 @@ export class LoginComponent implements OnInit {
   loginAdmin() {
     this.mFirebaseBD.loginAdmin(this.model.userName, this.model.password)
                     .then(( this.irConsolaAdmin() ))
-                    .catch( this.informarNoConexion());
+                    .catch( (e) => {this.informarNoConexion(e); });
   }
 
   irConsolaAdmin(): any {
     this.router.navigate(['/admin/consola']);
   }
 
-  informarNoConexion(): any {
-     this.snackbar.open('Hubo un error al intentar ingresar');
+  informarNoConexion(e): any {
+     this.snackbar.open('Hubo un error al intentar ingresar: ' + e);
   }
 
 }

@@ -75,7 +75,7 @@ export class AdminUserComponent implements OnInit {
 
   /* CREACION */
   addUser(): void {
-    this.userService.addUser(this.user).subscribe(
+    this.userService.addUser(this.user).then(
                     error => this.errorMessage = <any>error);
 
     this.users.push(this.user);
@@ -102,7 +102,7 @@ export class AdminUserComponent implements OnInit {
 
   /* MODIFICACION */
   saveChanges(user: User): void {
-    this.userService.updateUser(user).subscribe(
+    this.userService.updateUser(user).then(
                        (userRespose) => { this.selectedUser = userRespose; },
                        (error) => { this.errorMessage = <any>error; });
   }

@@ -24,7 +24,7 @@ export interface UserRepository {
      * Agrega un usuario del tipo del parametro
      * @param user tipo User
      */
-    addUser(user: User);
+    addUser(user: User): Promise<any>;
 
     /**
      * Modifica un usuarios del tipo del parametro

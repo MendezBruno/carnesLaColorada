@@ -25,10 +25,8 @@ export class AdminUserComponent implements OnInit {
 
 
   constructor(private userService: UserCrudFirebaseService, public dialog: MatDialog) {
-
-   console.log('estoy para pedir usuarios');
-   this.getAllUsers();
-
+    console.log('estoy para pedir usuarios');
+    this.getAllUsers();
   }
 
   ngOnInit() {

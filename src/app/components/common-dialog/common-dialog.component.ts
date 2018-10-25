@@ -116,7 +116,7 @@ export class DialogConfirmComponent implements OnInit {
 
 export class DialogSelectPhotosComponent implements OnInit {
 
-  imagesStorages: ImagenesStorage[][];
+  imagesStorages: ImagenesStorage[];
   imagesSelected: ImagenesStorage[] = [];
   dbImages: ImagesStoreService;
   files: any;

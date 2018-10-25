@@ -7,6 +7,7 @@ import { Publicacion } from '../../../modelo/publicacion';
 import { DialogConfirmComponent } from '../../../components/common-dialog/common-dialog.component';
 import { PublicacionCrudFirebaseService } from '../../../servicios/publicaciones/publicacion-crud-firebase';
 import { ConfirmDialogModel } from '../../../components/common-dialog/models-data/confirmDialogModel';
+import { Observable } from 'rxjs/Observable';
 
 const publicacionRoute = '/admin/publicacion';
 
@@ -20,10 +21,11 @@ export class CrudPublicacionComponent implements OnInit {
 
 
 model: any = {};
-imagesStorages: ImagenesStorage[][];
+imagesStorages: ImagenesStorage[];
 imagesSelected: ImagenesStorage[] = [];
 dbImages: ImagesStoreService;
 publicacion: Publicacion;
+imagesStorages$: Observable<ImagenesStorage[]>;
 
 
   constructor(
@@ -75,10 +77,11 @@ publicacion: Publicacion;
   chargeImages(): any {
     this.dbImages.getListImageStorage().subscribe(
       (data) => {
-        this.imagesStorages = data;
-        console.log(this.imagesStorages);
-      }
+         this.imagesStorages = data;
+         console.log(this.imagesStorages);
+       }
     );
+   // this.imagesStorages$ = this.dbImages.getListImageStorage();
   }
 
   onClick(image) {

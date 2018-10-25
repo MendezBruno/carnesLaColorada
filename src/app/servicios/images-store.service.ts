@@ -43,9 +43,8 @@ db: AngularFireDatabase;
     );
   }
 
-getListImageStorage ():  Observable<ImagenesStorage[][]> {
-  this.imagesRef = this.db.list('imagenes');
-  return this.imagesRef.valueChanges();
+getListImageStorage ():  Observable<ImagenesStorage[]> {
+  return this.db.list('imagenes').valueChanges() as Observable<ImagenesStorage[]>;
 }
 
 

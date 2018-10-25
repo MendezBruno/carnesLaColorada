@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode= "side" autosize>
 
-          <div class="fotoseleccion" *ngFor="let image of imagesStorages">
+          <div class="fotoseleccion" *ngFor="let image of imagesStorages ">
             <div class="fotoselecciondiv"><img src="{{image.url}}" width="100" height="auto" (click)="onClick(image); sidenav.close()"/></div>
           </div>
 

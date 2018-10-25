@@ -20,10 +20,8 @@ export class UserCrudComponent implements OnInit {
 
     guardarUsuario(newUsuario: User) {
       console.log(newUsuario);
-      this._usuarioService.addUsuario(newUsuario);
+      this._usuarioService.addUser(newUsuario);
 
     }
-
-
 
 }

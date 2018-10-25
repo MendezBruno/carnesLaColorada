@@ -12,16 +12,10 @@ import { UserCrudFirebaseService } from '../../../servicios/users/usuario-crud-f
 })
 export class AdminUserComponent implements OnInit {
   title = 'Crear o Modificar';
-  roles = ['Administrador', 'otro'];
   user = new User();
-  submitted: boolean;
-  active = true;
-  selectedUser: User;
   users: User[];
-  errorMessage: string;
-  isCreation: boolean;
-  modal: MatDialogRef<UserModalComponent>;
-  querySearch: String;
+  errorMessage: any;
+
 
 
   constructor(private userService: UserCrudFirebaseService, public dialog: MatDialog) {
@@ -32,52 +26,6 @@ export class AdminUserComponent implements OnInit {
   ngOnInit() {
   }
 
-  handleQueryStringUpdate(queryString): void {
-    this.querySearch = queryString;
-  }
-
-  newUser() {
-    this.user = new User();
-    this.active = false;
-    this.isCreation = false;
-    setTimeout(() => this.active = true, 0);
-  }
-
-  /* METODOS DEL MODAL */
-  saveUser() {
-    if (this.isCreation) {
-      this.addUser();
-    } else {
-      this.saveChanges(this.user);
-    }
-  }
-
-  // Abre el modal para el login
-  openDialog(user): void {
-    this.user = user;
-
-    this.modal = this.dialog.open(UserModalComponent);
-
-    this.modal.componentInstance.model = this;
-
-    this.modal.afterClosed().subscribe(result => {
-      this.resetDialogValues();
-    });
-  }
-
-  // Resetea los valores de los campos
-  resetDialogValues(): void {
-    this.user = new User();
-    this.errorMessage = '';
-  }
-
-  /* CREACION */
-  addUser(): void {
-    this.userService.addUser(this.user).then(
-                    error => this.errorMessage = <any>error);
-
-    this.users.push(this.user);
-  }
 
   /* OBTENCION */
   getAllUsers(): void {
@@ -89,7 +37,7 @@ export class AdminUserComponent implements OnInit {
 
   getUser(id): void {
     this.userService.getUserById(id).subscribe(
-                       user => this.selectedUser = user,
+                       user => this.user = user,
                        error =>  this.errorMessage = <any>error);
   }
 
@@ -101,52 +49,32 @@ export class AdminUserComponent implements OnInit {
   /* MODIFICACION */
   saveChanges(user: User): void {
     this.userService.updateUser(user).then(
-                       (userRespose) => { this.selectedUser = userRespose; },
+                       (userRespose) => { this.user = userRespose; },
                        (error) => { this.errorMessage = <any>error; });
   }
 
-  // Comienza a crear un usuario
-  createNewUser(): void {
-    this.isCreation = true;
-    this.openDialog(new User());
+  consultUser(user: User) {
+
   }
 
-  // Comienza la edicion de usuario
-  editUser(user): void {
-      this.isCreation = false;
-      user.password = '';
-      this.openDialog(user);
-  }
 
-  identify(index, user) {
-      return index;
-  }
-
-  /* CONFIRMATION */
-  confirmDelete(user): void {
-    let confirmationDialog: MatDialogRef<DialogConfirmComponent>;
+  changeActiveState(checked: boolean, user: User) {
+    const accion =  checked ? 'habilitar' : 'deshabilitar';
     const data = new ConfirmDialogModel();
-    data.title = 'Borrar usuario';
-    data.question = 'Seguro que quiere borrar el usuario de ' + user.name;
-    confirmationDialog = this.dialog.open(DialogConfirmComponent, { data ,
-      disableClose: false
-    });
-
-    confirmationDialog.afterClosed().subscribe(result => {
-
-      if (result) { this.deleteUser(user); }
-
-      confirmationDialog = null;
-    });
+    data.title = 'Guardar Cambios';
+    data.question = 'Quiere ' + accion + ' el usuario para hacer pedidos?';
+    const dialogRef = this.dialog.open(DialogConfirmComponent, { data });
+    dialogRef.afterClosed().subscribe(
+      result => {
+          if (result) {
+            user.habilitado = checked;
+            this.saveChanges(user);
+            }
+        }
+    );
   }
 
-  getUserColor(user): String {
-    if (user.role === 'Administrador') {
-      return 'primary';
-    } else {
-      return 'warn';
-    }
-  }
+
 
 
 }

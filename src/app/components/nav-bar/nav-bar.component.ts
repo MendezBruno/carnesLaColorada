@@ -6,6 +6,10 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState, CarroState } from '../../app.states';
+import { User } from '../../modelo/templeteUser/usuario';
+import { AdminUser } from '../../modelo/templeteUser/adminUser';
+import { SharedService } from '../../servicios/shared.service';
+import { map } from 'rxjs/operators';
 
 
 
@@ -25,20 +29,34 @@ export class NavBarComponent implements OnInit, OnDestroy {
   carro: Carro;
   // todo agregar el numero de compras que hay en el carro.
 
+ subscription: Subscription;
+  isAdmin: boolean;
 
-  private afService: AutenticacionFirebaseService;
-  subscription: Subscription;
-
-  constructor( afService: AutenticacionFirebaseService,
+  constructor(private afService: AutenticacionFirebaseService,
     private carritoService: CarritoService,
     private router: Router,
-    private store: Store<AppState>) {
+    private store: Store<AppState>,
+    private sharedService: SharedService) {
     this.afService = afService;
-    this.isLoggedIn();
+   // this.isLoggedIn();
     this.initilize();
   }
 
   ngOnInit() {
+    this.sharedService.observerUser$.pipe(
+      map( (user) => {
+        if ( user instanceof AdminUser  ) {
+          const auxAdminUser = user as AdminUser;
+          this.isAdmin = true;
+          this.userpicture = auxAdminUser.photoURL;
+
+        } else {
+          this.userpicture = user.fotoPerfil;
+          this.username = user.username;
+        }
+        this.isLogIn = true;
+     })
+    );
   }
 
   initilize() {
@@ -59,19 +77,32 @@ export class NavBarComponent implements OnInit, OnDestroy {
         console.log(this.carro);
       }
     );
+
+
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  isLoggedIn() {
-    if (this.afService.isLoggedIn()) {
-      const user = JSON.parse(localStorage.getItem('currentUser'));
-      this.userpicture = user.providerData[0].photoURL;
-      this.username = user.displayName;
-      this.isLogIn = true;
-    }
+  // isLoggedIn() {
+  //   if (this.afService.isLoggedIn()) {
+  //     const user = JSON.parse(localStorage.getItem('currentUser'));
+  //     if ( user instanceof AdminUser  ) {
+  //       const auxAdminUser = user as AdminUser;
+  //       this.isAdmin = true;
+  //       this.userpicture = auxAdminUser.photoURL;
+
+  //     } else {
+  //       this.userpicture = user.fotoPerfil;
+  //       this.username = user.username;
+  //     }
+  //     this.isLogIn = true;
+  //   }
+  // }
+
+  goToConsola() {
+     this.router.navigate(['/admin/consola']);
   }
 
   logout() {

@@ -11,7 +11,7 @@
 
     <!-- <mat-icon fxHide fxShow.gt-md class="icon-container" *ngIf="isLoggedIn()"> -->
     <div class="pictureUser">
-      <img fxHide fxShow.gt-md *ngIf="isLogIn" class="profilePic" [src]="userpicture"  height="50px" width="50px">
+      <img fxHide.xs *ngIf="isLogIn" class="profilePic" [src]="userpicture"  height="50px" width="50px">
     </div>
       <!-- </mat-icon> -->
 
@@ -28,6 +28,10 @@
         <button mat-menu-item disabled>
           <mat-icon>settings_applications</mat-icon>
           <span>Configuracion</span>
+        </button>
+        <button mat-menu-item *ngIf="isAdmin" (click)="goToConsola()"> <!-- TODO agregar un componente de salidad saludando -->
+          <mat-icon>dashboard</mat-icon>
+          <span>Consola Administrador</span>
         </button>
         <button mat-menu-item *ngIf="isLogIn" (click)="logout()"> <!-- TODO agregar un componente de salidad saludando -->
           <mat-icon>exit_to_app</mat-icon>

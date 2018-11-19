@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../modelo/usuario';
+import { User } from '../../../modelo/templeteUser/usuario';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { UserModalComponent, DialogConfirmComponent } from '../../../components/common-dialog/common-dialog.component';
 import { ConfirmDialogModel } from '../../../components/common-dialog/models-data/confirmDialogModel';

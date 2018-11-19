@@ -3,8 +3,9 @@ import { AutenticacionFirebaseService } from '../../servicios/autenticacionFireb
 import { AngularFireAuth } from 'angularfire2/auth';
 import { UserCrudFirebaseService } from '../../servicios/users/usuario-crud-firebase.service';
 import { Router } from '@angular/router';
-import { SimpleUser } from '../../modelo/simpleUser';
-import { FacebookUser } from '../../modelo/facebookUser';
+import { SimpleUser } from '../../modelo/templeteUser/simpleUser';
+import { FacebookUser } from '../../modelo/templeteUser/facebookUser';
+import { GoogleUser } from '../../modelo/templeteUser/googleUser';
 
 
 
@@ -26,7 +27,8 @@ export class LoginUserComponent implements OnInit {
     this.autenticacionFirebase.login()
     .then( (data: firebase.auth.UserCredential) => {
       if (data.additionalUserInfo.isNewUser) {
-        this.fCrud.addUser(new SimpleUser(data.user));
+        // TODO preguntar si desea completar el perfil ahora o despues
+        // this.fCrud.addUser(new GoogleUser(data.user));
       }
       this.goTo('/tienda');
     })
@@ -41,7 +43,10 @@ export class LoginUserComponent implements OnInit {
     this.autenticacionFirebase.loginFaceBook()
     .then((data: firebase.auth.UserCredential) => {
       console.log(data);
-      if (data.additionalUserInfo.isNewUser) { this.fCrud.addUser(new FacebookUser(data.user)); }
+      if (data.additionalUserInfo.isNewUser) {
+        // TODO preguntar si desea completar el perfil ahora o despues
+        // this.fCrud.addUser(new FacebookUser(data.user));
+      }
       this.goTo('/tienda');
     })
     .catch((error) => {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule, MatButton } from '@angular/material';
-import { User } from '../../modelo/usuario';
+import { User } from '../../modelo/templeteUser/usuario';
 import { UsuarioService } from '../../servicios/users/user-crud.service';
 
 @Component({

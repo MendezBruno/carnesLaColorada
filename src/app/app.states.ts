@@ -1,6 +1,6 @@
 import { Carro } from './modelo/carro';
 import { Publicacion } from './modelo/publicacion';
-import { User } from './modelo/usuario';
+import { User } from './modelo/templeteUser/usuario';
 
 
 export interface AppState {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireDatabase, AngularFireList, AngularFireObject} from 'angularfire2/database';
-import { User } from '../../modelo/usuario';
+import { User } from '../../modelo/templeteUser/usuario';
 import { UserRepository } from './userRepository';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

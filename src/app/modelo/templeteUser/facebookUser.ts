@@ -1,12 +1,18 @@
 import { User } from './usuario';
+import { initializeApp } from 'firebase';
 
 export class FacebookUser extends User {
     uid: string;
     displayname: string;
 
-
-    constructor(user: firebase.User) {
+    constructor(user?: firebase.User) {
         super();
+        if (user) {
+            this.initialize(user);
+        }
+    }
+
+    initialize(user: firebase.User): any {
         this.uid = user.uid;
         this.username = user.displayName;
         this.email = user.email;
@@ -14,4 +20,5 @@ export class FacebookUser extends User {
         this.telefonoCel = user.phoneNumber;
         this.fotoPerfil = user.photoURL;
     }
+
 }

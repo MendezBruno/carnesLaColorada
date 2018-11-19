@@ -1,6 +1,6 @@
 import * as usersActions from '../actions/user.actions';
 import { UserState } from '../../app/app.states';
-import { User } from '../../app/modelo/usuario';
+import { User } from '../../app/modelo/templeteUser/usuario';
 
 export const initialState:
   UserState = {

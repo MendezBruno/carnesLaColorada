@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { User } from '../../modelo/usuario';
+import { User } from '../../modelo/templeteUser/usuario';
 
 
 /**

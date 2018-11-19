@@ -1,5 +1,8 @@
+
 export class User {
+
     id: string;
+    uid: string;
     username: string;
     email: string;
     nombre: string;
@@ -13,5 +16,13 @@ export class User {
 
     constructor() {
         this.habilitado = false;
+    }
+
+    setParameters(fUser: firebase.User): any {
+        this.username = fUser.displayName;
+        this.email = fUser.email;
+        this.telefonoCasa = fUser.phoneNumber;
+        this.fotoPerfil = fUser.photoURL;
+        this.uid = fUser.uid;
     }
 }

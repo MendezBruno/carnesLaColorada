@@ -11,7 +11,7 @@
 
     <!-- <mat-icon fxHide fxShow.gt-md class="icon-container" *ngIf="isLoggedIn()"> -->
     <div class="pictureUser">
-      <img fxHide.xs *ngIf="isLogIn" class="profilePic" [src]="userpicture"  height="50px" width="50px">
+      <img fxHide.xs *ngIf="isLogIn" class="profilePic" src="userpicture"  height="50px" width="50px">
     </div>
       <!-- </mat-icon> -->
 
@@ -20,7 +20,7 @@
     </button>
     <mat-menu #menu="matMenu">
       <div>
-        <button mat-menu-item *ngIf="!isLogIn" routerLink="login" routerLinkActive="active">
+        <button mat-menu-item *ngIf="!isLogIn" routerLink="/login" routerLinkActive="active">
           <mat-icon>account_circle</mat-icon>
           <span >Entrar</span>
         </button>

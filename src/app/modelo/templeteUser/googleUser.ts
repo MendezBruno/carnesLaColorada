@@ -6,6 +6,12 @@ export class GoogleUser extends User {
 
     constructor(user?: firebase.User) {
         super();
+        if (user) {
+            this.initialize(user);
+         }
+    }
+
+    initialize(user) {
         this.uid = user.uid;
         this.username = user.displayName;
         this.email = user.email;

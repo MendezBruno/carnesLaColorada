@@ -37,38 +37,23 @@ export class NavBarComponent implements OnInit, OnDestroy {
     private router: Router,
     private store: Store<AppState>,
     private sharedService: SharedService) {
-    this.afService = afService;
    // this.isLoggedIn();
     this.initilize();
+
   }
 
-  ngOnInit() {
-    this.sharedService.observerUser$.pipe(
-      map( (user) => {
-        if ( user instanceof AdminUser  ) {
-          const auxAdminUser = user as AdminUser;
-          this.isAdmin = true;
-          this.userpicture = auxAdminUser.photoURL;
-
-        } else {
-          this.userpicture = user.fotoPerfil;
-          this.username = user.username;
-        }
-        this.isLogIn = true;
-     })
-    );
-  }
+  ngOnInit() {  }
 
   initilize() {
 
     // Esto se va a ir me parece...
-    if (this.carro) { return; }
-    this.carritoService.obtenerCarro().then(
-      carro => {
-        this.carro = carro;
-        console.log('llego el carro al nav-bar: ' + this.carro);
-      }
-    );
+    // if (this.carro) { return; }
+    // this.carritoService.obtenerCarro().then(
+    //   carro => {
+    //     this.carro = carro;
+    //     console.log('llego el carro al nav-bar: ' + this.carro);
+    //   }
+    // );
 
     this.subscription = this.store.select('carro').subscribe(
       (data: CarroState) => {
@@ -77,6 +62,25 @@ export class NavBarComponent implements OnInit, OnDestroy {
         console.log(this.carro);
       }
     );
+
+    this.sharedService.observerUser$.subscribe(
+      (user) => {
+
+        if (user) {
+          if ( user instanceof AdminUser  ) {
+            const auxAdminUser = user as AdminUser;
+            this.isAdmin = true;
+            this.userpicture = auxAdminUser.photoURL;
+
+          } else {
+            this.userpicture = user.fotoPerfil;
+            this.username = user.username;
+          }
+          this.isLogIn = true;
+        } else {
+          this.isLogIn = false;
+        }
+      });
 
 
   }

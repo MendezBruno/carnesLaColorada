@@ -28,7 +28,11 @@ export class LoginUserComponent implements OnInit {
     .then( (data: firebase.auth.UserCredential) => {
       if (data.additionalUserInfo.isNewUser) {
         // TODO preguntar si desea completar el perfil ahora o despues
-        // this.fCrud.addUser(new GoogleUser(data.user));
+        this.fCrud.addUser(new GoogleUser(data.user)).then( () => {
+            this.autenticacionFirebase.setNewUserStorage();
+        });
+      } else {
+        this.autenticacionFirebase.searchAndsetUserStorage();
       }
       this.goTo('/tienda');
     })
@@ -46,7 +50,12 @@ export class LoginUserComponent implements OnInit {
       if (data.additionalUserInfo.isNewUser) {
         // TODO preguntar si desea completar el perfil ahora o despues
         // this.fCrud.addUser(new FacebookUser(data.user));
-      }
+        this.fCrud.addUser(new FacebookUser(data.user)).then( () => {
+          this.autenticacionFirebase.setNewUserStorage();
+      });
+    } else {
+      this.autenticacionFirebase.searchAndsetUserStorage();
+    }
       this.goTo('/tienda');
     })
     .catch((error) => {

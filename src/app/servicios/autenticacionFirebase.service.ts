@@ -24,25 +24,12 @@ export class AutenticacionFirebaseService {
     private sharedService: SharedService,
     private userCrudFirebase: UserCrudFirebaseService,
     private router: Router) {
+    this.userF = afAuth.authState;
 
-  this.userF = afAuth.authState;
-
-
-  this.userF.subscribe(
-      (userF) => {
-        if (userF) {
-          this.userFDetails = userF;
-          console.log('entre al suscribe');
-          console.log(this.userFDetails);
-          this.setUserStorage();
-          // this.user.setParameters(userF);
-          // localStorage.setItem('currentUser', JSON.stringify(userF));
-        } else {
-          this.userFDetails = null;
-        }
-      }
-    );
   }
+
+
+
 
   login() {
    this.user = new GoogleUser();
@@ -115,17 +102,34 @@ export class AutenticacionFirebaseService {
     });
   }
 
-  setUserStorage(): any {
-    this.userCrudFirebase.getUserById(this.userFDetails.uid).subscribe(
-      (user) => {
-        if (user) {
-            localStorage.setItem('currentItem', JSON.stringify(user));
-            this.sharedService.notifyUser(user);
-        } else {
-            this.user.setParameters(this.userFDetails);
-            localStorage.setItem('currentUser', JSON.stringify(this.user));
-            this.sharedService.notifyUser(this.user);
+  searchAndsetUserStorage(): any {
+    this.afAuth.authState.subscribe(
+      (userF) => {
+        if (userF) {
+          this.userCrudFirebase.getUserById(userF.uid).subscribe(
+            (user) => {
+
+                  localStorage.setItem('currentItem', JSON.stringify(user));
+                  this.sharedService.notifyUser(user);
+                  this.userFDetails = userF;
+
+           });
+        }
+      });
+
+  }
+
+  setNewUserStorage (): any {
+
+    this.afAuth.authState.subscribe(
+      (userF) => {
+        if (userF) {
+          this.user.setParameters(userF);
+          localStorage.setItem('currentUser', JSON.stringify(this.user));
+          this.sharedService.notifyUser(this.user);
+          this.userFDetails = userF;
         }
       });
   }
+
 }

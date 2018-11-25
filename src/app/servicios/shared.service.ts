@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class SharedService {
 
-  private observerUser: BehaviorSubject<User> = new BehaviorSubject<User>(new User());
+  private observerUser: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   observerUser$: Observable<User> = this.observerUser.asObservable();
 
   constructor() { }

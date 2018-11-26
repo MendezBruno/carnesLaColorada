@@ -79,6 +79,13 @@ import { AdminPedidosComponent } from './vista/admin/admin-pedidos/admin-pedidos
 import { AdminMensajesComponent } from './vista/admin/admin-mensajes/admin-mensajes.component';
 import { PedidosComponent } from './vista/pedidos/pedidos.component';
 import { MensajesComponent } from './vista/mensajes/mensajes.component';
+import { CalendarComponent } from './vista/admin/calendar/calendar.component';
+
+// calendario modules
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -115,6 +122,7 @@ import { MensajesComponent } from './vista/mensajes/mensajes.component';
     MensajesComponent,
     AdminPedidosComponent,
     AdminMensajesComponent,
+    CalendarComponent,
 
 
   ],
@@ -133,7 +141,15 @@ import { MensajesComponent } from './vista/mensajes/mensajes.component';
       publicacion: publicacionReducer
     }),
     EffectsModule.forRoot([PublicacionEffects]),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    // calendario imports
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
+    // fin calendario.
 
   ],
   providers: [

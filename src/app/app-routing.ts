@@ -19,6 +19,7 @@ import { PedidosComponent } from './vista/pedidos/pedidos.component';
 import { AdminMensajesComponent } from './vista/admin/admin-mensajes/admin-mensajes.component';
 import { MensajesComponent } from './vista/mensajes/mensajes.component';
 import { AdminPedidosComponent } from './vista/admin/admin-pedidos/admin-pedidos.component';
+import { CalendarComponent } from './vista/admin/calendar/calendar.component';
 
 
 
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
     { path: 'admin/nuevaPublicacion', component: CrudPublicacionComponent},
     { path: 'admin/mensajes', component: AdminMensajesComponent},
     { path: 'admin/pedidos', component: AdminPedidosComponent},
+    { path: 'admin/calendar', component: CalendarComponent},
     { path: 'carrito', component: CarritoComponent},
     { path: 'test', component: TestComponent },
 ];

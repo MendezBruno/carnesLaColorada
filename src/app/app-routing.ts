@@ -7,7 +7,6 @@ import { InicioComponent } from './vista/inicio/inicio.component';
 import { UserCrudComponent } from './vista/user-crud/user-crud.component';
 import { AdminUserComponent } from './vista/admin/admin-user/admin-user.component';
 import { LoginUserComponent } from './vista/login-user/login-user.component';
-import { ProductoComponent } from './components/producto/producto.component';
 import { TiendaComponent } from './vista/tienda/tienda.component';
 import { LoginComponent } from './vista/admin/login/login.component';
 import { ConsolaAdminComponent } from './vista/admin/consola-admin/consola-admin.component';
@@ -29,7 +28,6 @@ const appRoutes: Routes = [
     { path: 'user', component: UserCrudComponent},
     { path: 'admin/usuarios', component: AdminUserComponent},
     { path: 'login', component: LoginUserComponent},
-    { path: 'admin/producto', component: ProductoComponent},
     { path: 'tienda', component: TiendaComponent},
     { path: 'pedidos', component: PedidosComponent},
     { path: 'mensajes', component: MensajesComponent},

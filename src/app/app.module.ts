@@ -31,7 +31,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 // import * as firebase from 'firebase'; por el momento no se utiliza
 
 // CARNICERIA APP COMPONENTS
-import { ProductoComponent } from './components/producto/producto.component';
 import { UserCrudFirebaseService } from './servicios/users/usuario-crud-firebase.service';
 import { ProductoCrudFirebaseService } from './servicios/producto-crud-firebase.service';
 
@@ -96,7 +95,6 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     AdminUserComponent,
     LoginComponent,
     LoginUserComponent,
-    ProductoComponent,
     TiendaComponent,
     ConsolaAdminComponent,
     PublicacionAdminComponent,

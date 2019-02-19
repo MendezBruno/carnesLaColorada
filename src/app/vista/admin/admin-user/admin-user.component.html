@@ -8,12 +8,12 @@
       <div *ngFor="let user of users" fxLayoutWrap="column">
         <mat-card fxFlex="100" fxLayout="row">
            <div fxFlex="5" fxHide fxShow.gt-md class="icon-container">
-            <img fxFlex *ngIf="user.fotoPerfil" class="profilePic" [src]="user.fotoPerfil"  height="50px" width="50px">
-            <mat-icon fxFlex *ngIf="!user.fotoPerfil" class="profilePic">person</mat-icon>
+            <img fxFlex *ngIf="user.photoURL" class="profilePic" [src]="user.photoURL"  height="50px" width="50px">
+            <mat-icon fxFlex *ngIf="!user.photoURL" class="profilePic">person</mat-icon>
           </div>
           <mat-card-content fxFlex="90" fxLayout="column" >
             <div fxLayout="row">
-              <p class="mat-headline" > {{user.nombre}} </p>
+              <p class="mat-headline" > {{user.name}} </p>
             </div>
             <p class="mat-subhead"> {{user.username}} </p>
           </mat-card-content>
@@ -21,9 +21,9 @@
             <button type="button" mat-button (click)="consultUser(user)" class="button" ><mat-icon>description</mat-icon></button>
             <div fxLayout="row" fxLayoutAlign="start center">
               <!-- <button fxFlex="20" mat-button>{{ publicacion.activada ? 'Desactivar': 'Activar'}}</button> -->
-              <mat-slide-toggle [checked]="user.habilitado" (change)="changeActiveState($event.checked, user)"> </mat-slide-toggle>
+              <mat-slide-toggle [checked]="user.enabled" (change)="changeActiveState($event.checked, user)"> </mat-slide-toggle>
               <span fxFlex="10" ></span>
-              <p fxFlex="70">{{ user.habilitado ? 'ACTIVADA': 'DESACTIVADA'}}</p>
+              <p fxFlex="70">{{ user.enabled ? 'ACTIVADA': 'DESACTIVADA'}}</p>
             </div>
             <!-- <button type="button" mat-button (click)="confirmDelete(user)"  class="button"><mat-icon>delete</mat-icon></button> -->
          </div>

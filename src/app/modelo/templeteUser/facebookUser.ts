@@ -17,8 +17,8 @@ export class FacebookUser extends User {
         this.username = user.displayName;
         this.email = user.email;
         this.displayname = user.displayName;
-        this.telefonoCel = user.phoneNumber;
-        this.fotoPerfil = user.photoURL;
+        this.cel = user.phoneNumber;
+        this.photoURL = user.photoURL;
     }
 
 }

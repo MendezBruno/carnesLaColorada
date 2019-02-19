@@ -5,24 +5,24 @@ export class User {
     uid: string;
     username: string;
     email: string;
-    nombre: string;
-    apellido: string;
-    direccion: string;
-    telefonoCasa: string;
-    telefonoCel: string;
+    name: string;
+    lastName: string;
+    address: string;
+    tel: string;
+    cel: string;
     password: string;
-    fotoPerfil: string;
-    habilitado: boolean;
+    photoURL: string;
+    enabled: boolean;
 
     constructor() {
-        this.habilitado = false;
+        this.enabled = false;
     }
 
     setParameters(fUser: firebase.User): any {
         this.username = fUser.displayName;
         this.email = fUser.email;
-        this.telefonoCasa = fUser.phoneNumber;
-        this.fotoPerfil = fUser.photoURL;
+        this.tel = fUser.phoneNumber;
+        this.photoURL = fUser.photoURL;
         this.uid = fUser.uid;
     }
 

@@ -67,7 +67,7 @@ export class AdminUserComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       result => {
           if (result) {
-            user.habilitado = checked;
+            user.enabled = checked;
             this.saveChanges(user);
             }
         }

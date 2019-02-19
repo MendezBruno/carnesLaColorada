@@ -46,15 +46,6 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   initilize() {
 
-    // Esto se va a ir me parece...
-    // if (this.carro) { return; }
-    // this.carritoService.obtenerCarro().then(
-    //   carro => {
-    //     this.carro = carro;
-    //     console.log('llego el carro al nav-bar: ' + this.carro);
-    //   }
-    // );
-
     this.subscription = this.store.select('carro').subscribe(
       (data: CarroState) => {
         this.carro = new Carro();
@@ -73,7 +64,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
             this.userpicture = auxAdminUser.photoURL;
 
           } else {
-            this.userpicture = user.fotoPerfil;
+            this.userpicture = user.photoURL;
             this.username = user.username;
           }
           this.isLogIn = true;
@@ -88,22 +79,6 @@ export class NavBarComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
-  // isLoggedIn() {
-  //   if (this.afService.isLoggedIn()) {
-  //     const user = JSON.parse(localStorage.getItem('currentUser'));
-  //     if ( user instanceof AdminUser  ) {
-  //       const auxAdminUser = user as AdminUser;
-  //       this.isAdmin = true;
-  //       this.userpicture = auxAdminUser.photoURL;
-
-  //     } else {
-  //       this.userpicture = user.fotoPerfil;
-  //       this.username = user.username;
-  //     }
-  //     this.isLogIn = true;
-  //   }
-  // }
 
   goToConsola() {
      this.router.navigate(['/admin/consola']);

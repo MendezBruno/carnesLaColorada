@@ -37,4 +37,8 @@ export class AdminUser extends User {
         this.providerId = fUser.providerId;
         this.uid = fUser.uid;
     }
+
+    isAdmin( ): boolean {
+        return true;
+    }
 }

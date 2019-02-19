@@ -25,4 +25,8 @@ export class User {
         this.fotoPerfil = fUser.photoURL;
         this.uid = fUser.uid;
     }
+
+    isAdmin(): boolean { 
+        return false;
+    }
 }

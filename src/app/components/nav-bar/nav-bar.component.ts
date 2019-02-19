@@ -67,7 +67,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
       (user) => {
 
         if (user) {
-          if ( user instanceof AdminUser  ) {
+          if ( user.isAdmin() ) {
             const auxAdminUser = user as AdminUser;
             this.isAdmin = true;
             this.userpicture = auxAdminUser.photoURL;
